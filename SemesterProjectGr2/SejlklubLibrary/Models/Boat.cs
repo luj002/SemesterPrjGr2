@@ -27,7 +27,7 @@ public class Boat
 		Nickname = nickname;
 		SailNumber = sailNumber;
 		Motor = motor;
-		Log = new BoatLog();
+		Log = new BoatLog(this);
 	}
 	public override string ToString()
 	{

@@ -15,6 +15,6 @@
 	}
 	public override string ToString()
 	{
-		return $"Registration {Id}: Member: {Member.Name}, Event: {Event.Name}, Date: {RegistrationDate}, Comment: {Comment ?? "N/A"}";
+		return $"Registration {Id}: Member: {Member.Name}, Event: {Event.Title}, Date: {RegistrationDate}, Comment: {Comment ?? "N/A"}";
 	}
 }
