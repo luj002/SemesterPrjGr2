@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -23,12 +27,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Boat.cs",
+              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Boat.cs",
+              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Boat.cs",
+              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Boat.cs*",
+              "RelativeToolTip": "SejlklubLibrary\\Models\\Boat.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T10:16:13.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Class1.cs",
               "RelativeDocumentMoniker": "SejlklubLibrary\\Class1.cs",
               "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Class1.cs",
               "RelativeToolTip": "SejlklubLibrary\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T10:08:18.886Z",
               "EditorCaption": ""
