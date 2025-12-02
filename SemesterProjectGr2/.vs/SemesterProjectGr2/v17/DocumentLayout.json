@@ -1,54 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\",
+  "WorkspaceRootPath": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\blogentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\blogentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75416234-3AE3-4F3D-8EEC-E1703C836B3F}|ConsoleChristian\\ConsoleChristian.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolechristian\\consolechristian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{75416234-3AE3-4F3D-8EEC-E1703C836B3F}|ConsoleChristian\\ConsoleChristian.csproj|solutionrelative:consolechristian\\consolechristian.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{99B1607D-444D-48BC-A86B-B83C54E2E20E}|ConsoleNikolaj\\ConsoleNikolaj.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolenikolaj\\consolenikolaj.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{99B1607D-444D-48BC-A86B-B83C54E2E20E}|ConsoleNikolaj\\ConsoleNikolaj.csproj|solutionrelative:consolenikolaj\\consolenikolaj.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90F5A43F-9273-4D5F-9673-CFAB45740EB8}|ConsoleRobin\\ConsoleRobin.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolerobin\\consolerobin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{90F5A43F-9273-4D5F-9673-CFAB45740EB8}|ConsoleRobin\\ConsoleRobin.csproj|solutionrelative:consolerobin\\consolerobin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{216A6247-E40C-4B4C-AD2E-97FD461A57C5}|ConsoleRosa\\ConsoleRosa.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolerosa\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{216A6247-E40C-4B4C-AD2E-97FD461A57C5}|ConsoleRosa\\ConsoleRosa.csproj|solutionrelative:consolerosa\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\quota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\quota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92871DAC-1B35-46CC-BBAD-3BA441073749}|ConsoleLukas\\ConsoleLukas.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolelukas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92871DAC-1B35-46CC-BBAD-3BA441073749}|ConsoleLukas\\ConsoleLukas.csproj|solutionrelative:consolelukas\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90F5A43F-9273-4D5F-9673-CFAB45740EB8}|ConsoleRobin\\ConsoleRobin.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolerobin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90F5A43F-9273-4D5F-9673-CFAB45740EB8}|ConsoleRobin\\ConsoleRobin.csproj|solutionrelative:consolerobin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{99B1607D-444D-48BC-A86B-B83C54E2E20E}|ConsoleNikolaj\\ConsoleNikolaj.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolenikolaj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99B1607D-444D-48BC-A86B-B83C54E2E20E}|ConsoleNikolaj\\ConsoleNikolaj.csproj|solutionrelative:consolenikolaj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\adminstrator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\adminstrator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\boatlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\boatlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\boatlogentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\boatlogentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|c:\\git\\semesterprjgr2\\semesterprojectgr2\\sejlklublibrary\\models\\boatspace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A9BA6B0-D14A-49C5-A3B2-396FEA3BC899}|SejlklubLibrary\\SejlklubLibrary.csproj|solutionrelative:sejlklublibrary\\models\\boatspace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75416234-3AE3-4F3D-8EEC-E1703C836B3F}|ConsoleChristian\\ConsoleChristian.csproj|c:\\users\\cw_am\\source\\repos\\semesterprjgr2\\semesterprojectgr2\\consolechristian\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75416234-3AE3-4F3D-8EEC-E1703C836B3F}|ConsoleChristian\\ConsoleChristian.csproj|solutionrelative:consolechristian\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,166 +42,138 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleChristian",
+              "DocumentMoniker": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleChristian\\ConsoleChristian.csproj",
+              "RelativeDocumentMoniker": "ConsoleChristian\\ConsoleChristian.csproj",
+              "ToolTip": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleChristian\\ConsoleChristian.csproj",
+              "RelativeToolTip": "ConsoleChristian\\ConsoleChristian.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-02T09:29:35.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConsoleNikolaj",
+              "DocumentMoniker": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleNikolaj\\ConsoleNikolaj.csproj",
+              "RelativeDocumentMoniker": "ConsoleNikolaj\\ConsoleNikolaj.csproj",
+              "ToolTip": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleNikolaj\\ConsoleNikolaj.csproj",
+              "RelativeToolTip": "ConsoleNikolaj\\ConsoleNikolaj.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-02T09:29:17.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConsoleRobin",
+              "DocumentMoniker": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRobin\\ConsoleRobin.csproj",
+              "RelativeDocumentMoniker": "ConsoleRobin\\ConsoleRobin.csproj",
+              "ToolTip": "C:\\Users\\cw_am\\Source\\Repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRobin\\ConsoleRobin.csproj",
+              "RelativeToolTip": "ConsoleRobin\\ConsoleRobin.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-02T09:29:08.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BlogEntry.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BlogEntry.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\BlogEntry.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BlogEntry.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\BlogEntry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRosa\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleRosa\\Program.cs",
+              "ToolTip": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRosa\\Program.cs",
+              "RelativeToolTip": "ConsoleRosa\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T12:06:20.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Event.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Event.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Event.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Event.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Event.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAADwvyMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:56:07.056Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Registration.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Registration.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Registration.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Registration.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Registration.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAwBEAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:53:43.237Z",
+              "WhenOpened": "2025-12-02T09:28:47.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Quota.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Quota.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Quota.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Quota.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Quota.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA8wBcAAAACAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleLukas\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleLukas\\Program.cs",
+              "ToolTip": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleLukas\\Program.cs",
+              "RelativeToolTip": "ConsoleLukas\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:46:48.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Adminstrator.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Adminstrator.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Adminstrator.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Adminstrator.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Adminstrator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:46:02.187Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Member.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Member.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Member.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Member.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Member.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:40:50.804Z",
+              "WhenOpened": "2025-12-02T09:28:31.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Booking.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Booking.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Booking.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Booking.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAiwBUAAAACAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRobin\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleRobin\\Program.cs",
+              "ToolTip": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleRobin\\Program.cs",
+              "RelativeToolTip": "ConsoleRobin\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:33:06.182Z",
+              "WhenOpened": "2025-12-02T09:28:04.955Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BoatLogEntry.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatLogEntry.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\BoatLogEntry.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatLogEntry.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\BoatLogEntry.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleNikolaj\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleNikolaj\\Program.cs",
+              "ToolTip": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleNikolaj\\Program.cs",
+              "RelativeToolTip": "ConsoleNikolaj\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:26:32.203Z",
+              "WhenOpened": "2025-12-02T09:27:44.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BoatLog.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatLog.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\BoatLog.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatLog.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\BoatLog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleChristian\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleChristian\\Program.cs",
+              "ToolTip": "C:\\Users\\cw_am\\source\\repos\\SemesterPrjGr2\\SemesterProjectGr2\\ConsoleChristian\\Program.cs",
+              "RelativeToolTip": "ConsoleChristian\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:23:12.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Boat.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Boat.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\Boat.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\Boat.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\Boat.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAqwBoAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T10:16:13.793Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Class1.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Class1.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Class1.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T10:08:18.886Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BoatSpace.cs",
-              "DocumentMoniker": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatSpace.cs",
-              "RelativeDocumentMoniker": "SejlklubLibrary\\Models\\BoatSpace.cs",
-              "ToolTip": "C:\\Git\\SemesterPrjGr2\\SemesterProjectGr2\\SejlklubLibrary\\Models\\BoatSpace.cs",
-              "RelativeToolTip": "SejlklubLibrary\\Models\\BoatSpace.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T10:30:42.615Z",
+              "WhenOpened": "2025-12-02T09:27:27.86Z",
               "EditorCaption": ""
             }
           ]
