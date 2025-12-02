@@ -20,9 +20,4 @@
 	{
 		return $"Member {Id}: {Name}, Address: {Address}, Email: {Email}, DOB: {DateOfBirth.ToShortDateString()}, Type: {Type}";
 	}
-public enum MemberType
-{
-	JUNIOR,
-	SENIOR,
-	FAMILY
 }
