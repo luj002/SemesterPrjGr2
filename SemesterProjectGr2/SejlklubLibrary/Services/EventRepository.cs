@@ -1,6 +1,6 @@
 ﻿public class EventRepository : IEventRepository
 {
-    private Dictionary<int,Event> _events;
+    private Dictionary<int,Event> _events = new Dictionary<int,Event>();
     public int Count { 
         
         get
@@ -20,7 +20,7 @@
 
     public Event? GetEventByID(int id)
     {
-        if (_events[id] != null)
+        if (_events.ContainsKey(id))
         {
             return _events[id];
         }
@@ -33,7 +33,7 @@
 
     public void AddEvent(Event givenEvent)
     {
-        if (_events[givenEvent.Id] == null)
+        if (!_events.ContainsKey(givenEvent.Id))
         {
             _events[givenEvent.Id] = givenEvent;
         }
