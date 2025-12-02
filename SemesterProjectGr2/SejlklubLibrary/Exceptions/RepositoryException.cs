@@ -2,6 +2,8 @@
 public enum RepositoryExceptionType
 {
 	Create,
+	Add,
+	Remove,
 	Read,
 	Update,
 	Delete,
