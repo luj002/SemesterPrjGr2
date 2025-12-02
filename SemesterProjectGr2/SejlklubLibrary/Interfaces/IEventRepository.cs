@@ -1,8 +1,8 @@
 ﻿public interface IEventRepository
 {
     List<Event> GetAll();
-    void AddEvent(Member givenMember);
-    void RemoveEvent(Member givenMember);
+    void AddEvent(Event givenEvent);
+    void RemoveEvent(Event givenEvent);
     int Count { get; }
-    Event GetEventByID(int id);
+    Event? GetEventByID(int id);
 }
