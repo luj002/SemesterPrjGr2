@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SejlklubLibrary.Services
 {
-    internal class BlogEntryRepository
+    public class BlogEntryRepository
     {
+
     }
 }
