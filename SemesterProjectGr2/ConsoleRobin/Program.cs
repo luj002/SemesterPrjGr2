@@ -1,1 +1,1 @@
-﻿  
+﻿Lua.print("aaa");

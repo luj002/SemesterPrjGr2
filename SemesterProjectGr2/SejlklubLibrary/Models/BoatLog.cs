@@ -26,7 +26,7 @@
 		Boat = boat;
 		Entries = new List<BoatLogEntry>();
 	}
-	public void AddEntry(string entry)
+	public void AddEntry(BoatLogEntry entry)
 	{
 		Entries.Add(entry);
 	}
