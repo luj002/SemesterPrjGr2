@@ -1,4 +1,6 @@
 ﻿
+using System.Net.Sockets;
+
 public class MemberRepository : IMemberRepository
 {
     #region Instance fields
@@ -20,6 +22,11 @@ public class MemberRepository : IMemberRepository
     #endregion
 
     #region Methods
+    public void Create(string name, string address, string email, DateTime dateOfBirth, RepositoryExceptionType type)
+    {
+        Member memberToAdd = new Member(name, address, email, dateOfBirth, type);
+    }
+    
     public void Add(Member member)
     {
         if (_members.ContainsKey(member.Id))
