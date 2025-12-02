@@ -25,10 +25,7 @@
             return _events[id];
         }
 
-        else
-        {
-            throw new Exception("invalid id given");
-        }
+        return null;
     }
 
     public void AddEvent(Event givenEvent)
@@ -40,12 +37,15 @@
 
         else
         {
-            throw new Exception("invalid event given");
+            throw new RepositoryException(RepositoryExceptionType.Create,"given event is already in the events dictionary");
         }
     }
 
     public void RemoveEvent(Event givenEvent)
     {
-        _events.Remove(givenEvent.Id);
+        if (_events.ContainsValue(givenEvent))
+        {
+            _events.Remove(givenEvent.Id);
+        }
     }
 }

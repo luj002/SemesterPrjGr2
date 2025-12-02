@@ -37,7 +37,7 @@
         }
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
+            return null;
         }
     }
 
@@ -49,7 +49,7 @@
         }
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No boat with the given id found.");
         }
     }
     #endregion
