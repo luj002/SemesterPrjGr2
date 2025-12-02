@@ -11,7 +11,7 @@
     #region Constructor
     public BoatRepository()
     {
-
+        _boats = new Dictionary<int, Boat>();
     }
     #endregion
 
@@ -23,7 +23,10 @@
 
     public void AddBoat(Boat boat)
     {
-        _boats.Add(boat.Id, boat);
+        if (!_boats.TryAdd(boat.Id, boat))
+        {
+            throw new RepositoryException(RepositoryExceptionType.Create, "Boat with the given id already exists.");
+        }
     }
 
     public Boat? GetBoatById(int id)
@@ -34,7 +37,7 @@
         }
         else
         {
-            return null;
+            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
         }
     }
 
@@ -43,6 +46,10 @@
         if(_boats.TryGetValue(id, out Boat? value))
         {
             _boats.Remove(id);
+        }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
         }
     }
     #endregion
