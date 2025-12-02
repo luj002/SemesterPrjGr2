@@ -6,8 +6,8 @@
 	public string Address { get; set; }
 	public string Email { get; set; }
 	public DateTime DateOfBirth { get; }
-	public ProjectEnums.MemberType Type { get; set; }
-	public Member(string name, string address, string email, DateTime dateOfBirth, ProjectEnums.MemberType type)
+	public MemberType Type { get; set; }
+	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type)
 	{
 		Id = _nextId++;
 		Name = name;

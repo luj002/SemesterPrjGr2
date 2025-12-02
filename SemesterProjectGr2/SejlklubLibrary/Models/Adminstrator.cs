@@ -1,6 +1,6 @@
 ﻿public class Adminstrator : Member
 {
-	public Adminstrator(string name, string address, string email, DateTime dateOfBirth, ProjectEnums.MemberType type)
+	public Adminstrator(string name, string address, string email, DateTime dateOfBirth, MemberType type)
 		: base(name, address, email, dateOfBirth, type)
 	{
 	}

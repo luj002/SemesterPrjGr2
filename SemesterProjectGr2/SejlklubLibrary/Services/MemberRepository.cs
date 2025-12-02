@@ -22,7 +22,7 @@ public class MemberRepository : IMemberRepository
     #endregion
 
     #region Methods
-    public void Create(string name, string address, string email, DateTime dateOfBirth, RepositoryExceptionType type)
+    public void Create(string name, string address, string email, DateTime dateOfBirth, MemberType type)
     {
         Member memberToAdd = new Member(name, address, email, dateOfBirth, type);
     }
