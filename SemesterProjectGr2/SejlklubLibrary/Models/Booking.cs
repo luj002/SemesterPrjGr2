@@ -7,9 +7,11 @@
 	public string SailingArea { get; set; }
 	public string? Destination { get; set; }
 	public bool IsActive { get; set; }
-	public Booking(string sailingArea, DateTime endTime, DateTime? startTime = null, string? destination = null)
+	public Boat Boat { get; set; }
+	public Booking(Boat boat, string sailingArea, DateTime endTime, DateTime? startTime = null, string? destination = null)
 	{
 		Id = _nextId++;
+		Boat = boat;
 		StartTime = startTime ?? DateTime.Now;
 		EndTime = endTime;
 		SailingArea = sailingArea;
