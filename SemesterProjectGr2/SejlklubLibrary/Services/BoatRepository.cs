@@ -37,7 +37,7 @@
         }
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
+            return null;
         }
     }
 
@@ -46,10 +46,6 @@
         if(_boats.TryGetValue(id, out Boat? value))
         {
             _boats.Remove(id);
-        }
-        else
-        {
-            throw new RepositoryException(RepositoryExceptionType.Create, "No boat with the given id found.");
         }
     }
     #endregion
