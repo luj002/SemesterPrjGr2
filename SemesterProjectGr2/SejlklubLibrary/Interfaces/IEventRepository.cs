@@ -1,5 +1,7 @@
 ﻿public interface IEventRepository
 {
-    public void AddEvent(Member givenMember);
-    public void RemoveEvent(Member givenMember);
+    List<Event> GetAll();
+    void AddEvent(Member givenMember);
+    void RemoveEvent(Member givenMember);
+    int Count { get; }
 }
