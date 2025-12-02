@@ -47,6 +47,10 @@
         {
             _boats.Remove(id);
         }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No boat with the given id found.");
+        }
     }
     #endregion
 }
