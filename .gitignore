@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/SemesterProjectGr2/.vs/SemesterProjectGr2/v17/.suo
+/SemesterProjectGr2/.vs/SemesterProjectGr2/v17/DocumentLayout.json
+/SemesterProjectGr2/.vs/SemesterProjectGr2/v17/.suo
