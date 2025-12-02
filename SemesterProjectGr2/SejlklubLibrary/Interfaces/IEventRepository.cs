@@ -1,6 +1,5 @@
 ﻿public interface IEventRepository
 {
-    public void ChangeInformation(ProjectEnums.EventChangeType ECT, string changeString);
-    public void AddAttendee(Member givenMember);
-    public void RemoveAttendee(Member givenMember);
+    public void AddEvent(Member givenMember);
+    public void RemoveEvent(Member givenMember);
 }
