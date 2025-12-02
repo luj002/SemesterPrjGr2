@@ -24,15 +24,13 @@ public class MemberRepository : IMemberRepository
     #region Methods
     public void Create(string name, string address, string email, DateTime dateOfBirth, MemberType type)
     {
-        Member memberToAdd = new Member(name, address, email, dateOfBirth, type);
+        Add(new Member(name, address, email, dateOfBirth, type));
     }
     
     public void Add(Member member)
     {
-        if (_members.ContainsKey(member.Id))
-            throw new Exception($"Members with id already contained in repo");
-        else
-            _members.Add(member.Id, member);
+        if (!_members.TryAdd(member.Id, member))
+            throw new RepositoryException(RepositoryExceptionType.Add ,$"Members with id already contained in repo");
     }
 
     public List<Member> GetAll()
