@@ -4,4 +4,5 @@
     void AddEvent(Member givenMember);
     void RemoveEvent(Member givenMember);
     int Count { get; }
+    Event GetEventByID(int id);
 }
