@@ -15,7 +15,7 @@
 
     public List<Event> GetAll()
     {
-        return _events.Select(pair => pair.Value).ToList();
+        return _events.Values.ToList();
     }
 
     public Event? GetEventByID(int id)
