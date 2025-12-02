@@ -1,5 +1,4 @@
-﻿using SejlklubLibrary.Models;
-using System.Numerics;
+﻿using System.Numerics;
 
 public class Boat
 {
