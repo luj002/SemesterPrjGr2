@@ -30,7 +30,7 @@ public class MemberRepository : IMemberRepository
     public void Add(Member member)
     {
         if (!_members.TryAdd(member.Id, member))
-            throw new RepositoryException(RepositoryExceptionType.Add ,$"Members with id already contained in repo");
+            throw new RepositoryException(RepositoryExceptionType.Add, "Members with id already contained in repo");
     }
 
     public List<Member> GetAll()
@@ -45,7 +45,14 @@ public class MemberRepository : IMemberRepository
 
     public void Remove(int id)
     {
-        _members.Remove(id);
+        if(_members.TryGetValue(id, out Member? value))
+        {
+            _members.Remove(id);
+        }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No member with the given id found.");
+        }
     }
     #endregion
 }

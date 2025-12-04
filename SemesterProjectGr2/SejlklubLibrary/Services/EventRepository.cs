@@ -11,7 +11,9 @@
     }
 
     public EventRepository()
-    {}
+    {
+
+    }
 
     public List<Event> GetAll()
     {
@@ -24,8 +26,10 @@
         {
             return _events[id];
         }
-
-        return null;
+        else
+        {
+            return null;
+        }
     }
 
     public void AddEvent(Event givenEvent)
@@ -34,10 +38,9 @@
         {
             _events[givenEvent.Id] = givenEvent;
         }
-
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Create,"given event is already in the events dictionary");
+            throw new RepositoryException(RepositoryExceptionType.Add,"Given event is already in the events dictionary.");
         }
     }
 
@@ -46,6 +49,10 @@
         if (_events.ContainsValue(givenEvent))
         {
             _events.Remove(givenEvent.Id);
+        }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No event found to remove.");
         }
     }
 }

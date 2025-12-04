@@ -25,7 +25,7 @@
     {
         if (!_boats.TryAdd(boat.Id, boat))
         {
-            throw new RepositoryException(RepositoryExceptionType.Create, "Boat with the given id already exists.");
+            throw new RepositoryException(RepositoryExceptionType.Add, "Boat with the given id already exists.");
         }
     }
 
