@@ -1,7 +1,14 @@
-﻿public class BoatLog
+﻿public class BoatLogEntryRepository
 {
 	public Boat Boat { get; }
-	public List<BoatLogEntry> Entries { get; }
+    public int Count
+    {
+        get
+        {
+            return Entries.Count;
+        }
+    }
+    public List<BoatLogEntry> Entries { get; }
 	public DateTime? LatestEntryTime
 	{
 		get
@@ -21,7 +28,7 @@
 			return latest;
 		}
 	}
-	public BoatLog(Boat boat)
+	public BoatLogEntryRepository(Boat boat)
 	{
 		Boat = boat;
 		Entries = new List<BoatLogEntry>();

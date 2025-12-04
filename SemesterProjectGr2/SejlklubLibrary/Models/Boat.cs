@@ -13,7 +13,7 @@ public class Boat
 	public double Width { get; set; }
 	public double Draft { get; set; }
 	public string BuildYear { get; }
-	public BoatLog Log { get; }
+	public BoatLogEntryRepository Log { get; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
 		Id = _nextId++;
@@ -26,7 +26,7 @@ public class Boat
 		Nickname = nickname;
 		SailNumber = sailNumber;
 		Motor = motor;
-		Log = new BoatLog(this);
+		Log = new BoatLogEntryRepository(this);
 	}
 	public override string ToString()
 	{
