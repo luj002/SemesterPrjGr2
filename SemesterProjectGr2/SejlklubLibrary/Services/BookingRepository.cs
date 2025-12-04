@@ -3,16 +3,16 @@
     private Dictionary<int,Booking> _bookings = new Dictionary<int,Booking>();
     public int Count
     {
-
         get
         {
             return _bookings.Count;
         }
-
     }
 
     public BookingRepository()
-    {}
+    {
+
+    }
 
     public List<Booking> GetAll()
     {
@@ -25,10 +25,9 @@
         {
             _bookings[givenBooking.Id] = givenBooking;
         }
-
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Add,"Given booking is already in the bookings dictionary.");
+            throw new RepositoryException(RepositoryExceptionType.Add, "Given booking is already in the bookings dictionary.");
         }
     }
 
@@ -38,6 +37,10 @@
         {
             _bookings.Remove(givenBooking.Id);
         }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No booking found to remove.");
+        }
     }
 
     public Booking? GetBookingByID(int id)
@@ -46,7 +49,6 @@
         {
             return _bookings[id];
         }
-
         return null;
     }
 }
