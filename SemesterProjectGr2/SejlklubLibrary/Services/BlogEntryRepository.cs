@@ -1,6 +1,6 @@
 ﻿public class BlogEntryRepository : IBlogEntryRepository
 {
-	private readonly Dictionary<int, BlogEntry> _blogEntries = new();
+	private Dictionary<int, BlogEntry> _blogEntries;
 
 	public int Count
 	{
@@ -8,6 +8,11 @@
 		{
 			return _blogEntries.Count;
 		}
+	}
+
+	public BlogEntryRepository()
+	{
+		_blogEntries = new Dictionary<int, BlogEntry>();
 	}
 
 	public void Add(BlogEntry blogEntry)

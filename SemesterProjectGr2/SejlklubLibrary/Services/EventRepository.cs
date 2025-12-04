@@ -1,6 +1,6 @@
 ﻿public class EventRepository : IEventRepository
 {
-    private Dictionary<int,Event> _events = new Dictionary<int,Event>();
+    private Dictionary<int, Event> _events;
     public int Count { 
         
         get
@@ -12,7 +12,7 @@
 
     public EventRepository()
     {
-
+        _events = new Dictionary<int, Event>();
     }
 
     public List<Event> GetAll()

@@ -1,6 +1,6 @@
 ﻿public class BookingRepository
 {
-    private Dictionary<int,Booking> _bookings = new Dictionary<int,Booking>();
+    private Dictionary<int, Booking> _bookings;
     public int Count
     {
         get
@@ -11,7 +11,7 @@
 
     public BookingRepository()
     {
-
+        _bookings = new Dictionary<int, Booking>();
     }
 
     public List<Booking> GetAll()
