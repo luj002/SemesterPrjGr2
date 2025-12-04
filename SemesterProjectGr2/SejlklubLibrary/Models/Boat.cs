@@ -33,10 +33,3 @@ public class Boat
 		return $"{ModelName} ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}";
 	}
 }
-public enum BoatType
-{
-	Sailboat,
-	Motorboat,
-	Canoe,
-	Kayak
-}

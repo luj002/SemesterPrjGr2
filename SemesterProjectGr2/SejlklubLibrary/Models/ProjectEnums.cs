@@ -11,3 +11,10 @@ public enum MemberType
     SENIOR,
     FAMILY
 }
+public enum BoatType
+{
+    Sailboat,
+    Motorboat,
+    Canoe,
+    Kayak
+}
