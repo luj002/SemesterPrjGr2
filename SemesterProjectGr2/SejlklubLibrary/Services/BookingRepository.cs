@@ -1,4 +1,4 @@
-﻿public class BookingRepository
+﻿public class BookingRepository : IBookingRepository
 {
     private Dictionary<int, Booking> _bookings;
     public int Count
@@ -19,7 +19,7 @@
         return _bookings.Values.ToList();
     }
 
-    public void AddBooking(Booking givenBooking)
+    public void Add(Booking givenBooking)
     {
         if (!_bookings.ContainsKey(givenBooking.Id))
         {
@@ -31,11 +31,11 @@
         }
     }
 
-    public void RemoveBooking(Booking givenBooking)
+    public void Remove(int id)
     {
-        if (_bookings.ContainsValue(givenBooking))
+        if (_bookings[id] != null)
         {
-            _bookings.Remove(givenBooking.Id);
+            _bookings.Remove(id);
         }
         else
         {
@@ -43,7 +43,7 @@
         }
     }
 
-    public Booking? GetBookingByID(int id)
+    public Booking? GetBookingById(int id)
     {
         if (_bookings.ContainsKey(id))
         {

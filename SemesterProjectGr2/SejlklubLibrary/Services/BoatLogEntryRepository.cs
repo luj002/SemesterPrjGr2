@@ -1,4 +1,4 @@
-﻿public class BoatLogEntryRepository
+﻿public class BoatLogEntryRepository : IBoatLogEntryRepository
 {
 	public Boat Boat { get; }
     public int Count
