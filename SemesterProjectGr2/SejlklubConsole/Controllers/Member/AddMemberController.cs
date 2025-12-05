@@ -90,7 +90,7 @@ public class AddMemberController
             Console.WriteLine($"{i + 1}. {choices[i]}");
         }
         Console.WriteLine("B. Back");
-        Console.WriteLine("\nYour choice: ");
+        Console.Write("\nYour choice: ");
         string choice = Console.ReadLine();
         Console.Clear();
 
@@ -117,10 +117,10 @@ public class AddMemberController
                 input = int.Parse(Console.ReadLine());
 
                 if (input < min)
-                    throw new ArgumentException($"Input must be at least {min}");
+                    throw new ArgumentException($"{displayedText} must be at least {min}");
 
                 if (input > max)
-                    throw new ArgumentException($"Input must be less than {max}");
+                    throw new ArgumentException($"{displayedText} must be less than {max}");
 
                 validInput = true;
             }
@@ -132,7 +132,7 @@ public class AddMemberController
             catch (Exception)
             {
                 Console.Clear();
-                Console.WriteLine($"Input must be an integer");
+                Console.WriteLine($"{displayedText} must be an integer");
             }
         }
         return input;
@@ -147,7 +147,7 @@ public class AddMemberController
 
         foreach (MemberType memberTypeEnum in memberTypes)
         {
-            memberTypeString += $"{(int)memberTypeEnum + 1}. {memberTypes}\n";
+            memberTypeString += $"{(int)memberTypeEnum + 1}. {memberTypeEnum}\n";
         }
 
         memberTypeString += "\nSelect member type by number:";
@@ -159,7 +159,7 @@ public class AddMemberController
         return type;
     }
 
-    public void Add()
+    public void AddMember()
     {
         _memberRepository.Add(Member);
     }
