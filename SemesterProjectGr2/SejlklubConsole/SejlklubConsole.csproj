@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Member\" />
+    <Folder Include="Controllers\BlogEntry\" />
+    <Folder Include="Controllers\Boat\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SejlklubLibrary\SejlklubLibrary.csproj" />
   </ItemGroup>
 
