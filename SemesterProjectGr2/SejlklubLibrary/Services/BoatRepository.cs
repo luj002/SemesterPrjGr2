@@ -1,4 +1,4 @@
-﻿public class BoatRepository
+﻿public class BoatRepository : IBoatRepository
 {
     #region Instance field
     private Dictionary<int, Boat> _boats;
@@ -21,7 +21,7 @@
         return _boats.Values.ToList();
     }
 
-    public void AddBoat(Boat boat)
+    public void Add(Boat boat)
     {
         if (!_boats.TryAdd(boat.Id, boat))
         {
