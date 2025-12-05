@@ -19,6 +19,7 @@
             Console.WriteLine(s);
         }
         string input = Console.ReadLine();
+        Console.Clear();
         return input.ToLower();
     }
 
