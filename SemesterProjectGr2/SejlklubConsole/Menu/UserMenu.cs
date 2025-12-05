@@ -1,6 +1,6 @@
 ﻿public class UserMenu
 {
-    private List<string> _menuChoices;
+    private List<string> _menuChoices = new List<string>();
     //for now just use menuChoices.Add() in PopulateMenu() to add stuff
     //todo find a better way to populate this list
 
@@ -25,6 +25,7 @@
     private void PopulateMenu()
     {
         _menuChoices.Add("1. Add Event");
+        _menuChoices.Add("2. Add Member");
     }
 
     public void ShowMenu()
@@ -32,6 +33,8 @@
         //DEBUG STUFF, CHANGE THIS LATER
         Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
         //END OF DEBUG STUFF
+
+        PopulateMenu();
 
         string choice = ReadChoice(_menuChoices);
 
@@ -61,7 +64,13 @@
                     AddEventController eventController = new AddEventController(eventName, eventDesc, startTime, endTime, (Adminstrator)currentUser, _eventRepository);
                     eventController.AddEvent();
                     break;
+                case "2":
+                    AddMemberController memberController = new AddMemberController(_memberRepository);
+                    memberController.AddMember();
+                    break;
+
             }
+            choice = ReadChoice(_menuChoices);
         }
     }
 }
