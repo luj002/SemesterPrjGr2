@@ -19,6 +19,7 @@
             Console.WriteLine(s);
         }
         string input = Console.ReadLine();
+        Console.Clear();
         return input.ToLower();
     }
 
@@ -26,6 +27,7 @@
     {
         _menuChoices.Add("1. Add Event");
         _menuChoices.Add("2. Add Member");
+        _menuChoices.Add("3. Show Members");
     }
 
     public void ShowMenu()
@@ -67,6 +69,12 @@
                 case "2":
                     AddMemberController memberController = new AddMemberController(_memberRepository);
                     memberController.AddMember();
+                    break;
+                case "3":
+                    Console.WriteLine("Showing all members");
+                    ShowMemberController showMemberController = new ShowMemberController(_memberRepository);
+                    showMemberController.ShowAllMembers();
+                    Console.ReadLine();
                     break;
 
             }
