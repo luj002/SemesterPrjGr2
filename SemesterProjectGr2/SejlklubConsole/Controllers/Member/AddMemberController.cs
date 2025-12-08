@@ -25,7 +25,7 @@ public class AddMemberController
     #region Methods
     private Member Create()
     {
-        string[] memberInfoFields = ["Name", "Address", "Email", "Date of birth", "Member type"];
+        List<string> memberInfoFields = new List<string> { "1. Name", "2. Address", "3. Email", "4. Date of birth", "5. Member type", "B. Back" };
         string name = "";
         string address = "";
         string email = "";
@@ -82,14 +82,13 @@ public class AddMemberController
         return new Member(name, address, email, dateOfBirth, memberType);
     }
 
-    private string ReadChoice(string[] choices)
+    private string ReadChoice(List<string> choices)
     {
         Console.Clear();
-        for (int i = 0; i < choices.Length; i++)
+        foreach (string s in choices)
         {
-            Console.WriteLine($"{i + 1}. {choices[i]}");
+            Console.WriteLine(s);
         }
-        Console.WriteLine("B. Back");
         Console.Write("\nYour choice: ");
         string choice = Console.ReadLine();
         Console.Clear();

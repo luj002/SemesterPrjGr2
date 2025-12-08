@@ -66,12 +66,39 @@
                     eventController.AddEvent();
                     break;
                 case "2":
-                    AddMemberController memberController = new AddMemberController(_memberRepository);
-                    memberController.AddMember();
+                    ShowMemberMenu();
                     break;
 
             }
             choice = ReadChoice(_menuChoices);
+        }
+    }
+    private void ShowMemberMenu()
+    {
+        List<string> choices = new List<string> { "1. Add Member", "2. Show Members", "3. Update Member", "4. Delete Member", "B. Back" };
+        string choice = ReadChoice(choices);
+        while (choice != "b")
+        {
+            switch (choice)
+            {
+                case "1":
+                    AddMemberController memberController = new AddMemberController(_memberRepository);
+                    memberController.AddMember();
+                    break;
+                case "2":
+                    ShowMemberController showMembersController = new ShowMemberController(_memberRepository);
+                    showMembersController.ShowAllMembers();
+                    break;
+                case "3":
+                    //UpdateMemberController updateMemberController = new UpdateMemberController(_memberRepository);
+                    //updateMemberController.UpdateMember();
+                    break;
+                case "4":
+                    //DeleteMemberController deleteMemberController = new DeleteMemberController(_memberRepository);
+                    //deleteMemberController.DeleteMember();
+                    break;
+            }
+            choice = ReadChoice(choices);
         }
     }
 }
