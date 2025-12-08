@@ -55,7 +55,7 @@ public class AddBoatController
 
         Console.Clear();
 
-        string propertyName = Regex.Match(entry,@"^\s*\d+\.\s*(.+)$").Groups[1].Value;
+        string propertyName = Regex.Match(entry,@"^\d+\.\s*(.+)$").Groups[1].Value;
         Console.WriteLine("Editing property: " + propertyName);
 
         var currentProperty = _properties[chosenNumber - 1];
