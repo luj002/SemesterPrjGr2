@@ -1,6 +1,6 @@
 ﻿public class BookingRepository : IBookingRepository
 {
-    private Dictionary<int, Booking> _bookings;
+    private Dictionary<string, Booking> _bookings;
     public int Count
     {
         get
@@ -11,7 +11,7 @@
 
     public BookingRepository()
     {
-        _bookings = new Dictionary<int, Booking>();
+        _bookings = new Dictionary<string, Booking>();
     }
 
     public List<Booking> GetAll()
@@ -31,7 +31,7 @@
         }
     }
 
-    public void Remove(int id)
+    public void Remove(string id)
     {
         if (_bookings[id] != null)
         {
@@ -43,7 +43,7 @@
         }
     }
 
-    public Booking? GetBookingById(int id)
+    public Booking? GetBookingById(string id)
     {
         if (_bookings.ContainsKey(id))
         {

@@ -1,7 +1,7 @@
 ﻿public class BoatRepository : IBoatRepository
 {
     #region Instance field
-    private Dictionary<int, Boat> _boats;
+    private Dictionary<string, Boat> _boats;
     #endregion
 
     #region Properties
@@ -11,7 +11,7 @@
     #region Constructor
     public BoatRepository()
     {
-        _boats = new Dictionary<int, Boat>();
+        _boats = new Dictionary<string, Boat>();
     }
     #endregion
 
@@ -29,7 +29,7 @@
         }
     }
 
-    public Boat? GetBoatById(int id)
+    public Boat? GetBoatById(string id)
     {
         if(_boats.TryGetValue(id, out Boat? value))
         {
@@ -41,7 +41,7 @@
         }
     }
 
-    public void Remove(int id)
+    public void Remove(string id)
     {
         if(_boats.TryGetValue(id, out Boat? value))
         {

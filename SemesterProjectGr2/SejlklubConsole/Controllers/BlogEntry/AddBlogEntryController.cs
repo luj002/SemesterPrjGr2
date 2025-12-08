@@ -1,6 +1,6 @@
 ﻿public class AddBlogEntryController
 {
-	private static Dictionary<int, BlogEntry> _blogEntries = new();
+	private static Dictionary<string, BlogEntry> _blogEntries = new();
 	#region Instance fields
 	private IBlogEntryRepository _blogEntryRepository;
 	private Adminstrator _author;
