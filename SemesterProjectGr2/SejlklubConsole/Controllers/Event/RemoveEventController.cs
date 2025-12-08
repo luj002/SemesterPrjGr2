@@ -4,4 +4,9 @@
 	{
 		throw new NotImplementedException();
 	}
+
+	internal void RemoveEvent()
+	{
+		throw new NotImplementedException();
+	}
 }

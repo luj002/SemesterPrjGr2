@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SejlklubConsole.Controllers.BoatSpace;
-internal class ShowBoatSpaceController
+﻿
+public class ShowBoatSpaceController
 {
+	public ShowBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
+	{
+	}
+
+	internal void ShowAllBoatSpaces()
+	{
+		throw new NotImplementedException();
+	}
 }

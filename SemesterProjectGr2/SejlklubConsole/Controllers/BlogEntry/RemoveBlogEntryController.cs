@@ -4,4 +4,9 @@
 	{
 		throw new NotImplementedException();
 	}
+
+	internal void RemoveBlogEntry()
+	{
+		throw new NotImplementedException();
+	}
 }
