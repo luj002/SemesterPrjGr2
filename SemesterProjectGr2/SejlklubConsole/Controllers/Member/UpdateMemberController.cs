@@ -39,7 +39,7 @@
             "Q. Cancel changes"
         };
 
-        string theChoice = MemberHelpers.ReadChoice(choices);
+        string theChoice = Helpers.ReadChoice(choices);
 
 
         while (theChoice != "c" && theChoice != "q")
@@ -66,10 +66,10 @@
                     break;
                 case "4":
                     Console.WriteLine("Enter date of birth");
-                    int birthYear = MemberHelpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
-                    int birthMonth = MemberHelpers.IntFromReadLine("Month:", 1, 12);
+                    int birthYear = Helpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
+                    int birthMonth = Helpers.IntFromReadLine("Month:", 1, 12);
                     int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
-                    int birthDay = MemberHelpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
+                    int birthDay = Helpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
 
                     dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
 
@@ -83,7 +83,7 @@
                 default:
                     break;
             }
-            theChoice = MemberHelpers.ReadChoice(choices);
+            theChoice = Helpers.ReadChoice(choices);
         }
 
         if (theChoice == "c")
@@ -98,7 +98,7 @@
         }
         else
         {
-            bool confirm = MemberHelpers.YesOrNo("Discard changes?");
+            bool confirm = Helpers.YesOrNo("Discard changes?");
             if (confirm)
             {
                 Console.WriteLine("Changes discarded.");

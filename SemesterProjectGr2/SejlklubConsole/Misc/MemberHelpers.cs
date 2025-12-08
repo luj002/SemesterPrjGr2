@@ -33,7 +33,7 @@
             {
                 Console.WriteLine(aex.Message);
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
                 Console.WriteLine("Input was not in the correct format. Please enter a valid Member ID.");
             }

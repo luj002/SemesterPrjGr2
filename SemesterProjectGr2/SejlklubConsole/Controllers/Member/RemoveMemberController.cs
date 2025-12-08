@@ -24,7 +24,7 @@ public class RemoveMemberController
         Console.WriteLine(Member);
         Console.WriteLine();
 
-        bool confirm = MemberHelpers.YesOrNo("Are you sure you want to remove this member?");
+        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this member?");
 
         if (confirm)
             _memberRepository.Remove(Member.Id);

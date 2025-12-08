@@ -42,7 +42,7 @@ public class AddMemberController
         DateTime dateOfBirth = new DateTime(0);
         MemberType memberType = MemberType.SENIOR;
 
-        string theChoice = MemberHelpers.ReadChoice(choices);
+        string theChoice = Helpers.ReadChoice(choices);
 
         while (theChoice != "c")
         {
@@ -68,10 +68,10 @@ public class AddMemberController
                     break;
                 case "4":
                     Console.WriteLine("Enter date of birth");
-                    int birthYear = MemberHelpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
-                    int birthMonth = MemberHelpers.IntFromReadLine("Month:", 1, 12);
+                    int birthYear = Helpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
+                    int birthMonth = Helpers.IntFromReadLine("Month:", 1, 12);
                     int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
-                    int birthDay = MemberHelpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
+                    int birthDay = Helpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
 
                     dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
 
@@ -85,7 +85,7 @@ public class AddMemberController
                 default:
                     break;
             }
-            theChoice = MemberHelpers.ReadChoice(choices);
+            theChoice = Helpers.ReadChoice(choices);
         }
 
         return new Member(name, address, email, dateOfBirth, memberType);
@@ -97,7 +97,7 @@ public class AddMemberController
     public void AddMember()
     {
         Console.WriteLine(Member);
-        bool AddConfirmed = MemberHelpers.YesOrNo("Add this member?");
+        bool AddConfirmed = Helpers.YesOrNo("Add this member?");
         if (AddConfirmed)
             _memberRepository.Add(Member);
     }
