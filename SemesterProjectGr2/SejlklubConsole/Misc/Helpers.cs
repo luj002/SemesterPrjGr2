@@ -16,7 +16,7 @@
             Console.Write($"{inputDescription} ");
             try
             {
-                input = int.Parse(Console.ReadLine());
+                input = int.Parse(Console.ReadLine()!);
 
                 if (input < min)
                     throw new ArgumentException($"Input must be at least {min}");
@@ -53,7 +53,7 @@
             Console.WriteLine(s);
         }
         Console.Write("\nYour choice: ");
-        string choice = Console.ReadLine();
+        string choice = Console.ReadLine()!;
         Console.Clear();
 
         return choice.ToLower();
@@ -73,7 +73,7 @@
             Console.Write($"{question} [ y / n ]: ");
             try
             {
-                input = Console.ReadLine().ToLower();
+                input = Console.ReadLine()!.ToLower();
                 if (input[0] != 'y' && input[0] != 'n')
                     throw new ArgumentException($"Input was not 'y' or 'n'");
                 choiceFinalized = true;

@@ -23,7 +23,7 @@ public class AddBoatController
 
     public void AddBoat()
     {
-        Lua.print(_properties[2]);
+        //Lua.print(_properties[2]);
         Boat BoatInstance = new Boat(_properties[0], _properties[1], _properties[2], _properties[3], _properties[4], _properties[5], _properties[6], _properties[7], _properties[8]);
         _boatRep.Add(BoatInstance);
     }
@@ -36,7 +36,7 @@ public class AddBoatController
         Console.WriteLine("Editing property: " + propertyName);
         Console.Write("Value: ");
 
-        _properties[chosenNumber - 1] = Console.ReadLine();
+        _properties[chosenNumber - 1] = Console.ReadLine()!;
     }
 
     public void DisplayOverview(List<string> options)
@@ -73,7 +73,7 @@ public class AddBoatController
         {
             DisplayOverview(options);
             Console.Write("Your choice: ");
-            input = Console.ReadLine().ToLower();
+            input = Console.ReadLine()!.ToLower();
             int chosenNumber;
 
             if (int.TryParse(input, out chosenNumber) == true && chosenNumber < options.Count)

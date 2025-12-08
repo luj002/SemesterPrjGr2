@@ -17,11 +17,11 @@
 		Console.WriteLine("Enter the ID of the event you wish to remove:");
 		try
 		{
-			_eventRepository.RemoveEvent(_eventRepository.GetEventByID(Int32.Parse(Console.ReadLine())));
+			_eventRepository.RemoveEvent(_eventRepository.GetEventByID("#EVEN"+Int32.Parse(Console.ReadLine()!)));
 		}
 		catch (Exception e)
 		{
-			Console.WriteLine("No event found!");
+			Console.WriteLine($"No event found!: {e.Message}");
 		}
 	}
 }

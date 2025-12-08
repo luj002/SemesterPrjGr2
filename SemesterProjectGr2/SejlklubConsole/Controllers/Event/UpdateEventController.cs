@@ -16,11 +16,11 @@
 		Console.WriteLine("Enter the ID of the event you wish to update:");
 		try
 		{
-            Event toBeEdited = _eventRepository.GetEventByID(Int32.Parse(Console.ReadLine()));
+            Event toBeEdited = _eventRepository.GetEventByID("#EVEN"+Int32.Parse(Console.ReadLine()!));
         }
 		catch (Exception e)
 		{
-			Console.WriteLine("Something went wrong, please try again.");
+			Console.WriteLine($"Something went wrong, please try again: {e.Message}");
 		}
 		//todo actually finish editing event stuff
 	}

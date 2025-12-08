@@ -18,8 +18,8 @@
             Console.Write("Enter Member ID to remove: ");
             try
             {
-                int input = int.Parse(Console.ReadLine());
-                selectedMember = memberRepository.GetMemberById(input);
+                int input = int.Parse(Console.ReadLine()!);
+                selectedMember = memberRepository.GetMemberById("MEMB"+input);
                 if (selectedMember != null)
                 {
                     validInput = true;

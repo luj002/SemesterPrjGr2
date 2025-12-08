@@ -18,7 +18,7 @@
             Console.Write("Enter boat space number to remove: ");
             try
             {
-                int input = int.Parse(Console.ReadLine());
+                int input = int.Parse(Console.ReadLine()!);
                 selectedBoatSpace = boatSpaceRepository.GetBoatSpaceByNumber(input);
                 if (selectedBoatSpace != null)
                 {
@@ -35,7 +35,7 @@
             }
             catch (FormatException fex)
             {
-                Console.WriteLine("Input was not in the correct format. Please enter a valid boat space number.");
+                Console.WriteLine($"Input was not in the correct format. Please enter a valid boat space number: {fex.Message}");
             }
             catch (Exception ex)
             {

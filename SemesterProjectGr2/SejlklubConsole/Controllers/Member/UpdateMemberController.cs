@@ -48,19 +48,19 @@
             {
                 case "1":
                     Console.Write("Enter name: ");
-                    name = Console.ReadLine();
+                    name = Console.ReadLine()!;
 
                     choices[0] = $"1. Name - {name}";
                     break;
                 case "2":
                     Console.Write("Enter address: ");
-                    address = Console.ReadLine();
+                    address = Console.ReadLine()!;
 
                     choices[1] = $"2. Address - {address}";
                     break;
                 case "3":
                     Console.Write("Enter email: ");
-                    email = Console.ReadLine();
+                    email = Console.ReadLine()!;
 
                     choices[2] = $"3. Email - {email}";
                     break;

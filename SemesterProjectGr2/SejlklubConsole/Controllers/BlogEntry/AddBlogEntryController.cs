@@ -86,7 +86,7 @@
 			Console.Write($"{question} [ y / n ]: ");
 			try
 			{
-				input = Console.ReadLine().ToLower();
+				input = Console.ReadLine()!.ToLower();
 				if (input[0] != 'y' && input[0] != 'n')
 					throw new ArgumentException($"Input was not 'y' or 'n'");
 				choiceFinalized = true;

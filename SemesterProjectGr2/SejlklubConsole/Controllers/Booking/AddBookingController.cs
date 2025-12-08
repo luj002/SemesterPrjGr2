@@ -9,6 +9,11 @@ public class AddBookingController
     #endregion
 
     #region Constructor
+	public AddBookingController(IBookingRepository bookingRepository)
+	{
+		// TODO FIX!
+		// MADE TO SATISFY USERMENU
+	}
     public AddBookingController(IBookingRepository bookingRepository, IBoatRepository boatRepository, IMemberRepository memberRepository)
 	{
 		_bookingRepository = bookingRepository;
@@ -53,22 +58,22 @@ public class AddBookingController
 				case "3":
 					// Sailing area
 					Console.Write("Enter sailing area: ");
-                    sailingArea = Console.ReadLine();
+                    sailingArea = Console.ReadLine()!;
 					break;
 				case "4":
                     // Destination
 					Console.Write("Enter destination (optional): ");
-					destination = Console.ReadLine();
+					destination = Console.ReadLine()!;
 					break;
 				case "5":
                     // Start time
 					Console.Write("Enter start time (yyyy-MM-dd HH:mm): ");
-					startTime = DateTime.Parse(Console.ReadLine());
+					startTime = DateTime.Parse(Console.ReadLine()!);
 					break;
 				case "6":
                     // End time
 					Console.Write("Enter end time (yyyy-MM-dd HH:mm): ");
-					endTime = DateTime.Parse(Console.ReadLine());
+					endTime = DateTime.Parse(Console.ReadLine()!);
 					break;
 				default:
 					Console.WriteLine("Invalid choice. Press any button to try again.");

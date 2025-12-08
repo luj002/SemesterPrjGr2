@@ -15,7 +15,7 @@ public class Boat
 	public BoatLogEntryRepository Log { get; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
-		Id = StringId.Next("BO");
+		Id = StringId.Next("BOAT");
 		ModelName = modelName;
 		Type = type;
 		Length = length;

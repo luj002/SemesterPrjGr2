@@ -30,9 +30,9 @@ public class AddEventController
         //TODO MAKE THIS MORE LIKE AddMemberController
 
         Console.WriteLine("Enter event name:");
-        string eventName = Console.ReadLine();
+        string eventName = Console.ReadLine()!;
         Console.WriteLine("Enter event description:");
-        string eventDesc = Console.ReadLine();
+        string eventDesc = Console.ReadLine()!;
 
         //TODO MAKE THIS ACTUALLY ENSURE VALID INPUT
         DateTime startTime = new DateTime();
@@ -42,7 +42,7 @@ public class AddEventController
         {
             isValid = true;
             Console.WriteLine("Enter event start date with format YYYY-MM-DD HH:MM:SS");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine()!;
             try
             {
                 
@@ -50,7 +50,7 @@ public class AddEventController
             }
             catch (Exception e)
             {
-                Console.WriteLine("That's not a valid date and time, please follow the format exactly.");
+                Console.WriteLine($"That's not a valid date and time, please follow the format exactly: {e.Message}");
                 isValid = false;
             }
         }
@@ -59,14 +59,14 @@ public class AddEventController
         {
             isValid = true;
             Console.WriteLine("Enter event end date with format YYYY-MM-DD HH:MM:SS");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine()!;
             try
             {
                 endTime = DateTime.Parse(input);
             }
             catch (Exception e)
             {
-                Console.WriteLine("That's not a valid date and time, please follow the format exactly.");
+                Console.WriteLine($"That's not a valid date and time, please follow the format exactly: {e.Message}");
                 isValid = false;
             }
         }
@@ -82,6 +82,7 @@ public class AddEventController
         }
         catch(RepositoryException e)
         {
+            Console.WriteLine(e.Message);
             //todo error handling
         }
         

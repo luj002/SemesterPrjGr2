@@ -13,8 +13,8 @@
             Console.Write("Enter Member ID to remove: ");
             try
             {
-                int input = int.Parse(Console.ReadLine());
-                selectedBoat = boatRepository.GetBoatById(input);
+                int input = int.Parse(Console.ReadLine()!);
+                selectedBoat = boatRepository.GetBoatById("BOAT"+input);
                 if (selectedBoat != null)
                 {
                     validInput = true;

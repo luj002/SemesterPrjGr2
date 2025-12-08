@@ -33,8 +33,4 @@
 	{
 		return $"Event {Id}: {Title}, Description: {Description}, Start: {StartTime}, End: {EndTime}, Creator: {Creator.Name}, Registrations: {Registrations.Count}";
 	}
-	public void ChangeInformation(EventChangeType ECT, string changeString)
-	{
-        Lua.print("changing information...");
-	}
 }
