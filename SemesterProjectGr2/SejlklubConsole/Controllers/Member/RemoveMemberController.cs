@@ -9,7 +9,7 @@ public class RemoveMemberController
     public RemoveMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        Member = Helpers.SelectMember(_memberRepository);
+        Member = MemberHelpers.SelectMember(_memberRepository);
     }
     #endregion
 

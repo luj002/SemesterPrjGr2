@@ -1,12 +1,18 @@
 ﻿public class ShowEventController
 {
+	IEventRepository _eventRepository;
+
 	public ShowEventController(IEventRepository eventRepository)
 	{
-		throw new NotImplementedException();
+		_eventRepository = eventRepository;
 	}
 
 	internal void ShowAllEvents()
 	{
-		throw new NotImplementedException();
+		foreach (Event e in _eventRepository.GetAll())
+		{
+			Console.WriteLine(e);
+		}
+		Console.ReadKey();
 	}
 }

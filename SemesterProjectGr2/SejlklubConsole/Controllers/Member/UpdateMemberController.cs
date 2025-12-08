@@ -8,7 +8,7 @@
     public UpdateMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        Member = Helpers.SelectMember(_memberRepository);
+        Member = MemberHelpers.SelectMember(_memberRepository);
     }
     #endregion
 
@@ -48,19 +48,19 @@
             {
                 case "1":
                     Console.Write("Enter name: ");
-                    name = Console.ReadLine();
+                    name = Console.ReadLine()!;
 
                     choices[0] = $"1. Name - {name}";
                     break;
                 case "2":
                     Console.Write("Enter address: ");
-                    address = Console.ReadLine();
+                    address = Console.ReadLine()!;
 
                     choices[1] = $"2. Address - {address}";
                     break;
                 case "3":
                     Console.Write("Enter email: ");
-                    email = Console.ReadLine();
+                    email = Console.ReadLine()!;
 
                     choices[2] = $"3. Email - {email}";
                     break;
@@ -76,7 +76,7 @@
                     choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
                     break;
                 case "5":
-                    memberType = Helpers.memberTypeFromReadLine();
+                    memberType = MemberHelpers.memberTypeFromReadLine();
 
                     choices[4] = $"5. Member type - {memberType}";
                     break;

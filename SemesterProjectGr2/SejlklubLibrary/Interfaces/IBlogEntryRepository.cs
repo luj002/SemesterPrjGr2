@@ -3,6 +3,6 @@
     int Count { get; }
     List<BlogEntry> GetAll();
     void Add(BlogEntry blogEntry);
-    BlogEntry? GetBlogEntryById(int id);
-    void Remove(int id);
+    BlogEntry? GetBlogEntryById(string id);
+    void Remove(string id);
 }

@@ -31,7 +31,7 @@ public class RemoveBoatSpaceController
             Console.Write("Enter boat space number to remove: ");
             try
             {
-                int input = int.Parse(Console.ReadLine());
+                int input = int.Parse(Console.ReadLine()!);
                 selectedBoatSpace = _boatSpaceRepository.GetBoatSpaceByNumber(input);
                 if (selectedBoatSpace != null)
                 {
@@ -48,7 +48,7 @@ public class RemoveBoatSpaceController
             }
             catch (FormatException fex)
             {
-                Console.WriteLine("Input was not in the correct format. Please enter a valid boat space number.");
+                Console.WriteLine($"Input was not in the correct format. Please enter a valid boat space number: {fex.Message}");
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ public class RemoveBoatSpaceController
             Console.Write($"{question} [ y / n ]: ");
             try
             {
-                input = Console.ReadLine().ToLower();
+                input = Console.ReadLine()!.ToLower();
                 if (input[0] != 'y' && input[0] != 'n')
                     throw new ArgumentException($"Input was not 'y' or 'n'");
                 choiceFinalized = true;

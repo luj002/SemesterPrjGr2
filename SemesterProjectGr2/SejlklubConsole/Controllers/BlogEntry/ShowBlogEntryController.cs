@@ -8,6 +8,10 @@
 
 	public void ShowAllBlogEntries()
 	{
-
+		foreach (BlogEntry blogEntry in _blogEntryRepository.GetAll())
+		{
+			Console.WriteLine(blogEntry);
+		}
+		Console.ReadLine();
 	}
 }

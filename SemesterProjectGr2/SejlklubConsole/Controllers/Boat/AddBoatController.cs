@@ -129,7 +129,7 @@ public class AddBoatController
         {
             DisplayOverview(options);
             Console.Write("Your choice: ");
-            input = Console.ReadLine().ToLower();
+            input = Console.ReadLine()!.ToLower();
             int chosenNumber;
 
             if (int.TryParse(input, out chosenNumber) == true && chosenNumber < options.Count)

@@ -1,12 +1,27 @@
 ﻿public class RemoveEventController
 {
+	private IEventRepository _eventRepository;
+	private ShowEventController _showEventController;
+
 	public RemoveEventController(IEventRepository eventRepository)
 	{
-		throw new NotImplementedException();
-	}
+		_eventRepository = eventRepository;
+        _showEventController = new ShowEventController(eventRepository);
+    }
 
-	internal void RemoveEvent()
+	public void RemoveEvent()
 	{
-		throw new NotImplementedException();
+		
+		Console.WriteLine("List of all events:");
+		_showEventController.ShowAllEvents();
+		Console.WriteLine("Enter the ID of the event you wish to remove:");
+		try
+		{
+			_eventRepository.RemoveEvent(_eventRepository.GetEventByID("#EVEN"+Int32.Parse(Console.ReadLine()!)));
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine($"No event found!: {e.Message}");
+		}
 	}
 }

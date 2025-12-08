@@ -1,7 +1,6 @@
 ﻿public class Event
 {
-	private static int _nextId = 0;
-	public int Id { get; }
+	public string Id { get; }
 	public string Title { get; set; }
 	public string Description { get; set; }
 	public DateTime StartTime { get; set; }
@@ -22,7 +21,7 @@
 	}
 	public Event(string title, string description, DateTime startTime, DateTime endTime, Adminstrator creator)
 	{
-		Id = _nextId++;
+		Id = StringId.Next("EVEN");
 		Title = title;
 		Description = description;
 		StartTime = startTime;
@@ -33,9 +32,5 @@
 	public override string ToString()
 	{
 		return $"Event {Id}: {Title}, Description: {Description}, Start: {StartTime}, End: {EndTime}, Creator: {Creator.Name}, Registrations: {Registrations.Count}";
-	}
-	public void ChangeInformation(EventChangeType ECT, string changeString)
-	{
-        Lua.print("changing information...");
 	}
 }

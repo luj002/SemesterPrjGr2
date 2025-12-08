@@ -1,7 +1,6 @@
 ﻿public class Member
 {
-	private static int _nextId = 0;
-	public int Id { get; }
+	public string Id { get; }
 	public string Name { get; set; }
 	public string Address { get; set; }
 	public string Email { get; set; }
@@ -9,7 +8,7 @@
 	public MemberType Type { get; set; }
 	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type)
 	{
-		Id = _nextId++;
+		Id = StringId.Next("MEMB");
 		Name = name;
 		Address = address;
 		Email = email;

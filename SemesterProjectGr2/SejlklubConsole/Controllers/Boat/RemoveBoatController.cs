@@ -1,10 +1,10 @@
 ﻿
 public class RemoveBoatController
 {
-    public int BoatID { get; set; }
+    public string BoatID { get; set; }
     private IBoatRepository _boatRep;
 
-    public RemoveBoatController(IBoatRepository boatRep, int id)
+    public RemoveBoatController(IBoatRepository boatRep, string id)
     {
         BoatID = id;
         _boatRep = boatRep;
