@@ -26,7 +26,7 @@
     private void PopulateMenu()
     {
         _menuChoices.Add("1. Add Event");
-        _menuChoices.Add("2. Add Member");
+        _menuChoices.Add("2. Member Menu");
     }
 
     public void ShowMenu()
