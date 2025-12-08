@@ -28,13 +28,13 @@
         _menuChoices.Add("1. Event menu");
         _menuChoices.Add("2. Member menu");
         _menuChoices.Add("3. Boat menu");
-        _menuChoices.Add("4. Boat space menu");
-        _menuChoices.Add("5. Blog menu");
+        _menuChoices.Add("4. BoatSpace menu");
+        _menuChoices.Add("5. BlogEntry menu");
         _menuChoices.Add("6. Booking menu");
         _menuChoices.Add("\nQ. Quit");
     }
 	//DEBUG STUFF, CHANGE THIS LATER
-	Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
+	public static Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
 	//END OF DEBUG STUFF
 	public void ShowMenu()
     {
@@ -73,7 +73,7 @@
 
 	private void ShowBookingMenu()
 	{
-		List<string> choices = new List<string> { "1. Add booking", "2. Show bookings", "3. Update booking", "4. Remove booking", "B. Back" };
+		List<string> choices = new List<string> { "1. Add booking", "2. Show bookings", "3. Update booking", "4. Remove booking", "\nB. Back" };
 		string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
@@ -102,19 +102,27 @@
 
 	private void ShowBlogEntryMenu()
 	{
-		List<string> choices = new List<string> { "1. Add blogEntry", "2. Show blogEntrys", "3. Update blogEntry", "4. Remove blogEntry", "B. Back" };
+		List<string> choices = new List<string> { "1. Add blogEntry", "2. Show blogEntrys", "3. Update blogEntry", "4. Remove blogEntry", "\nB. Back" };
 		string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
 			switch (choice)
 			{
 				case "1":
-					AddBlogEntryController blogEntryController = new AddBlogEntryController(_blogEntryRepository);
-					blogEntryController.AddBlogEntry();
-					break;
+					if (currentUser is not Adminstrator)
+					{
+						Console.WriteLine("Only administrators can add blog entries.");
+						Console.ReadKey();
+						break;
+					}
+					else
+					{
+						AddBlogEntryController blogEntryController = new AddBlogEntryController(_blogEntryRepository, (Adminstrator) currentUser);
+						break;
+					}
 				case "2":
 					ShowBlogEntryController showBlogEntrysController = new ShowBlogEntryController(_blogEntryRepository);
-					showBlogEntrysController.ShowAllBlogEntrys();
+					showBlogEntrysController.ShowAllBlogEntries();
 					break;
 				case "3":
 					UpdateBlogEntryController updateBlogEntryController = new UpdateBlogEntryController(_blogEntryRepository);
@@ -131,7 +139,7 @@
 
 	private void ShowBoatSpaceMenu()
 	{
-		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "B. Back" };
+		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "\nB. Back" };
 		string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
@@ -160,7 +168,7 @@
 
 	private void ShowBoatMenu()
 	{
-		List<string> choices = new List<string> { "1. Add boat", "2. Show boats", "3. Update boat", "4. Remove boat", "B. Back" };
+		List<string> choices = new List<string> { "1. Add boat", "2. Show boats", "3. Update boat", "4. Remove boat", "\nB. Back" };
 		string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
@@ -189,7 +197,7 @@
 
 	private void ShowEventMenu()
 	{
-		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "B. Back" };
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "\nB. Back" };
         string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
@@ -218,7 +226,7 @@
 
 	private void ShowMemberMenu()
     {
-        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Remove member", "B. Back" };
+        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Remove member", "\nB. Back" };
         string choice = ReadChoice(choices);
         while (choice != "b")
         {

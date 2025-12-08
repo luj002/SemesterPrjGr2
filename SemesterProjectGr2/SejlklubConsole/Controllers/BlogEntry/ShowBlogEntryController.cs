@@ -1,12 +1,13 @@
 ﻿public class ShowBlogEntryController
 {
+	private IBlogEntryRepository _blogEntryRepository;
 	public ShowBlogEntryController(IBlogEntryRepository blogEntryRepository)
 	{
-		throw new NotImplementedException();
+		_blogEntryRepository = blogEntryRepository;
 	}
 
-	internal void ShowAllBlogEntrys()
+	public void ShowAllBlogEntries()
 	{
-		throw new NotImplementedException();
+
 	}
 }
