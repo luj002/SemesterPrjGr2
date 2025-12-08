@@ -176,7 +176,7 @@
 			{
 				case "1":
 					AddBoatController boatController = new AddBoatController(_boatRepository);
-					//boatController.AddBoat();
+					boatController.AddBoat();
 					break;
 				case "2":
 					ShowBoatController showBoatsController = new ShowBoatController(_boatRepository);

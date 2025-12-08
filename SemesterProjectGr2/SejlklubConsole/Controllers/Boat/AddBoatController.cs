@@ -43,8 +43,16 @@ public class AddBoatController
         _boatRep.Add(BoatInstance);
     }
 
-    public Nothing DisplayEdit(string entry,int chosenNumber)
+    public Nothing DisplayEdit(string entry,int chosenNumber, int iteration)
     {
+        Nothing nothing = new Nothing();
+        iteration += 1;
+
+        if (iteration > 100)
+        {
+            return nothing;
+        }
+
         Console.Clear();
 
         string propertyName = Regex.Match(entry,@"^\s*\d+\.\s*(.+)$").Groups[1].Value;
@@ -54,7 +62,7 @@ public class AddBoatController
 
         if (currentProperty is BoatType)
         {
-            Lua.print(Enum.GetValues(typeof(BoatType)));
+            Helpers.PrintEnumerable(Enum.GetValues(typeof(BoatType)));
         }
         
         Console.Write("Value: ");
@@ -69,7 +77,7 @@ public class AddBoatController
 
         else if (currentProperty is double)
         {
-            if (double.TryParse(defaultInput, out double output))
+            if (double.TryParse(defaultInput,out double output))
             {
                 handledInput = output;
             }
@@ -85,12 +93,11 @@ public class AddBoatController
 
         if (handledInput == null)
         {
-            return DisplayEdit(entry, chosenNumber);
+            return DisplayEdit(entry, chosenNumber, iteration);
         }
 
         _properties[chosenNumber - 1] = handledInput;
 
-        Nothing nothing = new Nothing();
         return nothing;
     }
 
@@ -134,7 +141,7 @@ public class AddBoatController
 
             if (int.TryParse(input, out chosenNumber) == true && chosenNumber < options.Count)
             {
-                DisplayEdit(options[chosenNumber - 1], chosenNumber);
+                DisplayEdit(options[chosenNumber - 1], chosenNumber, 0);
             }
 
             else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == options.Count)

@@ -1,4 +1,7 @@
-﻿public class Helpers
+﻿using System;
+using System.Collections;
+
+public class Helpers
 {
     /// <summary>
     /// Handles input of integers.
@@ -90,5 +93,8 @@
         return input[0] == 'y';
     }
 
-
+    public static void PrintEnumerable(IEnumerable givenTable)
+    {
+        Console.WriteLine("{" + string.Join(", ",givenTable.Cast<object>()) + "}");
+    }
 }
