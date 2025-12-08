@@ -1,56 +1,48 @@
-﻿using System.Runtime.InteropServices;
-
-public class AddBoatSpaceController
+﻿public class Helpers
 {
-    #region Instance fields
-    private BoatSpace _boatSpace;
-    private IBoatSpaceRepository _boatSpaceRepository;
-    #endregion
-
-    #region Properties
-    public BoatSpace BoatSpace
+    public static Member SelectMember(IMemberRepository memberRepository)
     {
-        get { return _boatSpace; }
-    }
-    #endregion
-
-    #region Constructor
-	public AddBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
-	{
-        _boatSpaceRepository = boatSpaceRepository;
-        _boatSpace = Create();
-    }
-    #endregion
-
-    #region Methods
-    private BoatSpace Create()
-    {
-        List<string> boatSpaceInfoFields = new List<string> { "1. Number", "B. Back" };
-        int number = 0;
-
-        string theChoice = ReadChoice(boatSpaceInfoFields);
-
-        while (theChoice != "b")
+        bool validInput = false;
+        Member? selectedMember = null;
+        while (!validInput)
         {
-            switch (theChoice)
+            foreach (Member member in memberRepository.GetAll())
             {
-                case "1":
-                    Console.Write("Enter number: ");
-                    number = Convert.ToInt32(Console.ReadLine());
-
-                    boatSpaceInfoFields[0] = $"1. Number - {number}";
-                    break;
-                default:
-                    Console.WriteLine("Choose 1 or b to go back");
-                    break;
+                Console.WriteLine($"{member.Id} - {member.Name} - {member.Email}");
             }
-            theChoice = ReadChoice(boatSpaceInfoFields);
-        }
+            Console.Write("Enter Member ID to remove: ");
+            try
+            {
+                int input = int.Parse(Console.ReadLine());
+                selectedMember = memberRepository.GetMemberById(input);
+                if (selectedMember != null)
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Member ID. Please try again.");
+                }
+            }
+            catch (ArgumentException aex)
+            {
+                Console.WriteLine(aex.Message);
+            }
+            catch (FormatException fex)
+            {
+                Console.WriteLine("Input was not in the correct format. Please enter a valid Member ID.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
 
-        return new BoatSpace(number);
+        }
+        return selectedMember!;
+
     }
 
-    private string ReadChoice(List<string> choices)
+    public static string ReadChoice(List<string> choices)
     {
         Console.Clear();
         foreach (string s in choices)
@@ -63,8 +55,7 @@ public class AddBoatSpaceController
 
         return choice.ToLower();
 
-	}
-
+    }
     /// <summary>
     /// Handles input of integers.
     /// </summary>
@@ -72,7 +63,7 @@ public class AddBoatSpaceController
     /// <param name="min">Minimum value for input</param>
     /// <param name="max">Maximum value for input</param>
     /// <returns>Int from ReadLine input in specified range</returns>
-    private int IntFromReadLine(string inputDescription, int min, int max)
+    public static int IntFromReadLine(string inputDescription, int min, int max)
     {
         int input = 0;
         bool validInput = false;
@@ -105,7 +96,26 @@ public class AddBoatSpaceController
         return input;
     }
 
-    private bool YesOrNo(string question)
+    public static MemberType memberTypeFromReadLine()
+    {
+        MemberType type = MemberType.SENIOR; // Type will be overwritten
+        MemberType[] memberTypes = Enum.GetValues<MemberType>();
+
+        Console.WriteLine("Member types:");
+
+        foreach (MemberType memberTypeEnum in memberTypes)
+        {
+            Console.WriteLine($"{(int)memberTypeEnum + 1}. {memberTypeEnum}");
+        }
+
+        int input = IntFromReadLine("\nSelect member type by number:", 1, memberTypes.Length);
+
+        type = memberTypes[input - 1];
+
+        return type;
+    }
+
+    public static bool YesOrNo(string question)
     {
         string input = "";
         bool choiceFinalized = false;
@@ -130,14 +140,5 @@ public class AddBoatSpaceController
         }
         return input[0] == 'y';
     }
-
-    public void AddBoatSpace()
-	{
-        Console.WriteLine(BoatSpace);
-        bool AddConfirmed = YesOrNo("Add this boat space?");
-        if (AddConfirmed)
-            _boatSpaceRepository.Add(BoatSpace);
-	}
-    #endregion
 }
 
