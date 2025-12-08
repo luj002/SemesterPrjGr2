@@ -88,7 +88,8 @@
 
 	private void ShowBoatMenu()
 	{
-    }
+		throw new NotImplementedException();
+	}
 
 	private void ShowEventMenu()
 	{
