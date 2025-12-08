@@ -1,4 +1,5 @@
-﻿public class AddBoatController
+﻿
+public class AddBoatController
 {
     public Boat BoatInstance { get; set; }
     private IBoatRepository _boatRep;
@@ -8,9 +9,18 @@
         BoatInstance = new Boat(modelName, type, length, width, buildYear, nickname, sailNumber, motor);
         _boatRep = boatRep;
     }
-    
-    public void Add()
+
+	public AddBoatController(IBoatRepository boatRepository)
+	{
+	}
+
+	public void Add()
     {
         _boatRep.Add(BoatInstance);
     }
+
+	internal void AddBoat()
+	{
+		throw new NotImplementedException();
+	}
 }

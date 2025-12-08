@@ -1,4 +1,5 @@
-﻿public class RemoveBoatController
+﻿
+public class RemoveBoatController
 {
     public int BoatID { get; set; }
     private IBoatRepository _boatRep;
@@ -8,9 +9,18 @@
         BoatID = id;
         _boatRep = boatRep;
     }
-    
-    public void Remove()
+
+	public RemoveBoatController(IBoatRepository boatRepository)
+	{
+	}
+
+	public void Remove()
     {
         _boatRep.Remove(BoatID);
     }
+
+	internal void RemoveBoat()
+	{
+		throw new NotImplementedException();
+	}
 }
