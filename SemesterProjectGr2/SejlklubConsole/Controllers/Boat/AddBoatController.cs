@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 public class AddBoatController
 {
@@ -30,7 +28,7 @@ public class AddBoatController
         _boatRep.Add(BoatInstance);
     }
 
-    public void DisplayEdit(string entry,dynamic property)
+    public void DisplayEdit(string entry,int chosenNumber)
     {
         Console.Clear();
 
@@ -38,10 +36,10 @@ public class AddBoatController
         Console.WriteLine("Editing property: " + propertyName);
         Console.Write("Value: ");
 
-        property = Console.ReadLine();
+        _properties[chosenNumber - 1] = Console.ReadLine();
     }
 
-    public void DisplayOverview(List<string> options,List<dynamic> properties)
+    public void DisplayOverview(List<string> options)
     {
         Console.WriteLine("Choose a property to edit:");
         Console.WriteLine();
@@ -50,12 +48,12 @@ public class AddBoatController
 
         foreach (string option in options)
         {
-            if (count < properties.Count - 1)
+            if (count < _properties.Count - 1)
             {
-                Console.WriteLine($"{option} - {properties[count]}");
+                Console.WriteLine($"{option} - {_properties[count]}");
             }
 
-            else if (count == properties.Count - 1)
+            else if (count == _properties.Count - 1)
             {
                 Console.WriteLine($"{option}");
             }
@@ -66,21 +64,21 @@ public class AddBoatController
         Console.WriteLine();
     }
 
-    public async Task DetectInput()
+    public void DetectInput()
     {
-        List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Confirm" };
+        List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Done" };
         string input = "";
 
         while (true)
         {
-            DisplayOverview(options, _properties);
+            DisplayOverview(options);
             Console.Write("Your choice: ");
             input = Console.ReadLine().ToLower();
             int chosenNumber;
 
             if (int.TryParse(input, out chosenNumber) == true && chosenNumber < options.Count)
             {
-                DisplayEdit(options[chosenNumber - 1], _properties[chosenNumber - 1]);
+                DisplayEdit(options[chosenNumber - 1], chosenNumber);
             }
 
             else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == options.Count)
@@ -88,9 +86,10 @@ public class AddBoatController
                 AddBoat();
 
                 Console.Clear();
-                Console.WriteLine($"Boat {_properties[0]} added!");
-
-                await Lua.wait(2);
+                Console.WriteLine($"Boat \"{_properties[0]}\" added!");
+                
+                Console.Write("Press any key to return to boat selection.");
+                Console.ReadKey();
 
                 Console.Clear();
                 break;

@@ -8,7 +8,7 @@
     public UpdateMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        Member = Helpers.SelectMember(_memberRepository);
+        Member = MemberHelpers.SelectMember(_memberRepository);
     }
     #endregion
 
@@ -39,7 +39,7 @@
             "Q. Cancel changes"
         };
 
-        string theChoice = Helpers.ReadChoice(choices);
+        string theChoice = MemberHelpers.ReadChoice(choices);
 
 
         while (theChoice != "c" && theChoice != "q")
@@ -66,24 +66,24 @@
                     break;
                 case "4":
                     Console.WriteLine("Enter date of birth");
-                    int birthYear = Helpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
-                    int birthMonth = Helpers.IntFromReadLine("Month:", 1, 12);
+                    int birthYear = MemberHelpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
+                    int birthMonth = MemberHelpers.IntFromReadLine("Month:", 1, 12);
                     int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
-                    int birthDay = Helpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
+                    int birthDay = MemberHelpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
 
                     dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
 
                     choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
                     break;
                 case "5":
-                    memberType = Helpers.memberTypeFromReadLine();
+                    memberType = MemberHelpers.memberTypeFromReadLine();
 
                     choices[4] = $"5. Member type - {memberType}";
                     break;
                 default:
                     break;
             }
-            theChoice = Helpers.ReadChoice(choices);
+            theChoice = MemberHelpers.ReadChoice(choices);
         }
 
         if (theChoice == "c")
@@ -98,7 +98,7 @@
         }
         else
         {
-            bool confirm = Helpers.YesOrNo("Discard changes?");
+            bool confirm = MemberHelpers.YesOrNo("Discard changes?");
             if (confirm)
             {
                 Console.WriteLine("Changes discarded.");
