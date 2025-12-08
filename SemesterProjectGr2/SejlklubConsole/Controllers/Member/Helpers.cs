@@ -1,5 +1,10 @@
 ﻿public class Helpers
 {
+    /// <summary>
+    /// Finds member by ID from user input.
+    /// </summary>
+    /// <param name="memberRepository">Repository to search from</param>
+    /// <returns>The member with the given ID</returns>
     public static Member SelectMember(IMemberRepository memberRepository)
     {
         bool validInput = false;
@@ -42,6 +47,11 @@
 
     }
 
+    /// <summary>
+    /// Prints choices to console and reads user input.
+    /// </summary>
+    /// <param name="choices">List of strings of choices</param>
+    /// <returns>The user input</returns>
     public static string ReadChoice(List<string> choices)
     {
         Console.Clear();
@@ -96,6 +106,10 @@
         return input;
     }
 
+    /// <summary>
+    /// Reads member type from console input.
+    /// </summary>
+    /// <returns>Member type for corresponding input</returns>
     public static MemberType memberTypeFromReadLine()
     {
         MemberType type = MemberType.SENIOR; // Type will be overwritten
@@ -115,6 +129,11 @@
         return type;
     }
 
+    /// <summary>
+    /// Reads yes or no input from console.
+    /// </summary>
+    /// <param name="question">The question being displayed in console</param>
+    /// <returns>true if input from console starts with Y/y, false if input from console starts with N/n</returns>
     public static bool YesOrNo(string question)
     {
         string input = "";
