@@ -60,7 +60,7 @@
 					ShowBoatSpaceMenu();
                     break;
                 case "5":
-                    ShowBlogMenu();
+                    ShowBlogEntryMenu();
                     break;
                 case "6":
                     ShowBookingMenu();
@@ -73,27 +73,123 @@
 
 	private void ShowBookingMenu()
 	{
-		throw new NotImplementedException();
+		List<string> choices = new List<string> { "1. Add booking", "2. Show bookings", "3. Update booking", "4. Remove booking", "B. Back" };
+		string choice = ReadChoice(choices);
+		while (choice != "b")
+		{
+			switch (choice)
+			{
+				case "1":
+					AddBookingController bookingController = new AddBookingController(_bookingRepository);
+					bookingController.AddBooking();
+					break;
+				case "2":
+					ShowBookingController showBookingsController = new ShowBookingController(_bookingRepository);
+					showBookingsController.ShowAllBookings();
+					break;
+				case "3":
+					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository);
+					updateBookingController.UpdateBooking();
+					break;
+				case "4":
+					RemoveBookingController removeBookingController = new RemoveBookingController(_bookingRepository);
+					removeBookingController.RemoveBooking();
+					break;
+			}
+			choice = ReadChoice(choices);
+		}
 	}
 
-	private void ShowBlogMenu()
+	private void ShowBlogEntryMenu()
 	{
-		throw new NotImplementedException();
+		List<string> choices = new List<string> { "1. Add blogEntry", "2. Show blogEntrys", "3. Update blogEntry", "4. Remove blogEntry", "B. Back" };
+		string choice = ReadChoice(choices);
+		while (choice != "b")
+		{
+			switch (choice)
+			{
+				case "1":
+					AddBlogEntryController blogEntryController = new AddBlogEntryController(_blogEntryRepository);
+					blogEntryController.AddBlogEntry();
+					break;
+				case "2":
+					ShowBlogEntryController showBlogEntrysController = new ShowBlogEntryController(_blogEntryRepository);
+					showBlogEntrysController.ShowAllBlogEntrys();
+					break;
+				case "3":
+					UpdateBlogEntryController updateBlogEntryController = new UpdateBlogEntryController(_blogEntryRepository);
+					updateBlogEntryController.UpdateBlogEntry();
+					break;
+				case "4":
+					RemoveBlogEntryController removeBlogEntryController = new RemoveBlogEntryController(_blogEntryRepository);
+					removeBlogEntryController.RemoveBlogEntry();
+					break;
+			}
+			choice = ReadChoice(choices);
+		}
 	}
 
 	private void ShowBoatSpaceMenu()
 	{
-		throw new NotImplementedException();
+		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "B. Back" };
+		string choice = ReadChoice(choices);
+		while (choice != "b")
+		{
+			switch (choice)
+			{
+				case "1":
+					AddBoatSpaceController boatSpaceController = new AddBoatSpaceController(_boatSpaceRepository);
+					boatSpaceController.AddBoatSpace();
+					break;
+				case "2":
+					ShowBoatSpaceController showBoatSpacesController = new ShowBoatSpaceController(_boatSpaceRepository);
+					showBoatSpacesController.ShowAllBoatSpaces();
+					break;
+				case "3":
+					UpdateBoatSpaceController updateBoatSpaceController = new UpdateBoatSpaceController(_boatSpaceRepository);
+				    updateBoatSpaceController.UpdateBoatSpace();
+					break;
+				case "4":
+					RemoveBoatSpaceController removeBoatSpaceController = new RemoveBoatSpaceController(_boatSpaceRepository);
+					removeBoatSpaceController.RemoveBoatSpace();
+					break;
+			}
+			choice = ReadChoice(choices);
+		}
 	}
 
 	private void ShowBoatMenu()
 	{
-		throw new NotImplementedException();
+		List<string> choices = new List<string> { "1. Add boat", "2. Show boats", "3. Update boat", "4. Remove boat", "B. Back" };
+		string choice = ReadChoice(choices);
+		while (choice != "b")
+		{
+			switch (choice)
+			{
+				case "1":
+					AddBoatController boatController = new AddBoatController(_boatRepository);
+					boatController.AddBoat();
+					break;
+				case "2":
+					ShowBoatController showBoatsController = new ShowBoatController(_boatRepository);
+					showBoatsController.ShowAllBoats();
+					break;
+				case "3":
+					UpdateBoatController updateBoatController = new UpdateBoatController(_boatRepository);
+					updateBoatController.UpdateBoat();
+					break;
+				case "4":
+					RemoveBoatController removeBoatController = new RemoveBoatController(_boatRepository);
+					removeBoatController.RemoveBoat();
+					break;
+			}
+			choice = ReadChoice(choices);
+		}
 	}
 
 	private void ShowEventMenu()
 	{
-		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Delete event", "B. Back" };
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "B. Back" };
         string choice = ReadChoice(choices);
 		while (choice != "b")
 		{
@@ -104,43 +200,25 @@
                     eventController.AddEvent();
 					break;
 				case "2":
-					//ShowEventController showEventsController = new ShowEventController(_eventRepository);
-					//showEventsController.ShowAllEvents();
+					ShowEventController showEventsController = new ShowEventController(_eventRepository);
+					showEventsController.ShowAllEvents();
 					break;
 				case "3":
-					//UpdateEventController updateEventController = new UpdateEventController(_EventRepository);
-					//updateEventController.UpdateEvent();
+					UpdateEventController updateEventController = new UpdateEventController(_eventRepository);
+					updateEventController.UpdateEvent();
 					break;
 				case "4":
-					//DeleteEventController deleteEventController = new DeleteEventController(_EventRepository);
-					//deleteEventController.DeleteEvent();
+					RemoveEventController removeEventController = new RemoveEventController(_eventRepository);
+					removeEventController.RemoveEvent();
 					break;
 			}
 			choice = ReadChoice(choices);
 		}
-
-        //TODO
-        //TO BE IMPLEMENTED IN THE CONTROLLER JUST LIKE ADD MEMBER
-        /*
-		Console.WriteLine("Enter event name:");
-		string eventName = Console.ReadLine();
-		Console.WriteLine("Enter event description:");
-		string eventDesc = Console.ReadLine();
-
-		//TODO MAKE THIS ACTUALLY ENSURE VALID INPUT
-		Console.WriteLine("Enter event start date with format YYYY-MM-DD HH/MM/SS");
-		DateTime startTime = DateTime.Parse(Console.ReadLine());
-		Console.WriteLine("Enter event end date with format YYYY-MM-DD HH/MM/SS");
-		DateTime endTime = DateTime.Parse(Console.ReadLine());
-
-		//AddEventController eventController = new AddEventController(eventName, eventDesc, startTime, endTime, (Adminstrator)currentUser, _eventRepository);
-		eventController.AddEvent();
-        */
 	}
 
 	private void ShowMemberMenu()
     {
-        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Delete member", "B. Back" };
+        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Remove member", "B. Back" };
         string choice = ReadChoice(choices);
         while (choice != "b")
         {
@@ -159,8 +237,8 @@
                     //updateMemberController.UpdateMember();
                     break;
                 case "4":
-                    //DeleteMemberController deleteMemberController = new DeleteMemberController(_memberRepository);
-                    //deleteMemberController.DeleteMember();
+                    RemoveMemberController removeMemberController = new RemoveMemberController(_memberRepository);
+                    removeMemberController.RemoveMember();
                     break;
             }
             choice = ReadChoice(choices);
