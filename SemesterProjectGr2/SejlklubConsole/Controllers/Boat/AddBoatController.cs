@@ -1,9 +1,9 @@
-﻿public class AddBoat
+﻿public class AddBoatController
 {
     public Boat BoatInstance { get; set; }
     private IBoatRepository _boatRep;
 
-    public AddBoat(IBoatRepository boatRep, string modelName, BoatType type, double length, double width, double buildYear, string nickname, string sailNumber, string motor)
+    public AddBoatController(IBoatRepository boatRep, string modelName, BoatType type, double length, double width, double buildYear, string nickname, string sailNumber, string motor)
     {
         BoatInstance = new Boat(modelName, type, length, width, buildYear, nickname, sailNumber, motor);
         _boatRep = boatRep;
@@ -14,4 +14,3 @@
         _boatRep.Add(BoatInstance);
     }
 }
-

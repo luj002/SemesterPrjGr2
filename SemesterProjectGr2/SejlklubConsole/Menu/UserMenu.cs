@@ -27,6 +27,7 @@
     {
         _menuChoices.Add("1. Add Event");
         _menuChoices.Add("2. Member Menu");
+        _menuChoices.Add("3. Boat Menu");
     }
 
     public void ShowMenu()
@@ -68,11 +69,36 @@
                 case "2":
                     ShowMemberMenu();
                     break;
+                case "3":
+                    ShowBoatMenu();
+                    break;
 
             }
             choice = ReadChoice(_menuChoices);
         }
     }
+
+    private void ShowBoatMenu()
+    {
+        List<string> choices = new List<string> { "1. Add Boat", "2. Remove Boat", "3. Update Boat ", "4. Show Boats", "B. Back" };
+        string choice = ReadChoice(choices);
+        while (choice != "b")
+        {
+            switch (choice)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+            }
+            choice = ReadChoice(choices);
+        }
+    }
+
     private void ShowMemberMenu()
     {
         List<string> choices = new List<string> { "1. Add Member", "2. Show Members", "3. Update Member", "4. Delete Member", "B. Back" };
