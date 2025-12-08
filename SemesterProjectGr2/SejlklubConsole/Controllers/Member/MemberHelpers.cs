@@ -1,4 +1,4 @@
-﻿public class Helpers
+﻿public class MemberHelpers
 {
     /// <summary>
     /// Finds member by ID from user input.
