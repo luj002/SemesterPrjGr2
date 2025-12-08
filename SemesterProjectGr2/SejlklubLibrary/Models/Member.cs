@@ -5,7 +5,7 @@
 	public string Name { get; set; }
 	public string Address { get; set; }
 	public string Email { get; set; }
-	public DateTime DateOfBirth { get; }
+	public DateTime DateOfBirth { get; set; }
 	public MemberType Type { get; set; }
 	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type)
 	{
