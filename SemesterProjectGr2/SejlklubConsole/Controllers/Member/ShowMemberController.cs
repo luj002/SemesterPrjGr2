@@ -11,10 +11,6 @@
     }
     #endregion
 
-    #region Properties
-
-    #endregion
-
     #region Methods
     public void ShowAllMembers()
     {
