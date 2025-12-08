@@ -1,6 +1,6 @@
 ﻿public class BlogEntryRepository : IBlogEntryRepository
 {
-	private Dictionary<int, BlogEntry> _blogEntries;
+	private Dictionary<string, BlogEntry> _blogEntries;
 
 	public int Count
 	{
@@ -12,7 +12,7 @@
 
 	public BlogEntryRepository()
 	{
-		_blogEntries = new Dictionary<int, BlogEntry>();
+		_blogEntries = new Dictionary<string, BlogEntry>();
 	}
 
 	public void Add(BlogEntry blogEntry)
@@ -26,14 +26,14 @@
 			throw new RepositoryException(RepositoryExceptionType.Add, $"A blogEntry with ID: {blogEntry.Id} aldready exists");
 		}
 	}
-	public void Remove(int id)
+	public void Remove(string id)
 	{
 		if (!_blogEntries.Remove(id))
 		{
 			throw new RepositoryException(RepositoryExceptionType.Remove, "Blog entry not found in repository.");
 		}
 	}
-	public BlogEntry? GetBlogEntryById(int id)
+	public BlogEntry? GetBlogEntryById(string id)
 	{
 		if (_blogEntries.TryGetValue(id, out var blogEntry))
 		{

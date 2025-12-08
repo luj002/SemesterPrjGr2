@@ -4,7 +4,7 @@ using System.Net.Sockets;
 public class MemberRepository : IMemberRepository
 {
     #region Instance fields
-    private Dictionary<int, Member> _members;
+    private Dictionary<string, Member> _members;
     #endregion
 
     #region Properties
@@ -17,7 +17,7 @@ public class MemberRepository : IMemberRepository
     #region Constructor
     public MemberRepository()
     {
-        _members = new Dictionary<int, Member>();
+        _members = new Dictionary<string, Member>();
     }
     #endregion
 
@@ -38,12 +38,12 @@ public class MemberRepository : IMemberRepository
         return _members.Values.ToList();
     }
 
-    public Member? GetMemberById(int id)
+    public Member? GetMemberById(string id)
     {
         return _members.ContainsKey(id) ? _members[id] : null;
     }
 
-    public void Remove(int id)
+    public void Remove(string id)
     {
         if(_members.TryGetValue(id, out Member? value))
         {

@@ -2,8 +2,7 @@
 
 public class Boat
 {
-	private static int _nextId = 0;
-	public int Id { get; }
+	public string Id { get; }
 	public string ModelName { get; }
 	public BoatType Type { get; }
 	public string? Nickname { get; set; }
@@ -16,7 +15,7 @@ public class Boat
 	public BoatLogEntryRepository Log { get; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
-		Id = _nextId++;
+		Id = StringId.Next("BO");
 		ModelName = modelName;
 		Type = type;
 		Length = length;

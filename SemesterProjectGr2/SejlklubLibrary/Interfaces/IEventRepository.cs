@@ -4,5 +4,5 @@
     void AddEvent(Event givenEvent);
     void RemoveEvent(Event givenEvent);
     int Count { get; }
-    Event? GetEventByID(int id);
+    Event? GetEventByID(string id);
 }

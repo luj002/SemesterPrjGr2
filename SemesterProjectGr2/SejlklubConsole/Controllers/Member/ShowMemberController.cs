@@ -11,10 +11,6 @@
     }
     #endregion
 
-    #region Properties
-
-    #endregion
-
     #region Methods
     public void ShowAllMembers()
     {
@@ -22,6 +18,7 @@
         {
             Console.WriteLine(member);
         }
+        Console.ReadLine();
     }
     #endregion
 }
