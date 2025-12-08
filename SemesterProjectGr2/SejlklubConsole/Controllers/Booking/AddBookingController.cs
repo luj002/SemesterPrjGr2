@@ -90,7 +90,7 @@ public class AddBookingController
     public void AddBooking()
 	{
         Console.WriteLine(_booking);
-        bool AddConfirmed = Helpers.YesOrNo("Add this member?");
+        bool AddConfirmed = Helpers.YesOrNo("Confirm booking?");
         if (AddConfirmed)
             _bookingRepository.Add(_booking);
     }
