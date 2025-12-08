@@ -4,4 +4,9 @@
 	{
 		throw new NotImplementedException();
 	}
+
+	internal void UpdateBlogEntry()
+	{
+		throw new NotImplementedException();
+	}
 }

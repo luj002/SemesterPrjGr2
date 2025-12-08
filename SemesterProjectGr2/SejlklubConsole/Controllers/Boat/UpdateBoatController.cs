@@ -4,4 +4,9 @@
 	{
 		throw new NotImplementedException();
 	}
+
+	internal void UpdateBoat()
+	{
+		throw new NotImplementedException();
+	}
 }

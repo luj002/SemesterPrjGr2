@@ -23,7 +23,7 @@
 	#region Methods
 	private BlogEntry Create()
 	{
-		List<string> blogEntryInfoFields = new List<string> { "1. Name", "2. Address", "3. Email", "4. Date of birth", "5. BlogEntry type", "B. Back" };
+		List<string> blogEntryInfoFields = new List<string> { "1. Title", "2. Content", "3. Email", "4. Date of birth", "5. BlogEntry type", "B. Back" };
 		string name = "";
 		string address = "";
 		string email = "";
