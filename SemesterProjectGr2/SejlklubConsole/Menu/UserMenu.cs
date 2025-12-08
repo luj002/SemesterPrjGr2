@@ -88,6 +88,7 @@
                 case "2":
                     ShowMemberController showMembersController = new ShowMemberController(_memberRepository);
                     showMembersController.ShowAllMembers();
+                    Console.ReadLine();
                     break;
                 case "3":
                     //UpdateMemberController updateMemberController = new UpdateMemberController(_memberRepository);

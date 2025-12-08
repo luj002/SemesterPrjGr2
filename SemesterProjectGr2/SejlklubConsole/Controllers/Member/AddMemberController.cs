@@ -42,19 +42,19 @@ public class AddMemberController
                     Console.Write("Enter name: ");
                     name = Console.ReadLine();
 
-                    memberInfoFields[0] = $"Name - {name}";
+                    memberInfoFields[0] = $"1. Name - {name}";
                     break;
                 case "2":
                     Console.Write("Enter address: ");
                     address = Console.ReadLine();
 
-                    memberInfoFields[1] = $"Address - {address}";
+                    memberInfoFields[1] = $"2. Address - {address}";
                     break;
                 case "3":
                     Console.Write("Enter email: ");
                     email = Console.ReadLine();
 
-                    memberInfoFields[2] = $"Email - {email}";
+                    memberInfoFields[2] = $"3. Email - {email}";
                     break;
                 case "4":
                     Console.WriteLine("Enter date of birth");
@@ -65,12 +65,12 @@ public class AddMemberController
 
                     dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
 
-                    memberInfoFields[3] = $"Date of birth - {dateOfBirth.ToShortDateString()}";
+                    memberInfoFields[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
                     break;
                 case "5":
                     memberType = memberTypeFromReadLine();
 
-                    memberInfoFields[4] = $"Member type - {memberType}";
+                    memberInfoFields[4] = $"5. Member type - {memberType}";
                     break;
                 default:
                     Console.WriteLine("Choose 1..5 or b to go back");
