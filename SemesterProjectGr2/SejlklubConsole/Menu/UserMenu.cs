@@ -122,7 +122,7 @@
 					}
 				case "2":
 					ShowBlogEntryController showBlogEntrysController = new ShowBlogEntryController(_blogEntryRepository);
-					showBlogEntrysController.ShowAllBlogEntrys();
+					showBlogEntrysController.ShowAllBlogEntries();
 					break;
 				case "3":
 					UpdateBlogEntryController updateBlogEntryController = new UpdateBlogEntryController(_blogEntryRepository);
