@@ -58,7 +58,7 @@ public class AddMemberController
                     break;
                 case "4":
                     Console.WriteLine("Enter date of birth");
-                    int birthYear = IntFromReadLine("Year:", 1900, 2026);
+                    int birthYear = IntFromReadLine("Year:", 1900, DateTime.Now.Year);
                     int birthMonth = IntFromReadLine("Month:", 1, 12);
                     int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
                     int birthDay = IntFromReadLine("Date:", 1, daysInBirthMonth);
