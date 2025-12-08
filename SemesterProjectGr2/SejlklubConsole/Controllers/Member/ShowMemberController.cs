@@ -22,6 +22,7 @@
         {
             Console.WriteLine(member);
         }
+        Console.ReadLine();
     }
     #endregion
 }

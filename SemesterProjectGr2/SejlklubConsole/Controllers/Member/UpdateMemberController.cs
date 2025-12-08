@@ -1,50 +1,48 @@
-﻿using System.Runtime.InteropServices;
-
-public class AddMemberController
+﻿public class UpdateMemberController
 {
-    #region Instance fields
-    private Member _member;
+    #region Instance Fields
     private IMemberRepository _memberRepository;
     #endregion
 
-    #region Properties
-    public Member Member
+    #region Constructors
+    public UpdateMemberController(IMemberRepository memberRepository)
     {
-        get { return _member; }
+        _memberRepository = memberRepository;
+        Member = Helpers.SelectMember(_memberRepository);
     }
     #endregion
 
-    #region Constructor
-    public AddMemberController(IMemberRepository memberRepository)
-    {
-        _memberRepository = memberRepository;
-        _member = Create();
-    }
+    #region Properties
+    public Member Member { get; set; }
     #endregion
 
     #region Methods
     /// <summary>
-    /// Creates a Member object from ReadLine inputs
+    /// Updates the member's information, from ReadLine inputs.
     /// </summary>
-    /// <returns>returns the created Member object</returns>
-    private Member Create()
+    public void UpdateMember()
     {
-        List<string> choices = new List<string> { 
-            "1. Name", "2. Address", 
-            "3. Email", 
-            "4. Date of birth", 
-            "5. Member type", 
-            "\nC. Confirm"
+        string name = Member.Name;
+        string address = Member.Address;
+        string email = Member.Email;
+        DateTime dateOfBirth = Member.DateOfBirth;
+        MemberType memberType = Member.Type;
+
+        List<string> choices = new List<string>
+        {
+            $"1. Name - {name}",
+            $"2. Address - {address}",
+            $"3. Email - {email}",
+            $"4. Date of birth - {dateOfBirth.ToShortDateString()}",
+            $"5. Member type - {memberType}",
+            "\nC. Confirm changes",
+            "Q. Cancel changes"
         };
-        string name = "";
-        string address = "";
-        string email = "";
-        DateTime dateOfBirth = new DateTime(0);
-        MemberType memberType = MemberType.SENIOR;
 
         string theChoice = Helpers.ReadChoice(choices);
 
-        while (theChoice != "c")
+
+        while (theChoice != "c" && theChoice != "q")
         {
             switch (theChoice)
             {
@@ -88,19 +86,27 @@ public class AddMemberController
             theChoice = Helpers.ReadChoice(choices);
         }
 
-        return new Member(name, address, email, dateOfBirth, memberType);
-    }
-
-    /// <summary>
-    /// Adds the created member to the repository after confirmation
-    /// </summary>
-    public void AddMember()
-    {
-        Console.WriteLine(Member);
-        bool AddConfirmed = Helpers.YesOrNo("Add this member?");
-        if (AddConfirmed)
-            _memberRepository.Add(Member);
+        if (theChoice == "c")
+        {
+            Member.Name = name;
+            Member.Address = address;
+            Member.Email = email;
+            Member.DateOfBirth = dateOfBirth;
+            Member.Type = memberType;
+            Console.WriteLine("Member updated successfully.");
+            Console.ReadLine();
+        }
+        else
+        {
+            bool confirm = Helpers.YesOrNo("Discard changes?");
+            if (confirm)
+            {
+                Console.WriteLine("Changes discarded.");
+                Console.ReadLine();
+            }
+        }
     }
     #endregion
 }
+
 

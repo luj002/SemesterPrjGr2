@@ -1,12 +1,29 @@
-﻿
-public class ShowBoatSpaceController
+﻿public class ShowBoatSpaceController
 {
-	public ShowBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
-	{
-	}
+    #region Instance Fields
+    private IBoatSpaceRepository _boatSpaceRepository;
+    #endregion
 
-	internal void ShowAllBoatSpaces()
-	{
-		throw new NotImplementedException();
-	}
+    #region Constructors
+    public ShowBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
+    {
+        _boatSpaceRepository = boatSpaceRepository;
+    }
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #region Methods
+    public void ShowAllBoatSpaces()
+    {
+        foreach (BoatSpace boatSpace in _boatSpaceRepository.GetAll())
+        {
+            Console.WriteLine(boatSpace);
+        }
+    }
+    #endregion
 }
+
+
