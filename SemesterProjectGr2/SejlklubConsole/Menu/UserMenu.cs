@@ -168,7 +168,7 @@
 			{
 				case "1":
 					AddBoatController boatController = new AddBoatController(_boatRepository);
-					boatController.AddBoat();
+					//boatController.AddBoat();
 					break;
 				case "2":
 					ShowBoatController showBoatsController = new ShowBoatController(_boatRepository);
@@ -196,7 +196,7 @@
 			switch (choice)
 			{
 				case "1":
-					AddEventController eventController = new AddEventController(_eventRepository);
+					AddEventController eventController = new AddEventController(_eventRepository, currentUser);
                     eventController.AddEvent();
 					break;
 				case "2":
