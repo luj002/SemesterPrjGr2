@@ -1,83 +1,65 @@
 ﻿public class AddBlogEntryController
 {
+	private static Dictionary<int, BlogEntry> _blogEntries = new();
 	#region Instance fields
-	private BlogEntry _blogEntry;
 	private IBlogEntryRepository _blogEntryRepository;
-	#endregion
-
-	#region Properties
-	public BlogEntry BlogEntry
-	{
-		get { return _blogEntry; }
-	}
+	private Adminstrator _author;
 	#endregion
 
 	#region Constructor
-	public AddBlogEntryController(IBlogEntryRepository blogEntryRepository)
+	public AddBlogEntryController(IBlogEntryRepository blogEntryRepository, Adminstrator author)
 	{
 		_blogEntryRepository = blogEntryRepository;
-		_blogEntry = Create();
+		if (!_blogEntries.ContainsKey(author.Id)) _blogEntries[author.Id] = new BlogEntry("", "", author);
+		_author = author;
+		Create();
 	}
 	#endregion
 
 	#region Methods
-	private BlogEntry Create()
+	private void Create()
 	{
-		List<string> blogEntryInfoFields = new List<string> { "1. Title", "2. Content", "3. Email", "4. Date of birth", "5. BlogEntry type", "B. Back" };
-		string name = "";
-		string address = "";
-		string email = "";
-		DateTime dateOfBirth = new DateTime(0);
-		//BlogEntryType blogEntryType = BlogEntryType.SENIOR;
+		List<string> blogEntryInfoFields = new List<string> { $"1. Title: {_blogEntries[_author.Id].Title}", $"2. Content\n{_blogEntries[_author.Id].Content}", "\nB. Back (don't save)", "D. Cancel and save as draft", "S. Save and create"};
+		string title = _blogEntries[_author.Id].Title;
+		string content = _blogEntries[_author.Id].Content;
 
 		string theChoice = ReadChoice(blogEntryInfoFields);
 
-		while (theChoice != "b")
+		while (true)
 		{
-			switch (theChoice)
+			switch (theChoice.ToLower())
 			{
 				case "1":
-					Console.Write("Enter name: ");
-					name = Console.ReadLine();
+					Console.Write("Enter title: ");
+					title = Console.ReadLine()!;
 
-					blogEntryInfoFields[0] = $"1. Name - {name}";
+					blogEntryInfoFields[0] = $"1. Title - {title}";
 					break;
 				case "2":
-					Console.Write("Enter address: ");
-					address = Console.ReadLine();
+					Console.Write("Enter content: ");
+					content = Console.ReadLine()!;
 
-					blogEntryInfoFields[1] = $"2. Address - {address}";
+					blogEntryInfoFields[1] = $"2. Content:\n{content}";
 					break;
-				case "3":
-					Console.Write("Enter email: ");
-					email = Console.ReadLine();
-
-					blogEntryInfoFields[2] = $"3. Email - {email}";
-					break;
-				case "4":
-					Console.WriteLine("Enter date of birth");
-					int birthYear = IntFromReadLine("Year:", 1900, DateTime.Now.Year);
-					int birthMonth = IntFromReadLine("Month:", 1, 12);
-					int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
-					int birthDay = IntFromReadLine("Date:", 1, daysInBirthMonth);
-
-					dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
-
-					blogEntryInfoFields[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
-					break;
-				case "5":
-					//blogEntryType = blogEntryTypeFromReadLine();
-
-					//blogEntryInfoFields[4] = $"5. BlogEntry type - {blogEntryType}";
-					break;
+				case "b":
+					_blogEntries[_author.Id].Title = "";
+					_blogEntries[_author.Id].Content = "";
+					return;
+				case "d":
+					_blogEntries[_author.Id].Title = title;
+					_blogEntries[_author.Id].Content = content;
+					return;
+				case "s":
+					_blogEntries[_author.Id].Title = title;
+					_blogEntries[_author.Id].Content = content;
+					AddBlogEntry();
+					return;
 				default:
-					Console.WriteLine("Choose 1..5 or b to go back");
+					Console.WriteLine("Not a valid choice");
 					break;
 			}
 			theChoice = ReadChoice(blogEntryInfoFields);
 		}
-		return null;
-		//return new BlogEntry(name, address, email, dateOfBirth, blogEntryType);
 	}
 
 	private string ReadChoice(List<string> choices)
@@ -88,73 +70,12 @@
 			Console.WriteLine(s);
 		}
 		Console.Write("\nYour choice: ");
-		string choice = Console.ReadLine();
+		string choice = Console.ReadLine()!;
 		Console.Clear();
 
 		return choice.ToLower();
 
 	}
-
-	/// <summary>
-	/// Handles input of integers.
-	/// </summary>
-	/// <param name="inputDescription">Description for what will be assigned with the input</param>
-	/// <param name="min">Minimum value for input</param>
-	/// <param name="max">Maximum value for input</param>
-	/// <returns>Int from ReadLine input in specified range</returns>
-	private int IntFromReadLine(string inputDescription, int min, int max)
-	{
-		int input = 0;
-		bool validInput = false;
-		while (!validInput)
-		{
-			Console.Write($"{inputDescription} ");
-			try
-			{
-				input = int.Parse(Console.ReadLine());
-
-				if (input < min)
-					throw new ArgumentException($"Input must be at least {min}");
-
-				if (input > max)
-					throw new ArgumentException($"Input must be less than {max}");
-
-				validInput = true;
-			}
-			catch (ArgumentException aex)
-			{
-				Console.Clear();
-				Console.WriteLine(aex.Message);
-			}
-			catch (Exception)
-			{
-				Console.Clear();
-				Console.WriteLine($"Input must be an integer");
-			}
-		}
-		return input;
-	}
-
-	/*
-	private BlogEntryType blogEntryTypeFromReadLine()
-	{
-		BlogEntryType type = BlogEntryType.SENIOR; // Type will be overwritten
-		BlogEntryType[] blogEntryTypes = Enum.GetValues<BlogEntryType>();
-
-		Console.WriteLine("BlogEntry types:");
-
-		foreach (BlogEntryType blogEntryTypeEnum in blogEntryTypes)
-		{
-			Console.WriteLine($"{(int) blogEntryTypeEnum + 1}. {blogEntryTypeEnum}");
-		}
-
-		int input = IntFromReadLine("\nSelect blogEntry type by number:", 1, blogEntryTypes.Length);
-
-		type = blogEntryTypes[input - 1];
-
-		return type;
-	}
-	*/
 
 	private bool YesOrNo(string question)
 	{
@@ -184,10 +105,10 @@
 
 	public void AddBlogEntry()
 	{
-		Console.WriteLine(BlogEntry);
+		Console.WriteLine(_blogEntries[_author.Id]);
 		bool AddConfirmed = YesOrNo("Add this blogEntry?");
 		if (AddConfirmed)
-			_blogEntryRepository.Add(BlogEntry);
+			_blogEntryRepository.Add(_blogEntries[_author.Id]);
 	}
 	#endregion
 }

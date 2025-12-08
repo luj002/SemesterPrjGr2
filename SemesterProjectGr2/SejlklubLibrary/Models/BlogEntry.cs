@@ -6,12 +6,13 @@
 	public string Title { get; set; }
 	public string Content { get; set; }
 	public DateTime CreatedAt { get; }
-	public BlogEntry(string title, string content)
+	public BlogEntry(string title, string content, Adminstrator auther)
 	{
 		Id = _nextId++;
 		Title = title;
 		Content = content;
 		CreatedAt = DateTime.Now;
+		Author = auther;
 	}
 	public override string ToString()
 	{
