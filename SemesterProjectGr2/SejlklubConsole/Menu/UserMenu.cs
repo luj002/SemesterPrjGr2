@@ -1,6 +1,6 @@
 ﻿public class UserMenu
 {
-    private List<string> _menuChoices = new List<string>();
+	private List<string> _menuChoices = new List<string>();
     //for now just use menuChoices.Add() in PopulateMenu() to add stuff
     //todo find a better way to populate this list
 
@@ -25,57 +25,122 @@
 
     private void PopulateMenu()
     {
-        _menuChoices.Add("1. Add Event");
-        _menuChoices.Add("2. Add Member");
+        _menuChoices.Add("1. Event menu");
+        _menuChoices.Add("2. Member menu");
+        _menuChoices.Add("3. Boat menu");
+        _menuChoices.Add("4. Boat space menu");
+        _menuChoices.Add("5. Blog menu");
+        _menuChoices.Add("6. Booking menu");
+        _menuChoices.Add("\nQ. Quit");
     }
-
-    public void ShowMenu()
+	//DEBUG STUFF, CHANGE THIS LATER
+	Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
+	//END OF DEBUG STUFF
+	public void ShowMenu()
     {
-        //DEBUG STUFF, CHANGE THIS LATER
-        Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
-        //END OF DEBUG STUFF
-
         PopulateMenu();
 
         string choice = ReadChoice(_menuChoices);
 
-        while (choice != "q")
+        while (!choice.ToLower().StartsWith('q'))
         {
             switch (choice)
             {
                 //menu option handling goes here
-
                 case "1":
-                    if (currentUser is not Adminstrator)
-                    {
-                        Console.WriteLine("You need to be an administrator to add events!");
-                        break;
-                    }
-                    Console.WriteLine("Enter event name:");
-                    string eventName = Console.ReadLine();
-                    Console.WriteLine("Enter event description:");
-                    string eventDesc = Console.ReadLine();
-
-                    //TODO MAKE THIS ACTUALLY ENSURE VALID INPUT
-                    Console.WriteLine("Enter event start date with format YYYY-MM-DD HH/MM/SS");
-                    DateTime startTime = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter event end date with format YYYY-MM-DD HH/MM/SS");
-                    DateTime endTime = DateTime.Parse(Console.ReadLine());
-
-                    AddEventController eventController = new AddEventController(eventName, eventDesc, startTime, endTime, (Adminstrator)currentUser, _eventRepository);
-                    eventController.AddEvent();
+					ShowEventMenu();
                     break;
-                case "2":
+				case "2":
                     ShowMemberMenu();
                     break;
+                case "3":
+                    ShowBoatMenu();
+                    break;
+                case "4":
+					ShowBoatSpaceMenu();
+                    break;
+                case "5":
+                    ShowBlogMenu();
+                    break;
+                case "6":
+                    ShowBookingMenu();
+                    break;
 
-            }
-            choice = ReadChoice(_menuChoices);
+			}
+			choice = ReadChoice(_menuChoices);
         }
-    }
-    private void ShowMemberMenu()
+	}
+
+	private void ShowBookingMenu()
+	{
+		throw new NotImplementedException();
+	}
+
+	private void ShowBlogMenu()
+	{
+		throw new NotImplementedException();
+	}
+
+	private void ShowBoatSpaceMenu()
+	{
+		throw new NotImplementedException();
+	}
+
+	private void ShowBoatMenu()
+	{
+		throw new NotImplementedException();
+	}
+
+	private void ShowEventMenu()
+	{
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Delete event", "B. Back" };
+        string choice = ReadChoice(choices);
+		while (choice != "b")
+		{
+			switch (choice)
+			{
+				case "1":
+					AddEventController eventController = new AddEventController(_eventRepository);
+                    eventController.AddEvent();
+					break;
+				case "2":
+					//ShowEventController showEventsController = new ShowEventController(_eventRepository);
+					//showEventsController.ShowAllEvents();
+					break;
+				case "3":
+					//UpdateEventController updateEventController = new UpdateEventController(_EventRepository);
+					//updateEventController.UpdateEvent();
+					break;
+				case "4":
+					//DeleteEventController deleteEventController = new DeleteEventController(_EventRepository);
+					//deleteEventController.DeleteEvent();
+					break;
+			}
+			choice = ReadChoice(choices);
+		}
+
+        //TODO
+        //TO BE IMPLEMENTED IN THE CONTROLLER JUST LIKE ADD MEMBER
+        /*
+		Console.WriteLine("Enter event name:");
+		string eventName = Console.ReadLine();
+		Console.WriteLine("Enter event description:");
+		string eventDesc = Console.ReadLine();
+
+		//TODO MAKE THIS ACTUALLY ENSURE VALID INPUT
+		Console.WriteLine("Enter event start date with format YYYY-MM-DD HH/MM/SS");
+		DateTime startTime = DateTime.Parse(Console.ReadLine());
+		Console.WriteLine("Enter event end date with format YYYY-MM-DD HH/MM/SS");
+		DateTime endTime = DateTime.Parse(Console.ReadLine());
+
+		//AddEventController eventController = new AddEventController(eventName, eventDesc, startTime, endTime, (Adminstrator)currentUser, _eventRepository);
+		eventController.AddEvent();
+        */
+	}
+
+	private void ShowMemberMenu()
     {
-        List<string> choices = new List<string> { "1. Add Member", "2. Show Members", "3. Update Member", "4. Delete Member", "B. Back" };
+        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Delete member", "B. Back" };
         string choice = ReadChoice(choices);
         while (choice != "b")
         {
