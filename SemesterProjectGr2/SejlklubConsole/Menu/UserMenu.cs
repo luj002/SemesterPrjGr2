@@ -87,7 +87,7 @@
 					showBookingsController.ShowAllBookings();
 					break;
 				case "3":
-					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository);
+					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository, _memberRepository, _boatRepository);
 					updateBookingController.UpdateBooking();
 					break;
 				case "4":
