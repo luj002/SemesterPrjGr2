@@ -80,7 +80,7 @@
 			switch (choice)
 			{
 				case "1":
-					AddBookingController bookingController = new AddBookingController(_bookingRepository);
+					AddBookingController bookingController = new AddBookingController(_bookingRepository, _boatRepository, _memberRepository);
 					bookingController.AddBooking();
 					break;
 				case "2":
