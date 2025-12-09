@@ -13,6 +13,7 @@ public class Boat
 	public double Draft { get; set; }
 	public string BuildYear { get; }
 	public BoatLogEntryRepository Log { get; }
+	public int? AssignedSpace { get; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
 		Id = StringId.Next("BOAT");
@@ -29,6 +30,6 @@ public class Boat
 	}
 	public override string ToString()
 	{
-		return $"{ModelName} ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}";
+		return $"{ModelName} ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}, Boat space: {AssignedSpace.ToString() ?? "N/A"}";
 	}
 }
