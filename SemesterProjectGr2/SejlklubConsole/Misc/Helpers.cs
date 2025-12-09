@@ -97,4 +97,53 @@ public class Helpers
     {
         Console.WriteLine("{" + string.Join(", ",givenTable.Cast<object>()) + "}");
     }
+
+    public static DateTime DateTimeFromReadLine(string inputDescription, DateTime min, DateTime max, bool timeIncluded = false)
+    {
+        DateTime time = DateTime.MinValue;
+        bool validInput = false;
+        while (!validInput)
+        {
+            Console.Write($"{inputDescription}: ");
+            try
+            {
+                int year = IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
+
+                int minMonth = (year == min.Year) ? min.Month : 1;
+                int maxMonth = (year == max.Year) ? max.Month : 12;
+
+                int month = IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
+
+                int minDay = (year == min.Year && month == min.Month) ? min.Day : 1;
+                int maxDay = (year == max.Year && month == max.Month) ? max.Day : DateTime.DaysInMonth(year, month);
+                
+                int day = IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
+
+                if (timeIncluded)
+                {
+                    int hour = IntFromReadLine("Hour (0-23):", 0, 23);
+                    int minute = IntFromReadLine("Minute (0-59):", 0, 59);
+                    time = new DateTime(year, month, day, hour, minute, 0);
+                }
+                else
+                {
+                    time = new DateTime(year, month, day);
+                }
+
+                validInput = true;
+            }
+            catch (ArgumentException aex)
+            {
+                Console.Clear();
+                Console.WriteLine(aex.Message);
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine($"Input must be an integer");
+            }
+        }
+
+        return time;
+    }
 }

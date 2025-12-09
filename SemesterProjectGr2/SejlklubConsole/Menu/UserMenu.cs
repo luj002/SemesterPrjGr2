@@ -87,7 +87,7 @@
 					showBookingsController.ShowAllBookings();
 					break;
 				case "3":
-					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository);
+					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository, _memberRepository, _boatRepository);
 					updateBookingController.UpdateBooking();
 					break;
 				case "4":
@@ -216,11 +216,11 @@
 					showEventsController.ShowAllEvents();
 					break;
 				case "3":
-					UpdateEventController updateEventController = new UpdateEventController(_eventRepository);
+					UpdateEventController updateEventController = new UpdateEventController(_eventRepository, currentUser);
 					updateEventController.UpdateEvent();
 					break;
 				case "4":
-					RemoveEventController removeEventController = new RemoveEventController(_eventRepository);
+					RemoveEventController removeEventController = new RemoveEventController(_eventRepository, currentUser);
 					removeEventController.RemoveEvent();
 					break;
 			}

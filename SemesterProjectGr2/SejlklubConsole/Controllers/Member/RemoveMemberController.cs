@@ -21,14 +21,21 @@ public class RemoveMemberController
         if (_member == null)
             return;
 
-        Console.WriteLine("Member to delete:");
-        Console.WriteLine(_member);
-        Console.WriteLine();
+        Console.WriteLine($"Member to delete:\n{_member}\n");
 
         bool confirm = Helpers.YesOrNo("Are you sure you want to remove this member?");
 
         if (confirm)
+        {
             _memberRepository.Remove(_member.Id);
+            Console.WriteLine("Member removed successfully. Press any key to continue");
+            Console.ReadKey();
+        }
+        else
+        {
+            Console.WriteLine("Member removal cancelled. Press any key to continue");
+            Console.ReadKey();
+        }
     }
     #endregion
 }
