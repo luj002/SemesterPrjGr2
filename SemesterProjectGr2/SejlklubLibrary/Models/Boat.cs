@@ -30,6 +30,6 @@ public class Boat
 	}
 	public override string ToString()
 	{
-		return $"{ModelName} ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}, Boat space: {AssignedSpace.ToString() ?? "N/A"}";
+		return $"Model Name: {ModelName}, ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}, Boat space: {AssignedSpace.ToString() ?? "N/A"}";
 	}
 }

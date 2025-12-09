@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.Text.RegularExpressions;
-
-public class AddBoatController
+﻿public class AddBoatController
 {
     
     //Variables for class.
@@ -42,11 +39,10 @@ public class AddBoatController
 
         Console.Clear();
         Console.WriteLine($"Boat \"{_properties[0]}\" added!");
-
+        
+        Console.WriteLine();
         Console.Write("Press any key to return to boat selection.");
         Console.ReadKey();
-
-        Console.Clear();
     }
 
     //Displays the variable editing.
