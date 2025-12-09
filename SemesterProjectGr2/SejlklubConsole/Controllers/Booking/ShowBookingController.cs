@@ -1,12 +1,29 @@
 ﻿
 public class ShowBookingController
 {
-	public ShowBookingController(IBookingRepository bookingRepository)
-	{
-	}
+    #region Instance fields
+    private IBookingRepository _bookingRepository;
+    #endregion
 
-	internal void ShowAllBookings()
+    #region Constructor
+    public ShowBookingController(IBookingRepository bookingRepository)
 	{
-		throw new NotImplementedException();
+        _bookingRepository = bookingRepository;
 	}
+    #endregion
+
+
+    #region
+    /// <summary>
+    /// Prints all bookings to the console.
+    /// </summary>
+    public void ShowAllBookings()
+	{
+		foreach (Booking booking in _bookingRepository.GetAll())
+        {
+            Console.WriteLine(booking);
+        }
+        Console.ReadKey();
+	}
+    #endregion
 }

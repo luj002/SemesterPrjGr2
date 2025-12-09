@@ -12,13 +12,16 @@
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Prints all members to the console.
+    /// </summary>
     public void ShowAllMembers()
     {
         foreach (Member member in _memberRepository.GetAll())
         {
             Console.WriteLine(member);
         }
-        Console.ReadLine();
+        Console.ReadKey();
     }
     #endregion
 }
