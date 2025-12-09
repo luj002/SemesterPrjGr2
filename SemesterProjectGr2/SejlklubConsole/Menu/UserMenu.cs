@@ -83,8 +83,8 @@
 					AddBookingController bookingController = new AddBookingController(_bookingRepository, _boatRepository, _memberRepository);
 					break;
 				case "2":
-					ShowBookingController showBookingsController = new ShowBookingController(_bookingRepository);
-					showBookingsController.ShowAllBookings();
+					ShowBookingController showBookingsController = new ShowBookingController(_bookingRepository, _boatRepository, _memberRepository);
+					showBookingsController.ShowBookings();
 					break;
 				case "3":
 					UpdateBookingController updateBookingController = new UpdateBookingController(_bookingRepository, _memberRepository, _boatRepository);

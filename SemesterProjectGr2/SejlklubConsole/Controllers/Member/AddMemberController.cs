@@ -23,7 +23,8 @@ public class AddMemberController
     private void Create()
     {
         List<string> choices = new List<string> { 
-            "1. Name", "2. Address", 
+            "1. Name", 
+            "2. Address", 
             "3. Email", 
             "4. Date of birth", 
             "5. Member type", 

@@ -17,6 +17,7 @@
     /// </summary>
     public void ShowAllMembers()
     {
+        Console.WriteLine("All members:");
         foreach (Member member in _memberRepository.GetAll())
         {
             Console.WriteLine(member);
