@@ -16,6 +16,8 @@ public class AddBoatController
     private string _sailNumber;
     private string _motor;
     private List<dynamic> _properties;
+    
+    public bool ShouldAdd { get; set;}
 
     public AddBoatController(IBoatRepository boatRep)
     {
@@ -25,7 +27,7 @@ public class AddBoatController
         _nickname = "???";
         _sailNumber = "???";
         _motor = "???";
-        _properties = new List<dynamic> { _modelName, _type, _length, _width, _draft, _buildYear, _nickname, _sailNumber, _motor, "" };
+        _properties = new List<dynamic> { _modelName, _type, _length, _width, _draft, _buildYear, _nickname, _sailNumber, _motor, "", "cancel" };
         DetectInput();
     }
 
@@ -55,7 +57,7 @@ public class AddBoatController
 
         Console.Clear();
 
-        string propertyName = Regex.Match(entry,@"^\d+\.\s*(.+)$").Groups[1].Value;
+        string propertyName = Regex.Match(entry,@"^\.+\.\s*(.+)$").Groups[1].Value;
         Console.WriteLine("Editing property: " + propertyName);
 
         var currentProperty = _properties[chosenNumber - 1];
@@ -110,12 +112,12 @@ public class AddBoatController
 
         foreach (string option in options)
         {
-            if (count < _properties.Count - 1)
+            if (count < _properties.Count - 2)
             {
                 Console.WriteLine($"{option} - {_properties[count]}");
             }
 
-            else if (count == _properties.Count - 1)
+            else if (_properties[count] == "")
             {
                 Console.WriteLine();
                 Console.WriteLine($"{option}");
@@ -124,12 +126,13 @@ public class AddBoatController
             count += 1;
         }
 
+        Console.WriteLine(options[10]);
         Console.WriteLine();
     }
 
     public void DetectInput()
     {
-        List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Done" };
+        List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Done", "11. Cancel"};
         string input = "";
 
         while (true)
@@ -139,13 +142,20 @@ public class AddBoatController
             input = Console.ReadLine()!.ToLower();
             int chosenNumber;
 
-            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < options.Count)
+            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
             {
                 DisplayEdit(options[chosenNumber - 1], chosenNumber, 0);
             }
 
-            else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == options.Count)
+            else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == 10)
             {
+                ShouldAdd = true;
+                break;
+            }
+
+            else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == 11)
+            {
+                ShouldAdd = false;
                 break;
             }
 
