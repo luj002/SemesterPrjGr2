@@ -174,7 +174,13 @@
 			{
 				case "1":
 					AddBoatController boatController = new AddBoatController(_boatRepository);
-					boatController.AddBoat();
+					bool shouldAdd = boatController.ShouldAdd;
+
+					if (shouldAdd == true)
+					{
+                        boatController.AddBoat();
+                    }
+
 					break;
 				case "2":
 					ShowBoatController showBoatsController = new ShowBoatController(_boatRepository);
