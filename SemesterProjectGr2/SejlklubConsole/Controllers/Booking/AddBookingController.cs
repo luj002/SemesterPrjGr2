@@ -83,12 +83,14 @@ public class AddBookingController
             }
 			theChoice = Helpers.ReadChoice(choices);
         }
-		_booking = new Booking(member, boat!, sailingArea, endTime, startTime, destination);
 
         if (theChoice == "c")
-			AddBooking();
+		{
+            _booking = new Booking(member, boat!, sailingArea, endTime, startTime, destination);
+            AddBooking();
+        }
 
-		//return new Booking(member, boat!, sailingArea, endTime, startTime, destination);
+
     }
 
 

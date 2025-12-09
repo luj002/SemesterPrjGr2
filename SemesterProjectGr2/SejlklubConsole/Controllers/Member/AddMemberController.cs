@@ -7,13 +7,6 @@ public class AddMemberController
     private IMemberRepository _memberRepository;
     #endregion
 
-    #region Properties
-    public Member Member
-    {
-        get { return _member; }
-    }
-    #endregion
-
     #region Constructor
     public AddMemberController(IMemberRepository memberRepository)
     {
@@ -91,9 +84,13 @@ public class AddMemberController
             theChoice = Helpers.ReadChoice(choices);
         }
 
-        _member = new Member(name, address, email, dateOfBirth, memberType);
+        
 
-        AddMember();
+        if (theChoice == "c")
+        {
+            _member = new Member(name, address, email, dateOfBirth, memberType);
+            AddMember();
+        }
     }
 
     /// <summary>
@@ -101,10 +98,10 @@ public class AddMemberController
     /// </summary>
     private void AddMember()
     {
-        Console.WriteLine(Member);
+        Console.WriteLine(_member);
         bool AddConfirmed = Helpers.YesOrNo("Add this member?");
         if (AddConfirmed)
-            _memberRepository.Add(Member);
+            _memberRepository.Add(_member);
     }
     #endregion
 }
