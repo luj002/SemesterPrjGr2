@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics.Metrics;
+using System.Net;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -9,9 +10,15 @@ public class UpdateEventController
 	private IEventRepository _eventRepository;
 	private ShowEventController _showEventController;
 
-	public UpdateEventController(IEventRepository eventRepository)
+	public UpdateEventController(IEventRepository eventRepository, Member editor)
 	{
-		_eventRepository = eventRepository;
+        if (editor is not Adminstrator)
+        {
+            //this should probably be a different exception type but that's solidly a later me problem
+            throw new RepositoryException(RepositoryExceptionType.Add, "Only administrators may edit events!");
+        }
+
+        _eventRepository = eventRepository;
 		_showEventController = new ShowEventController(eventRepository);
 	}
 

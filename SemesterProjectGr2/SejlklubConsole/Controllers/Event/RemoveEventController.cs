@@ -1,11 +1,19 @@
-﻿public class RemoveEventController
+﻿using System.Diagnostics.Metrics;
+
+public class RemoveEventController
 {
 	private IEventRepository _eventRepository;
 	private ShowEventController _showEventController;
 
-	public RemoveEventController(IEventRepository eventRepository)
+	public RemoveEventController(IEventRepository eventRepository, Member remover)
 	{
-		_eventRepository = eventRepository;
+        if (remover is not Adminstrator)
+        {
+            //this should probably be a different exception type but that's solidly a later me problem
+            throw new RepositoryException(RepositoryExceptionType.Add, "Only administrators may remove events!");
+        }
+
+        _eventRepository = eventRepository;
         _showEventController = new ShowEventController(eventRepository);
     }
 
