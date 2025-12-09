@@ -1,10 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 public class AddBoatController
 {
-    public struct Nothing {};
     
+    //Variables for class.
     private IBoatRepository _boatRep;
     private string _modelName;
     private BoatType _type;
@@ -15,10 +15,13 @@ public class AddBoatController
     private string _nickname;
     private string _sailNumber;
     private string _motor;
+
+    //Dynamic is to prevent type error when creating the BoatInstance. The variable types never change.
     private List<dynamic> _properties;
     
     public bool ShouldAdd { get; set;}
 
+    //Constructor initializes variables for controller object and calls the "DetectInput" function.
     public AddBoatController(IBoatRepository boatRep)
     {
         _boatRep = boatRep;
@@ -31,8 +34,12 @@ public class AddBoatController
         DetectInput();
     }
 
+    //Adds boat to boat repository. The console writing notifies the user that the boat has been succesfully added.
     public void AddBoat()
     {
+        Boat BoatInstance = new Boat(_properties[0], _properties[1], _properties[2], _properties[3], _properties[4], _properties[5], _properties[6], _properties[7], _properties[8]);
+        _boatRep.Add(BoatInstance);
+
         Console.Clear();
         Console.WriteLine($"Boat \"{_properties[0]}\" added!");
 
@@ -40,69 +47,66 @@ public class AddBoatController
         Console.ReadKey();
 
         Console.Clear();
-
-        Boat BoatInstance = new Boat(_properties[0], _properties[1], _properties[2], _properties[3], _properties[4], _properties[5], _properties[6], _properties[7], _properties[8]);
-        _boatRep.Add(BoatInstance);
     }
 
-    public Nothing DisplayEdit(string entry,int chosenNumber, int iteration)
+    //Displays the variable editing.
+    public void DisplayEdit(string entry,int chosenNumber)
     {
-        Nothing nothing = new Nothing();
-        iteration += 1;
-
-        if (iteration > 100)
+        while (true)
         {
-            return nothing;
+            Console.Clear();
+
+            //.Split splits the string entry into an array with the length of 2.
+            //It uses the . to split the string at the dot ("4. Width" = {"4", " Width"})
+            //We trim (remove) the white spaces (" Width" = "Width").
+            //[1] means the split function returns index 1 of the array, which is "Width" in this example.
+            string propertyName = entry.Split('.',2)[1].Trim();
+            Console.WriteLine("Editing property: " + propertyName);
+
+            var currentProperty = _properties[chosenNumber - 1];
+
+            if (currentProperty is BoatType)
+            {
+                Helpers.PrintEnumerable(Enum.GetValues(typeof(BoatType)));
+            }
+
+            Console.Write("Value: ");
+
+            string defaultInput = Console.ReadLine();
+            dynamic handledInput = null;
+
+            if (currentProperty is string)
+            {
+                handledInput = defaultInput;
+            }
+
+            else if (currentProperty is double)
+            {
+                if (double.TryParse(defaultInput, out double output))
+                {
+                    handledInput = output;
+                }
+            }
+
+            else if (currentProperty is BoatType)
+            {
+                if (Enum.TryParse<BoatType>(defaultInput, true, out BoatType output))
+                {
+                    handledInput = output;
+                }
+            }
+
+            if (handledInput != null)
+            {
+                _properties[chosenNumber - 1] = handledInput;
+                break;
+            }
         }
 
         Console.Clear();
-
-        string propertyName = Regex.Match(entry,@"^\.+\.\s*(.+)$").Groups[1].Value;
-        Console.WriteLine("Editing property: " + propertyName);
-
-        var currentProperty = _properties[chosenNumber - 1];
-
-        if (currentProperty is BoatType)
-        {
-            Helpers.PrintEnumerable(Enum.GetValues(typeof(BoatType)));
-        }
-        
-        Console.Write("Value: ");
-
-        string defaultInput = Console.ReadLine();
-        dynamic handledInput = null;
-
-        if (currentProperty is string)
-        {
-            handledInput = defaultInput;
-        }
-
-        else if (currentProperty is double)
-        {
-            if (double.TryParse(defaultInput,out double output))
-            {
-                handledInput = output;
-            }
-        }
-
-        else if (currentProperty is BoatType)
-        { 
-            if (Enum.TryParse<BoatType>(defaultInput,true,out BoatType output))
-            {
-                handledInput = output;
-            }
-        }
-
-        if (handledInput == null)
-        {
-            return DisplayEdit(entry, chosenNumber, iteration);
-        }
-
-        _properties[chosenNumber - 1] = handledInput;
-
-        return nothing;
     }
-
+    
+    //Display overview of variables to edit
     public void DisplayOverview(List<string> options)
     {
         Console.WriteLine("Choose a property to edit:");
@@ -130,6 +134,7 @@ public class AddBoatController
         Console.WriteLine();
     }
 
+    //Detect input of user and display overview or edit
     public void DetectInput()
     {
         List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Done", "11. Cancel"};
@@ -144,7 +149,7 @@ public class AddBoatController
 
             if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
             {
-                DisplayEdit(options[chosenNumber - 1], chosenNumber, 0);
+                DisplayEdit(options[chosenNumber - 1], chosenNumber);
             }
 
             else if (int.TryParse(input, out chosenNumber) == true && chosenNumber == 10)

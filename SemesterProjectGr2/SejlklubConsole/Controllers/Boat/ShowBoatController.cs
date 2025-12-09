@@ -1,12 +1,14 @@
 ﻿public class ShowBoatController
 {
+	IBoatRepository _boatRep;
+
 	public ShowBoatController(IBoatRepository boatRepository)
 	{
-		throw new NotImplementedException();
+		_boatRep = boatRepository;
 	}
 
-	internal void ShowAllBoats()
+	public void ShowAllBoats()
 	{
-		throw new NotImplementedException();
+		List<Boat> allBoats = _boatRep.GetAll();
 	}
 }
