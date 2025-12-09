@@ -46,30 +46,37 @@ public class AddBookingController
 				case "1":
 					// Select member
 					member = MemberHelpers.SelectMember(_memberRepository);
-					break;
+					if (member != null)
+                        choices[0] = $"1. Member - {member.Id} {member.Name}";
+                    break;
 				case "2":
                     // Select boat
 					boat = BoatHelpers.SelectBoat(_boatRepository);
-					break;
+					if (boat != null)
+						choices[1] = $"2. Boat - {boat.Id} {boat.Nickname} {boat.ModelName}";
+                    break;
 				case "3":
 					// Sailing area
 					Console.Write("Enter sailing area: ");
                     sailingArea = Console.ReadLine()!;
-					break;
+					choices[2] = $"3. Sailing area - {sailingArea}";
+                    break;
 				case "4":
                     // Destination
 					Console.Write("Enter destination (optional): ");
 					destination = Console.ReadLine()!;
-					break;
+					if (destination.Length == 0)
+						destination = "N/A";
+
+                    choices[3] = $"4. Destination - {destination}";
+                    break;
 				case "5":
                     // Start time
-					Console.Write("Enter start time (yyyy-MM-dd HH:mm): ");
-					startTime = DateTime.Parse(Console.ReadLine()!);
-					break;
+					startTime = Helpers.DateTimeFromReadLine("Start time", DateTime.Now, DateTime.Now.AddYears(1), true);
+                    break;
 				case "6":
                     // End time
-					Console.Write("Enter end time (yyyy-MM-dd HH:mm): ");
-					endTime = DateTime.Parse(Console.ReadLine()!);
+					endTime = Helpers.DateTimeFromReadLine("End time", startTime, startTime.AddDays(2), true);
 					break;
 				default:
 					Console.WriteLine("Invalid choice. Press any button to try again.");

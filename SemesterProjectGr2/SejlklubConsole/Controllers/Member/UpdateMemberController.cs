@@ -48,7 +48,6 @@
 
         string theChoice = Helpers.ReadChoice(choices);
 
-
         while (theChoice != "c" && theChoice != "q")
         {
             switch (theChoice)
