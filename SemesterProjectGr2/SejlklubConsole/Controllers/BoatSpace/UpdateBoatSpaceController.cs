@@ -12,7 +12,7 @@ public class UpdateBoatSpaceController
     public UpdateBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
     {
         _boatSpaceRepository = boatSpaceRepository;
-        //BoatSpace = Helpers.SelectBoatSpace(_boatSpaceRepository);
+        BoatSpace = BoatSpaceHelpers.SelectBoatSpace(_boatSpaceRepository);
     }
     #endregion
 
