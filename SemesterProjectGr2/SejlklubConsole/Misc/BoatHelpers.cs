@@ -10,7 +10,7 @@
             {
                 Console.WriteLine($"{boat.Id} - {boat.Nickname} - {boat.ModelName}");
             }
-            Console.Write("Enter Member ID to remove: ");
+            Console.Write("Enter Boat ID: ");
             try
             {
                 int input = int.Parse(Console.ReadLine()!);

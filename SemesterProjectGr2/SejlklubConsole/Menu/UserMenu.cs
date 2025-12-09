@@ -81,7 +81,6 @@
 			{
 				case "1":
 					AddBookingController bookingController = new AddBookingController(_bookingRepository, _boatRepository, _memberRepository);
-					bookingController.AddBooking();
 					break;
 				case "2":
 					ShowBookingController showBookingsController = new ShowBookingController(_bookingRepository);
@@ -234,15 +233,14 @@
             {
                 case "1":
                     AddMemberController memberController = new AddMemberController(_memberRepository);
-                    memberController.AddMember();
                     break;
                 case "2":
                     ShowMemberController showMembersController = new ShowMemberController(_memberRepository);
                     showMembersController.ShowAllMembers();
                     break;
                 case "3":
-                    //UpdateMemberController updateMemberController = new UpdateMemberController(_memberRepository);
-                    //updateMemberController.UpdateMember();
+                    UpdateMemberController updateMemberController = new UpdateMemberController(_memberRepository);
+                    updateMemberController.UpdateMember();
                     break;
                 case "4":
                     RemoveMemberController removeMemberController = new RemoveMemberController(_memberRepository);

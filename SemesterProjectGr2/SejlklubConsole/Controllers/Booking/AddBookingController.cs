@@ -17,12 +17,12 @@ public class AddBookingController
     public AddBookingController(IBookingRepository bookingRepository, IBoatRepository boatRepository, IMemberRepository memberRepository)
 	{
 		_bookingRepository = bookingRepository;
-		_booking = Create();
+		Create();
     }
     #endregion
 
     #region Methods
-    private Booking Create()
+    private void Create()
 	{
         List<string> choices = new List<string> {
             "1. Member", 
@@ -31,7 +31,8 @@ public class AddBookingController
 			"4. Destination",
             "5. Start time",
             "6. End time",
-            "\nC. Confirm"
+            "\nC. Confirm",
+			"Q. Cancel (Discard Booking)"
         };
 
 		Member? member = null;
@@ -43,7 +44,7 @@ public class AddBookingController
 
 		string theChoice = Helpers.ReadChoice(choices);
 
-		while (theChoice != "c")
+		while (theChoice != "c" && theChoice != "q")
 		{
 			switch (theChoice)
 			{
@@ -82,12 +83,17 @@ public class AddBookingController
             }
 			theChoice = Helpers.ReadChoice(choices);
         }
-		return new Booking(member, boat!, sailingArea, endTime, startTime, destination);
+		_booking = new Booking(member, boat!, sailingArea, endTime, startTime, destination);
+
+        if (theChoice == "c")
+			AddBooking();
+
+		//return new Booking(member, boat!, sailingArea, endTime, startTime, destination);
     }
 
 
 
-    public void AddBooking()
+    private void AddBooking()
 	{
         Console.WriteLine(_booking);
         bool AddConfirmed = Helpers.YesOrNo("Confirm booking?");

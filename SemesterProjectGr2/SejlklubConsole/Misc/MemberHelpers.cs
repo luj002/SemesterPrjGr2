@@ -15,7 +15,7 @@
             {
                 Console.WriteLine($"{member.Id} - {member.Name} - {member.Email}");
             }
-            Console.Write("Enter Member ID to remove: ");
+            Console.Write("Enter Member ID: ");
             try
             {
                 int input = int.Parse(Console.ReadLine()!);

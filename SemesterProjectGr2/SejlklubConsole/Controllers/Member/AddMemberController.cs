@@ -18,7 +18,7 @@ public class AddMemberController
     public AddMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        _member = Create();
+        Create();
     }
     #endregion
 
@@ -27,14 +27,15 @@ public class AddMemberController
     /// Creates a Member object from ReadLine inputs
     /// </summary>
     /// <returns>returns the created Member object</returns>
-    private Member Create()
+    private void Create()
     {
         List<string> choices = new List<string> { 
             "1. Name", "2. Address", 
             "3. Email", 
             "4. Date of birth", 
             "5. Member type", 
-            "\nC. Confirm"
+            "\nC. Confirm",
+            "Q. Cancel (Discard Member)"
         };
         string name = "";
         string address = "";
@@ -44,7 +45,7 @@ public class AddMemberController
 
         string theChoice = Helpers.ReadChoice(choices);
 
-        while (theChoice != "c")
+        while (theChoice != "c" && theChoice != "q")
         {
             switch (theChoice)
             {
@@ -83,18 +84,22 @@ public class AddMemberController
                     choices[4] = $"5. Member type - {memberType}";
                     break;
                 default:
+                    Console.WriteLine("Invalid choice. Press any button to try again.");
+                    Console.ReadKey();
                     break;
             }
             theChoice = Helpers.ReadChoice(choices);
         }
 
-        return new Member(name, address, email, dateOfBirth, memberType);
+        _member = new Member(name, address, email, dateOfBirth, memberType);
+
+        AddMember();
     }
 
     /// <summary>
     /// Adds the created member to the repository after confirmation
     /// </summary>
-    public void AddMember()
+    private void AddMember()
     {
         Console.WriteLine(Member);
         bool AddConfirmed = Helpers.YesOrNo("Add this member?");
