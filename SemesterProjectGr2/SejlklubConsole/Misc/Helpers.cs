@@ -65,8 +65,8 @@ public class Helpers
     /// <summary>
     /// Reads yes or no input from console.
     /// </summary>
-    /// <param name="question">The question being displayed in console</param>
-    /// <returns>true if input from console starts with Y/y, false if input from console starts with N/n</returns>
+    /// <param name="question">The question being displayed in console.</param>
+    /// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
     public static bool YesOrNo(string question)
     {
         string input = "";

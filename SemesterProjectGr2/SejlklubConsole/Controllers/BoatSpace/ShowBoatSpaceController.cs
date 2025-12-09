@@ -16,6 +16,9 @@
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Prints all boat spaces in the repository.
+    /// </summary>
     public void ShowAllBoatSpaces()
     {
         foreach (BoatSpace boatSpace in _boatSpaceRepository.GetAll())

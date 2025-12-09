@@ -21,6 +21,9 @@ public class UpdateBoatSpaceController
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Updates the boat space within the repository.
+    /// </summary>
     public void UpdateBoatSpace()
     {
         int number = BoatSpace.Number;

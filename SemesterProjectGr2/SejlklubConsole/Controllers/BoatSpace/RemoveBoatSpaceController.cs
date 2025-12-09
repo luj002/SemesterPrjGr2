@@ -18,38 +18,16 @@ public class RemoveBoatSpaceController
     #endregion
 
     #region Methods
-    private bool YesOrNo(string question)
-    {
-        string input = "";
-        bool choiceFinalized = false;
-        while (!choiceFinalized)
-        {
-            Console.Write($"{question} [ y / n ]: ");
-            try
-            {
-                input = Console.ReadLine()!.ToLower();
-                if (input[0] != 'y' && input[0] != 'n')
-                    throw new ArgumentException($"Input was not 'y' or 'n'");
-                choiceFinalized = true;
-            }
-            catch (ArgumentException aex)
-            {
-                Console.WriteLine(aex.Message);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Input was not valid");
-            }
-        }
-        return input[0] == 'y';
-    }
+    /// <summary>
+    /// Removes the boat space from the repository.
+    /// </summary>
     public void RemoveBoatSpace()
     {
         Console.WriteLine("Boat space to delete:");
         Console.WriteLine(BoatSpace);
         Console.WriteLine();
 
-        bool confirm = YesOrNo("Are you sure you want to remove this boat space?");
+        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this boat space?");
 
         if (confirm)
             _boatSpaceRepository.Remove(BoatSpace.Number);

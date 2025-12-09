@@ -3,8 +3,8 @@
     /// <summary>
     /// Finds boat space by number from user input.
     /// </summary>
-    /// <param name="boatSpaceRepository">Repository to search from</param>
-    /// <returns>The boat space with the given number</returns>
+    /// <param name="boatSpaceRepository">Repository to search from.</param>
+    /// <returns>The boat space with the given number.</returns>
     public static BoatSpace SelectBoatSpace(IBoatSpaceRepository boatSpaceRepository)
     {
         bool validInput = false;
@@ -15,7 +15,7 @@
             {
                 Console.WriteLine($"{boatSpace.Number}");
             }
-            Console.Write("Enter boat space number to remove: ");
+            Console.Write("Enter boat space number: ");
             try
             {
                 int input = int.Parse(Console.ReadLine()!);

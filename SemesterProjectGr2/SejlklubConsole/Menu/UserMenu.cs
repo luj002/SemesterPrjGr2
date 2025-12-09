@@ -146,7 +146,6 @@
 			{
 				case "1":
 					AddBoatSpaceController boatSpaceController = new AddBoatSpaceController(_boatSpaceRepository);
-					boatSpaceController.AddBoatSpace();
 					break;
 				case "2":
 					ShowBoatSpaceController showBoatSpacesController = new ShowBoatSpaceController(_boatSpaceRepository);
