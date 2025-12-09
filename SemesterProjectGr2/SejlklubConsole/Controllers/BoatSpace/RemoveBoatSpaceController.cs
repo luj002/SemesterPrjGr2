@@ -23,6 +23,10 @@ public class RemoveBoatSpaceController
     /// </summary>
     public void RemoveBoatSpace()
     {
+        if (BoatSpace == null)
+        {
+            return;
+        }
         Console.WriteLine("Boat space to delete:");
         Console.WriteLine(BoatSpace);
         Console.WriteLine();

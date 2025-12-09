@@ -26,6 +26,10 @@ public class UpdateBoatSpaceController
     /// </summary>
     public void UpdateBoatSpace()
     {
+        if (BoatSpace == null)
+        {
+            return;
+        }
         int number = BoatSpace.Number;
 
         List<string> boatSpaceInfoFields = new List<string>

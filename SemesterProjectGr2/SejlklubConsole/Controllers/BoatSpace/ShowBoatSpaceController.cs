@@ -25,6 +25,7 @@
         {
             Console.WriteLine(boatSpace);
         }
+        Console.ReadKey();
     }
     #endregion
 }

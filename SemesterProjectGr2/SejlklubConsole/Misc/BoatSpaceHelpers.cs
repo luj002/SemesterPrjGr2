@@ -5,7 +5,7 @@
     /// </summary>
     /// <param name="boatSpaceRepository">Repository to search from.</param>
     /// <returns>The boat space with the given number.</returns>
-    public static BoatSpace SelectBoatSpace(IBoatSpaceRepository boatSpaceRepository)
+    public static BoatSpace? SelectBoatSpace(IBoatSpaceRepository boatSpaceRepository)
     {
         bool validInput = false;
         BoatSpace? selectedBoatSpace = null;
@@ -15,19 +15,28 @@
             {
                 Console.WriteLine($"{boatSpace.Number}");
             }
-            Console.Write("Enter boat space number: ");
+            Console.Write("Enter boat space number, or press q to cancel: ");
             try
             {
-                int input = int.Parse(Console.ReadLine()!);
-                selectedBoatSpace = boatSpaceRepository.GetBoatSpaceByNumber(input);
-                if (selectedBoatSpace != null)
+                string inputString = Console.ReadLine().ToLower();
+                if (inputString == "" || inputString == "q")
                 {
-                    validInput = true;
+                    return null;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid boat space number. Please try again.");
+                    int inputInt = int.Parse(inputString);
+                    selectedBoatSpace = boatSpaceRepository.GetBoatSpaceByNumber(inputInt);
+                    if (selectedBoatSpace != null)
+                    {
+                        validInput = true;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid boat space number. Please try again.");
+                    }
                 }
+                
             }
             catch (ArgumentException aex)
             {

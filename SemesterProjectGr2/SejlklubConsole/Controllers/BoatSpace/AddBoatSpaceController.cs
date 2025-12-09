@@ -24,36 +24,8 @@ public class AddBoatSpaceController
 
     #region Methods
     /// <summary>
-    /// Handles creation of new boat spaces using ReadLine inputs.
+    /// Begins the process of creating a new boat space to add.
     /// </summary>
-    /// <returns>A new boat space ready to be added.</returns>
-    //private BoatSpace Create()
-    //{
-    //    List<string> boatSpaceInfoFields = new List<string> { "1. Number", "B. Back" };
-    //    int number = 0;
-
-    //    string theChoice = Helpers.ReadChoice(boatSpaceInfoFields);
-
-    //    while (theChoice != "b")
-    //    {
-    //        switch (theChoice)
-    //        {
-    //            case "1":
-    //                Console.Write("Enter number: ");
-    //                number = Convert.ToInt32(Console.ReadLine());
-
-    //                boatSpaceInfoFields[0] = $"1. Number - {number}";
-    //                break;
-    //            default:
-    //                Console.WriteLine("Choose 1 or b to go back");
-    //                break;
-    //        }
-    //        theChoice = Helpers.ReadChoice(boatSpaceInfoFields);
-    //    }
-
-    //    return new BoatSpace(number);
-    //}
-
     private void Create()
     {
         List<string> choices = new List<string> {
@@ -70,8 +42,7 @@ public class AddBoatSpaceController
             switch (theChoice)
             {
                 case "1":
-                    Console.Write("Enter number: ");
-                    number = Convert.ToInt32(Console.ReadLine());
+                    number = Helpers.IntFromReadLine("Enter number: ", 1, 255);
 
                     choices[0] = $"1. Number - {number}";
                     break;
@@ -81,10 +52,9 @@ public class AddBoatSpaceController
             }
             theChoice = Helpers.ReadChoice(choices);
         }
-
-        _boatSpace = new BoatSpace(number);
         if(theChoice == "c")
         {
+            _boatSpace = new BoatSpace(number);
             AddBoatSpace();
         }
     }
