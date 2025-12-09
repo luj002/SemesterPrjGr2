@@ -5,7 +5,7 @@
     /// </summary>
     /// <param name="memberRepository">Repository to search from</param>
     /// <returns>The member with the given ID</returns>
-    public static Member SelectMember(IMemberRepository memberRepository)
+    public static Member? SelectMember(IMemberRepository memberRepository)
     {
         bool validInput = false;
         Member? selectedMember = null;
@@ -15,11 +15,16 @@
             {
                 Console.WriteLine($"{member.Id} - {member.Name} - {member.Email}");
             }
-            Console.Write("Enter Member ID: ");
+            Console.Write("Enter Member ID (or Q to cancel): ");
             try
             {
-                int input = int.Parse(Console.ReadLine()!);
-                selectedMember = memberRepository.GetMemberById("MEMB"+input);
+                string stringInput = Console.ReadLine().ToLower();
+
+                if (stringInput.Length == 0 || stringInput[0] == 'q')
+                    return null;
+
+                int intInput = int.Parse(stringInput);
+                selectedMember = memberRepository.GetMemberById("MEMB"+intInput);
                 if (selectedMember != null)
                 {
                     validInput = true;

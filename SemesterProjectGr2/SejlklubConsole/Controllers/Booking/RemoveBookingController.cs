@@ -1,12 +1,23 @@
 ﻿
 public class RemoveBookingController
 {
-	public RemoveBookingController(IBookingRepository bookingRepository)
-	{
-	}
+	#region Instance fields
+	private IBookingRepository _bookingRepository;
+    private Booking _booking;
+    #endregion
 
-	internal void RemoveBooking()
+    #region Constructor
+    public RemoveBookingController(IBookingRepository bookingRepository)
 	{
-		throw new NotImplementedException();
+		_bookingRepository = bookingRepository;
+        _booking = BookingHelpers.SelectBooking(_bookingRepository);
+    }
+    #endregion
+
+    #region Methods
+    public void RemoveBooking()
+	{
+
 	}
+    #endregion
 }

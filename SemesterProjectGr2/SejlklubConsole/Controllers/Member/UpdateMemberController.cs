@@ -2,18 +2,18 @@
 {
     #region Instance Fields
     private IMemberRepository _memberRepository;
+    private Member? _member;
     #endregion
 
     #region Constructors
     public UpdateMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        Member = MemberHelpers.SelectMember(_memberRepository);
+        _member = MemberHelpers.SelectMember(_memberRepository);
     }
     #endregion
 
     #region Properties
-    public Member Member { get; set; }
     #endregion
 
     #region Methods
@@ -22,11 +22,18 @@
     /// </summary>
     public void UpdateMember()
     {
-        string name = Member.Name;
-        string address = Member.Address;
-        string email = Member.Email;
-        DateTime dateOfBirth = Member.DateOfBirth;
-        MemberType memberType = Member.Type;
+        if (_member == null)
+        {
+            Console.WriteLine("No member selected. Press any key to continue.");
+            Console.ReadKey();
+            return;
+        }
+
+        string name = _member.Name;
+        string address = _member.Address;
+        string email = _member.Email;
+        DateTime dateOfBirth = _member.DateOfBirth;
+        MemberType memberType = _member.Type;
 
         List<string> choices = new List<string>
         {
@@ -88,21 +95,21 @@
 
         if (theChoice == "c")
         {
-            Member.Name = name;
-            Member.Address = address;
-            Member.Email = email;
-            Member.DateOfBirth = dateOfBirth;
-            Member.Type = memberType;
-            Console.WriteLine("Member updated successfully.");
-            Console.ReadLine();
+            _member.Name = name;
+            _member.Address = address;
+            _member.Email = email;
+            _member.DateOfBirth = dateOfBirth;
+            _member.Type = memberType;
+            Console.WriteLine("Member updated successfully. Press any key to continue.");
+            Console.ReadKey();
         }
         else
         {
             bool confirm = Helpers.YesOrNo("Discard changes?");
             if (confirm)
             {
-                Console.WriteLine("Changes discarded.");
-                Console.ReadLine();
+                Console.WriteLine("Changes discarded. Press any key to continue.");
+                Console.ReadKey();
             }
         }
     }

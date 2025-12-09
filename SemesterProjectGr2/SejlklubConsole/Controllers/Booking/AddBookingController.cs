@@ -9,11 +9,6 @@ public class AddBookingController
     #endregion
 
     #region Constructor
-	public AddBookingController(IBookingRepository bookingRepository)
-	{
-		// TODO FIX!
-		// MADE TO SATISFY USERMENU
-	}
     public AddBookingController(IBookingRepository bookingRepository, IBoatRepository boatRepository, IMemberRepository memberRepository)
 	{
 		_bookingRepository = bookingRepository;
