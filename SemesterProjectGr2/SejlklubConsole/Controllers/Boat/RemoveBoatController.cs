@@ -13,6 +13,13 @@ public class RemoveBoatController
 	public void Remove()
     {
         _boatRep.Remove(BoatID);
+
+        Console.Clear();
+        Console.WriteLine($"Boat \"{BoatID}\" removed!");
+
+        Console.WriteLine();
+        Console.Write("Press any key to return to boat selection.");
+        Console.ReadKey();
     }
 
 	internal void RemoveBoat()
@@ -21,7 +28,26 @@ public class RemoveBoatController
         string callType = "remove";
         SBC.ShowAllBoats(callType);
 
-        Console.Write("Remove boat by id number: ");
         Console.WriteLine("Q. Cancel");
-	}
+        Console.WriteLine();
+
+        while (true)
+        {
+            Console.Write("Remove boat by id number: ");
+            string input = Console.ReadLine().ToLower();
+            int chosenNumber;
+
+            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
+            {
+                BoatID = "#BOAT_" + chosenNumber.ToString("0000");
+                Remove();
+                break;
+            }
+
+            else if (input == "q")
+            {
+                break;
+            }
+        }
+    }
 }

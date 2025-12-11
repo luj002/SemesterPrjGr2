@@ -17,10 +17,6 @@
 
 	public void Add(BlogEntry blogEntry)
 	{
-		while(true)
-		{
-
-		}
 		if (blogEntry == null)
 		{
 			throw new RepositoryException(RepositoryExceptionType.Add, "Cannot add a null blog entry.");
