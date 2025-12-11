@@ -4,15 +4,11 @@ public class RemoveBoatController
     public string BoatID { get; set; }
     private IBoatRepository _boatRep;
 
-    public RemoveBoatController(IBoatRepository boatRep, string id)
+    public RemoveBoatController(IBoatRepository boatRep)
     {
-        BoatID = id;
+        BoatID = "";
         _boatRep = boatRep;
     }
-
-	public RemoveBoatController(IBoatRepository boatRepository)
-	{
-	}
 
 	public void Remove()
     {
@@ -21,6 +17,11 @@ public class RemoveBoatController
 
 	internal void RemoveBoat()
 	{
-		throw new NotImplementedException();
+		ShowBoatController SBC = new ShowBoatController(_boatRep);
+        string callType = "remove";
+        SBC.ShowAllBoats(callType);
+
+        Console.Write("Remove boat by id number: ");
+        Console.WriteLine("Q. Cancel");
 	}
 }

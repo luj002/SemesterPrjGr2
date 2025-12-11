@@ -7,7 +7,7 @@
 		_boatRep = boatRepository;
 	}
 
-	public void ShowAllBoats()
+	public void ShowAllBoats(string callType)
 	{
 		List<Boat> allBoats = _boatRep.GetAll();
         
@@ -18,7 +18,10 @@
             Console.WriteLine();
 		}
 
-        Console.Write("Press any key to return to boat selection.");
-        Console.ReadLine();
+		if (callType == "display")
+		{
+            Console.Write("Press any key to return to boat selection.");
+            Console.ReadLine();
+        }
 	}
 }
