@@ -1,4 +1,6 @@
 ﻿
+using System.Reflection.Metadata.Ecma335;
+
 public class RemoveBlogEntryController
 {
 	#region Instance Fields
@@ -20,19 +22,21 @@ public class RemoveBlogEntryController
 	{
 		if (_blogEntry == null)
 			return;
-
+		Console.Clear();
 		Console.WriteLine($"BlogEntry to delete:\n{_blogEntry}\n");
 
-		bool confirm = Helpers.YesOrNo("Are you sure you want to remove this blogEntry?");
+		bool confirm = Helpers.YesOrNoKey("Are you sure you want to remove this blogEntry?");
 
 		if (confirm)
 		{
 			_blogEntryRepository.Remove(_blogEntry.Id);
+			Console.Clear();
 			Console.WriteLine("BlogEntry removed successfully. Press any key to continue");
 			Console.ReadKey();
 		}
 		else
 		{
+			Console.Clear();
 			Console.WriteLine("BlogEntry removal cancelled. Press any key to continue");
 			Console.ReadKey();
 		}
@@ -47,12 +51,12 @@ public class RemoveBlogEntryController
 			{
 				Console.WriteLine($"{blogEntry.Id} - {blogEntry.Title} - {blogEntry.Content}");
 			}
-			Console.Write("Enter BlogEntry ID (or Q to cancel): ");
 			try
 			{
-				int input = Helpers.IntFromReadLine("Write the number of the blogentry ID",1,blogEntryRepository.Count);
-
-				selectedBlogEntry = blogEntryRepository.GetBlogEntryById(StringId.GetID(IdPrefix.BLOGENTRY,input));
+				int input = Helpers.IntFromReadLine("Write the number of the blogentry ID (or 0 to cancel)",0,blogEntryRepository.Count);
+				if (input == 0)
+					return null;
+				selectedBlogEntry = blogEntryRepository.GetBlogEntryById(StringId.GetID(IdPrefix.BLOGENTRY, input));
 				if (selectedBlogEntry != null)
 				{
 					validInput = true;
@@ -65,14 +69,6 @@ public class RemoveBlogEntryController
 			catch (ArgumentException aex)
 			{
 				Console.WriteLine(aex.Message);
-			}
-			catch (FormatException)
-			{
-				Console.WriteLine("Input was not in the correct format. Please enter a valid BlogEntry ID.");
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"An unexpected error occurred: {ex.Message}");
 			}
 
 		}

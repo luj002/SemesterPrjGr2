@@ -18,4 +18,18 @@
 	{
 		return $"{GetIdPrefix(prefix)}{id:D4}";
 	}
+	public static int GetNumericId(string stringId)
+	{
+		string[] parts = stringId.Split('_');
+		if (parts.Length != 2)
+			throw new ArgumentException("Invalid string ID format.");
+		if (int.TryParse(parts[1], out int numericId))
+		{
+			return numericId;
+		}
+		else
+		{
+			throw new ArgumentException("Invalid numeric ID format.");
+		}
+	}
 }
