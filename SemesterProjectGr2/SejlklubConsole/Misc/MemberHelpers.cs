@@ -24,7 +24,7 @@
                     return null;
 
                 int intInput = int.Parse(stringInput);
-                selectedMember = memberRepository.GetMemberById("#MEMB"+intInput);
+                selectedMember = memberRepository.GetMemberById("#MEMB_"+intInput);
                 if (selectedMember != null)
                 {
                     validInput = true;
