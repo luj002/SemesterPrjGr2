@@ -23,8 +23,8 @@
                 if (stringInput.Length == 0 || stringInput[0] == 'q')
                     return null;
 
-                int intInput = int.Parse(stringInput);
-                selectedMember = memberRepository.GetMemberById("#MEMB_"+intInput);
+                int input = int.Parse(stringInput);
+                selectedMember = memberRepository.GetMemberById(StringId.GetID(IdPrefix.MEMBER, input));
                 if (selectedMember != null)
                 {
                     validInput = true;
@@ -36,14 +36,17 @@
             }
             catch (ArgumentException aex)
             {
+                Console.Clear();
                 Console.WriteLine(aex.Message);
             }
             catch (FormatException)
             {
+                Console.Clear();
                 Console.WriteLine("Input was not in the correct format. Please enter a valid Member ID.");
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
 
