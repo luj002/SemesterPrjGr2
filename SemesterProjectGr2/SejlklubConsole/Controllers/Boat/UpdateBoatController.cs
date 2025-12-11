@@ -24,7 +24,7 @@ public class UpdateBoatController
         Console.ReadKey();
     }
 
-    //This function converts merged text into spaced text (SailNumber --> Sail Name)
+    //This function converts merged text into spaced text (SailNumber --> Sail Number)
     public string GetDisplayName(string propertyName)
     {
         StringBuilder displayName = new StringBuilder();
