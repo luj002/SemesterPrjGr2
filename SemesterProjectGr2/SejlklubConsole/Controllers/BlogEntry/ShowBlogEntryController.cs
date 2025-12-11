@@ -10,8 +10,9 @@
 	{
 		foreach (BlogEntry blogEntry in _blogEntryRepository.GetAll())
 		{
-			Console.WriteLine(blogEntry);
+			Console.WriteLine(blogEntry+"\n");
 		}
-		Console.ReadLine();
+		Console.WriteLine("Press any key to go back...");
+		Console.ReadKey();
 	}
 }
