@@ -19,7 +19,7 @@
             try
             {
                 int input = int.Parse(Console.ReadLine()!);
-                selectedBooking = bookingRepository.GetBookingById("#BOOK" + input);
+                selectedBooking = bookingRepository.GetBookingById("#BOOK_" + input);
                 if (selectedBooking != null)
                 {
                     validInput = true;
