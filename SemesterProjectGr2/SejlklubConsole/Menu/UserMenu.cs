@@ -1,5 +1,10 @@
 ﻿public class UserMenu
 {
+	public UserMenu()
+	{
+		MockData.PopulateBlogEntries(_blogEntryRepository);
+	}
+
 	private List<string> _menuChoices = new List<string>();
     //for now just use menuChoices.Add() in PopulateMenu() to add stuff
     //todo find a better way to populate this list
