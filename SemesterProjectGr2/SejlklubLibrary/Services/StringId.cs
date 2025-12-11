@@ -8,6 +8,6 @@
 			_counters[prefix] = 0;
 		}
 		_counters[prefix]++;
-		return $"#{prefix}{_counters[prefix]}";
+		return $"#{prefix}_{_counters[prefix]:D4}";
 	}
 }
