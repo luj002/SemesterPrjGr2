@@ -6,11 +6,15 @@ public class AddBookingController
 	private IBoatRepository _boatRepository;
 	private IMemberRepository _memberRepository;
     private Booking _booking;
+	private string _status;
+	private bool _validBooking;
     #endregion
 
     #region Constructor
     public AddBookingController(IBookingRepository bookingRepository, IBoatRepository boatRepository, IMemberRepository memberRepository)
 	{
+		_validBooking = true;
+		_status = "";
 		_bookingRepository = bookingRepository;
 		Create();
     }
@@ -26,7 +30,8 @@ public class AddBookingController
 			"4. Destination",
             "5. Start time",
             "6. End time",
-            "\nC. Confirm",
+            $"{(_validBooking ? "" : $"\n{_status}\n")}",
+            "C. Confirm",
 			"Q. Cancel (Discard Booking)"
         };
 
@@ -39,27 +44,33 @@ public class AddBookingController
 
 		string theChoice = Helpers.ReadChoice(choices);
 
-		while (theChoice != "c" && theChoice != "q")
+		while (theChoice != "c" && theChoice != "q" && !_validBooking)
 		{
 			switch (theChoice)
 			{
 				case "1":
 					// Select member
 					member = MemberHelpers.SelectMember(_memberRepository);
+
 					if (member != null)
+					{
                         choices[0] = $"1. Member - {member.Id} {member.Name}";
+					}
                     break;
 				case "2":
                     // Select boat
 					boat = BoatHelpers.SelectBoat(_boatRepository);
 					if (boat != null)
-						choices[1] = $"2. Boat - {boat.Id} {boat.Nickname} {boat.ModelName}";
+					{
+                        choices[1] = $"2. Boat - {boat.Id} {boat.Nickname} {boat.ModelName}";
+					}
                     break;
 				case "3":
 					// Sailing area
 					Console.Write("Enter sailing area: ");
                     sailingArea = Console.ReadLine()!;
-					choices[2] = $"3. Sailing area - {sailingArea}";
+
+                    choices[2] = $"3. Sailing area - {sailingArea}";
                     break;
 				case "4":
                     // Destination
@@ -73,29 +84,52 @@ public class AddBookingController
 				case "5":
                     // Start time
 					startTime = Helpers.DateTimeFromReadLine("Start time", DateTime.Now, DateTime.Now.AddYears(1), true);
+
+                    choices[4] = $"5. Start time - {startTime.ToShortDateString} {startTime.ToShortTimeString}";
                     break;
 				case "6":
                     // End time
 					endTime = Helpers.DateTimeFromReadLine("End time", startTime, startTime.AddDays(2), true);
-					break;
+
+					choices[5] = $"6. End time - {endTime.ToShortDateString} {endTime.ToShortTimeString}";
+                    break;
 				default:
 					Console.WriteLine("Invalid choice. Press any button to try again.");
 					Console.ReadKey();
 					break;
             }
-			theChoice = Helpers.ReadChoice(choices);
+			
+			try
+			{
+				_validBooking = false;
+				_validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), boat!, startTime, endTime);
+            }
+			catch (ArgumentException aex)
+			{
+				_status = aex.Message;
+            }
+
+
+            theChoice = Helpers.ReadChoice(choices);
         }
 
         if (theChoice == "c")
 		{
-            _booking = new Booking(member, boat!, sailingArea, endTime, startTime, destination);
+            _booking = new Booking(member!, boat!, sailingArea, startTime, endTime, destination);
             AddBooking();
         }
 
 
     }
 
+	private bool ValidateBookingCreation(Boat boat, DateTime startTime, DateTime endTime)
+	{
+		List<Booking> bookings = BookingHelpers.GetBookingsInTimeInterval(_bookingRepository.GetAll(), startTime, endTime);
+		bookings = BookingHelpers.GetBookingsByBoat(bookings, boat);
 
+		return bookings.Count == 0;
+
+    }
 
     private void AddBooking()
 	{

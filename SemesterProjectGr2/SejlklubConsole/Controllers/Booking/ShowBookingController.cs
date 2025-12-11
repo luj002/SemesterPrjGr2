@@ -76,7 +76,9 @@ public class ShowBookingController
     private void ShowActiveBookings()
     {
         Console.WriteLine("All active bookings:");
-        foreach (Booking booking in _bookingRepository.GetAll())
+        List<Booking> activeBookings = BookingHelpers.GetActiveBookings(_bookingRepository.GetAll());
+        
+        foreach (Booking booking in activeBookings)
         {
             if (booking.IsActive)
             {
@@ -100,12 +102,11 @@ public class ShowBookingController
             return;
         }
         Console.WriteLine($"Bookings for boat {boat.Id} {boat.Nickname} {boat.ModelName}: ");
-        foreach (Booking booking in _bookingRepository.GetAll())
+
+        List<Booking> bookingsForBoat = BookingHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), boat);
+        foreach (Booking booking in bookingsForBoat)
         {
-            if (booking.Boat.Id == boat.Id)
-            {
-                Console.WriteLine(booking);
-            }
+            Console.WriteLine(booking);
         }
         Console.ReadKey();
     }
@@ -123,17 +124,16 @@ public class ShowBookingController
             return;
         }
         Console.WriteLine($"Bookings for member {member.Id} {member.Name}: ");
-        foreach (Booking booking in _bookingRepository.GetAll())
+        
+        List<Booking> bookingsForMember = BookingHelpers.GetBookingsByMember(_bookingRepository.GetAll(), member);
+        foreach (Booking booking in bookingsForMember)
         {
-            if (booking.Member.Id == member.Id)
-            {
-                Console.WriteLine(booking);
-            }
+            Console.WriteLine(booking);
         }
         Console.ReadKey();
     }
 
-    
+
 
 
     #endregion
