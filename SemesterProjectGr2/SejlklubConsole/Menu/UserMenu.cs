@@ -3,7 +3,9 @@
 	public UserMenu()
 	{
 		MockData.PopulateBlogEntries(_blogEntryRepository);
-	}
+		MockData.PopulateMembers(_memberRepository);
+		MockData.PopulateBoats(_boatRepository);
+    }
 
 	private List<string> _menuChoices = new List<string>();
     //for now just use menuChoices.Add() in PopulateMenu() to add stuff
