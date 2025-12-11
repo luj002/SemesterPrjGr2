@@ -54,18 +54,7 @@ public class UpdateBoatController
 
             var property = properties[chosenNumber - 1];
             string displayName = GetDisplayName(property.Name);
-            
-            if (property.PropertyType == typeof(BoatType))
-            {
-                displayName = "Boat Type";
-                Console.WriteLine("Editing property: " + displayName);
-                Helpers.PrintEnumerable(Enum.GetValues(typeof(BoatType)));
-            }
-
-            else if (property.PropertyType != typeof(BoatType))
-            {
-                Console.WriteLine("Editing property: " + displayName);
-            }
+            Console.WriteLine("Editing property: " + displayName);
 
             Console.Write("Value: ");
             string defaultInput = Console.ReadLine();
@@ -79,14 +68,6 @@ public class UpdateBoatController
             else if (property.PropertyType == typeof(double))
             {
                 if (double.TryParse(defaultInput, out double output))
-                {
-                    handledInput = output;
-                }
-            }
-
-            else if (property.PropertyType == typeof(BoatType))
-            {
-                if (Enum.TryParse<BoatType>(defaultInput, true, out BoatType output) && Enum.IsDefined(typeof(BoatType), output))
                 {
                     handledInput = output;
                 }
