@@ -182,7 +182,6 @@
 					break;
 				case '3':
 					UpdateBoatController updateBoatController = new UpdateBoatController(_boatRepository);
-					updateBoatController.UpdateBoat();
 					break;
 				case '4':
 					RemoveBoatController removeBoatController = new RemoveBoatController(_boatRepository);

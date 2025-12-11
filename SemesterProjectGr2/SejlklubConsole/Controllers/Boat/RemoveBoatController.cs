@@ -22,17 +22,19 @@ public class RemoveBoatController
         Console.ReadKey();
     }
 
-	internal void RemoveBoat()
+	public void RemoveBoat()
 	{
-		ShowBoatController SBC = new ShowBoatController(_boatRep);
-        string callType = "remove";
-        SBC.ShowAllBoats(callType);
-
-        Console.WriteLine("Q. Cancel");
-        Console.WriteLine();
-
         while (true)
         {
+            Console.Clear();
+
+            ShowBoatController SBC = new ShowBoatController(_boatRep);
+            string callType = "remove";
+            SBC.ShowAllBoats(callType);
+
+            Console.WriteLine("Q. Cancel");
+            Console.WriteLine();
+
             Console.Write("Remove boat by id number: ");
             string input = Console.ReadLine().ToLower();
             int chosenNumber;
@@ -49,5 +51,7 @@ public class RemoveBoatController
                 break;
             }
         }
+
+        Console.Clear();
     }
 }
