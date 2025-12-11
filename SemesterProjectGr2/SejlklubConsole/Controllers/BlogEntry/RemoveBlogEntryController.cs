@@ -50,13 +50,9 @@ public class RemoveBlogEntryController
 			Console.Write("Enter BlogEntry ID (or Q to cancel): ");
 			try
 			{
-				string stringInput = Console.ReadLine().ToLower();
+				int input = Helpers.IntFromReadLine("Write the number of the blogentry ID",1,blogEntryRepository.Count);
 
-				if (stringInput.Length == 0 || stringInput[0] == 'q')
-					return null;
-
-				int intInput = int.Parse(stringInput);
-				selectedBlogEntry = blogEntryRepository.GetBlogEntryById("#MEMB" + intInput);
+				selectedBlogEntry = blogEntryRepository.GetBlogEntryById(StringId.GetID(IdPrefix.BLOGENTRY,input));
 				if (selectedBlogEntry != null)
 				{
 					validInput = true;

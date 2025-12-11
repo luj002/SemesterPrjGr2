@@ -22,7 +22,7 @@ public enum IdPrefix
 {
 	MEMBER,
 	BOAT,
-	BLOG,
+	BLOGENTRY,
 	EVENT,
 	BOOK,
 	REGISTRATION
