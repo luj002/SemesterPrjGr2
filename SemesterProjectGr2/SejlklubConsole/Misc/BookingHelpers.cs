@@ -133,13 +133,14 @@
     /// <exception cref="ArgumentException">Thrown if the boat in <paramref name="booking"/> is already booked for the specified time period.</exception>
     public static bool ValidateBooking(List<Booking> bookingsList, Boat boat, DateTime startTime, DateTime endTime)
     {
+
         List<Booking> bookings = new List<Booking>();
 
         bookings = GetBookingsInTimeInterval(bookingsList, startTime, endTime);
         foreach (Booking b in bookings)
         {
             if (b.Boat.Id == boat.Id)
-                throw new ArgumentException("Boat is already booked for the selected time period.");
+                return false;
         }
 
         return true;
