@@ -14,7 +14,7 @@
             try
             {
                 int input = int.Parse(Console.ReadLine()!);
-                selectedBoat = boatRepository.GetBoatById("BOAT"+input);
+                selectedBoat = boatRepository.GetBoatById(StringId.GetID(IdPrefix.BOAT, input));
                 if (selectedBoat != null)
                 {
                     validInput = true;
