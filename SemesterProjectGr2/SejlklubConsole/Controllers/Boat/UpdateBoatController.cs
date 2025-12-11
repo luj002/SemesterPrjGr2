@@ -1,4 +1,7 @@
-﻿public class UpdateBoatController
+﻿using System.Reflection;
+using System.Text;
+
+public class UpdateBoatController
 {
 	public Boat ChosenBoat { get; set; }
 	private IBoatRepository _boatRep;
@@ -9,16 +12,122 @@
 		DetectInput();
 	}
 
-	public void UpdateBoat()
+	public void UpdateBoat(PropertyInfo givenProperty, object givenValue)
 	{
-        Console.WriteLine("updating boat...");
+        givenProperty.SetValue(ChosenBoat, givenValue);
 
         Console.Clear();
         Console.WriteLine($"Boat \"{ChosenBoat.Id}\" updated!");
 
         Console.WriteLine();
-        Console.Write("Press any key to return to boat selection.");
+        Console.Write("Press any key to return to boat updating.");
         Console.ReadKey();
+    }
+
+    //This function converts merged text into spaced text (ModelName --> Model Name)
+    public string GetDisplayName(string propertyName)
+    {
+        StringBuilder displayName = new StringBuilder();
+        displayName.Append(propertyName[0]);
+
+        for (int index = 1; index < propertyName.Length; index++)
+        {
+            char previousCharacter = propertyName[index - 1];
+            char currentCharacter = propertyName[index];
+
+            if (char.IsLower(previousCharacter) && char.IsUpper(currentCharacter))
+            {
+                displayName.Append(' ');
+            }
+
+            displayName.Append(currentCharacter);
+        }
+
+        return displayName.ToString();
+    }
+
+    public void DisplayEdit(int chosenNumber, List<PropertyInfo> properties)
+    {
+        while (true)
+        {
+            Console.Clear();
+
+            var property = properties[chosenNumber - 1];
+            string displayName = GetDisplayName(property.Name);
+            
+            if (property.PropertyType == typeof(BoatType))
+            {
+                displayName = "Boat Type";
+                Console.WriteLine("Editing property: " + displayName);
+                Helpers.PrintEnumerable(Enum.GetValues(typeof(BoatType)));
+            }
+
+            else if (property.PropertyType != typeof(BoatType))
+            {
+                Console.WriteLine("Editing property: " + displayName);
+            }
+
+            Console.Write("Value: ");
+            string defaultInput = Console.ReadLine();
+            dynamic handledInput = null;
+
+            if (property.PropertyType == typeof(string))
+            {
+                handledInput = defaultInput;
+            }
+
+            else if (property.PropertyType == typeof(double))
+            {
+                if (double.TryParse(defaultInput, out double output))
+                {
+                    handledInput = output;
+                }
+            }
+
+            else if (property.PropertyType == typeof(BoatType))
+            {
+                if (Enum.TryParse<BoatType>(defaultInput, true, out BoatType output) && Enum.IsDefined(typeof(BoatType), output))
+                {
+                    handledInput = output;
+                }
+            }
+
+            if (handledInput != null)
+            {
+                UpdateBoat(property,handledInput);
+                break;
+            }
+        }
+    }
+
+    public List<PropertyInfo> DisplayOverview()
+    {
+        Console.WriteLine("Choose a property to edit:");
+        Console.WriteLine();
+
+        var properties = typeof(Boat).GetProperties().Where(property => property.Name != "Id" && property.Name != "Log" && property.Name != "AssignedSpace" && property.Name != "Type" && property.Name != "ModelName" && property.Name != "BuildYear").ToList();
+        int count = 0;
+
+        foreach (var property in properties)
+        {
+            count += 1;
+
+            string displayName = GetDisplayName(property.Name);
+            object displayValue = property.GetValue(ChosenBoat);
+
+            if (displayValue == null)
+            {
+                displayValue = "???";
+            }
+
+            Console.WriteLine($"{count}. {displayName} - {displayValue}");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Q. Back");
+        Console.WriteLine();
+
+        return properties;
     }
 
 	public void DetectInput()
@@ -39,7 +148,7 @@
             string input = Console.ReadLine();
             int chosenNumber;
 
-            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
+            if (int.TryParse(input, out chosenNumber) == true)
             {
                 string BoatID = "#BOAT_" + chosenNumber.ToString("0000");
                 ChosenBoat = _boatRep.GetBoatById(BoatID);
@@ -48,12 +157,31 @@
 
             else if (input == "q")
             {
-                break;
+                return;
             }
         }
 
-        Console.Clear();
-
         //Edit boat.
+        while (true)
+        {
+            Console.Clear();
+
+            List<PropertyInfo> properties = DisplayOverview();
+            int propertyAmount = properties.Count;
+
+            Console.Write("Your choice: ");
+            string input = Console.ReadLine().ToLower();
+            int chosenNumber;
+
+            if (int.TryParse(input, out chosenNumber) == true && chosenNumber <= propertyAmount && chosenNumber > 0)
+            {
+                DisplayEdit(chosenNumber,properties);
+            }
+
+            else if (input == "q")
+            {
+                break;
+            }
+        }
     }
 }

@@ -67,7 +67,6 @@
             }
 
             Console.Write("Value: ");
-
             string defaultInput = Console.ReadLine();
             dynamic handledInput = null;
 
@@ -86,7 +85,7 @@
 
             else if (currentProperty is BoatType)
             {
-                if (Enum.TryParse<BoatType>(defaultInput, true, out BoatType output))
+                if (Enum.TryParse<BoatType>(defaultInput, true, out BoatType output) && Enum.IsDefined(typeof(BoatType), output))
                 {
                     handledInput = output;
                 }
@@ -143,7 +142,7 @@
             input = Console.ReadLine()!.ToLower();
             int chosenNumber;
 
-            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
+            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10 && chosenNumber > 0)
             {
                 DisplayEdit(options[chosenNumber - 1], chosenNumber);
             }
