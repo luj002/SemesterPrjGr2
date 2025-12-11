@@ -5,6 +5,7 @@
 		MockData.PopulateBlogEntries(_blogEntryRepository);
 		MockData.PopulateMembers(_memberRepository);
 		MockData.PopulateBoats(_boatRepository);
+		MockData.PopulateBookings(_bookingRepository);
     }
 
 	private List<string> _menuChoices = new List<string>();
