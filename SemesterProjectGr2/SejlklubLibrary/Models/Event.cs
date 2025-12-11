@@ -21,7 +21,7 @@
 	}
 	public Event(string title, string description, DateTime startTime, DateTime endTime, Adminstrator creator)
 	{
-		Id = StringId.Next("EVEN");
+		Id = StringId.Next(IdPrefix.EVENT);
 		Title = title;
 		Description = description;
 		StartTime = startTime;

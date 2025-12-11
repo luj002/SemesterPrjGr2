@@ -10,7 +10,7 @@
 	public Boat Boat { get; set; }
 	public Booking(Member member, Boat boat, string sailingArea, DateTime endTime, DateTime? startTime = null, string? destination = null)
 	{
-		Id = StringId.Next("BOOK");
+		Id = StringId.Next(IdPrefix.BOOK);
 		Member = member;
 		Boat = boat;
 		StartTime = startTime ?? DateTime.Now;

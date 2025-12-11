@@ -18,3 +18,12 @@ public enum BoatType
     Canoe,
     Kayak
 }
+public enum IdPrefix
+{
+	MEMBER,
+	BOAT,
+	BLOG,
+	EVENT,
+	BOOK,
+	REGISTRATION
+}

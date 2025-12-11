@@ -7,7 +7,7 @@
 	public DateTime CreatedAt { get; }
 	public BlogEntry(string title, string content, Adminstrator auther)
 	{
-		Id = StringId.Next("BLOG");
+		Id = StringId.Next(IdPrefix.BLOG);
 		Title = title;
 		Content = content;
 		CreatedAt = DateTime.Now;

@@ -16,7 +16,7 @@ public class Boat
 	public int? AssignedSpace { get; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
-		Id = StringId.Next("BOAT");
+		Id = StringId.Next(IdPrefix.BOAT);
 		ModelName = modelName;
 		Type = type;
 		Length = length;

@@ -8,7 +8,7 @@
 	public MemberType Type { get; set; }
 	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type)
 	{
-		Id = StringId.Next("MEMB");
+		Id = StringId.Next(IdPrefix.MEMBER);
 		Name = name;
 		Address = address;
 		Email = email;

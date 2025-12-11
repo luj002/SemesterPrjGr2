@@ -7,7 +7,7 @@
 	public Event Event { get; }
 	public Registration(Member member, Event e, string? comment = null)
 	{
-		Id = StringId.Next("REGI");
+		Id = StringId.Next(IdPrefix.REGISTRATION);
 		Member = member;
 		RegistrationDate = DateTime.Now;
 		Event = e;
