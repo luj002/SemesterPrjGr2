@@ -25,7 +25,7 @@ public static class Helpers
                     throw new ArgumentException($"Input must be at least {min}");
 
                 if (input > max)
-                    throw new ArgumentException($"Input must be less than {max}");
+                    throw new ArgumentException($"Input must be at most {max}");
 
                 validInput = true;
             }

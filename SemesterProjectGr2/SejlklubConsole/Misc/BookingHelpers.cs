@@ -19,7 +19,7 @@
             try
             {
                 int input = int.Parse(Console.ReadLine()!);
-                selectedBooking = bookingRepository.GetBookingById("#BOOK" + input);
+                selectedBooking = bookingRepository.GetBookingById(StringId.GetID(IdPrefix.BOOK, input));
                 if (selectedBooking != null)
                 {
                     validInput = true;
@@ -31,14 +31,17 @@
             }
             catch (ArgumentException aex)
             {
+                Console.Clear();
                 Console.WriteLine(aex.Message);
             }
             catch (FormatException)
             {
+                Console.Clear();
                 Console.WriteLine("Input was not in the correct format. Please enter a valid Booking ID.");
             }
             catch (Exception ex)
             {
+                Console.Clear();
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");
             }
 

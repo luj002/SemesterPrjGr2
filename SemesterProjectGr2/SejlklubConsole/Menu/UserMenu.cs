@@ -170,20 +170,18 @@
 				case '1':
 					AddBoatController boatController = new AddBoatController(_boatRepository);
 					bool shouldAdd = boatController.ShouldAdd;
-
 					if (shouldAdd == true)
 					{
                         boatController.AddBoat();
                     }
-
 					break;
 				case '2':
 					ShowBoatController showBoatsController = new ShowBoatController(_boatRepository);
-					showBoatsController.ShowAllBoats();
+					string callType = "display";
+					showBoatsController.ShowAllBoats(callType);
 					break;
 				case '3':
 					UpdateBoatController updateBoatController = new UpdateBoatController(_boatRepository);
-					updateBoatController.UpdateBoat();
 					break;
 				case '4':
 					RemoveBoatController removeBoatController = new RemoveBoatController(_boatRepository);

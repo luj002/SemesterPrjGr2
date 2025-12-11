@@ -10,10 +10,11 @@
 
 	private static List<Member> members = new List<Member>()
 	{
+		Adminstrator,
 		new Member("Bob Boater", "456 Boat Ln, Boattown, Boatia", "bob@email.dk", new DateTime(1985, 5, 15), MemberType.SENIOR),
 		new Member("Cathy Cruiser", "789 Cruise Rd, Cruisecity, Cruiseland", "cathy@email.dk", new DateTime(1992, 8, 22), MemberType.JUNIOR),
 		new Member("Derek Dinghy", "101 Dinghy St, Dinghytown, Dinghyland", "derek@email.dk", new DateTime(2000, 3, 10), MemberType.JUNIOR)
-    };
+	};
 
 	private static List<Boat> boats = new List<Boat>()
 	{
