@@ -75,7 +75,7 @@
     /// <param name="bookingList">The list of bookings to get bookings from</param>
     /// <param name="member">The member to get bookings for</param>
     /// <returns>List of bookings made by the member from the given list</returns>
-    public static List<Booking > GetBookingsByMember(List<Booking> bookingList, Member member)
+    public static List<Booking> GetBookingsByMember(List<Booking> bookingList, Member member)
     {
         List<Booking> matchingBookings = new List<Booking>();
         foreach (Booking booking in bookingList)
@@ -113,7 +113,7 @@
     /// <param name="start">Start time of interval</param>
     /// <param name="end">End time of interval</param>
     /// <returns></returns>
-    public static List<Booking> GetBookingsInTimeInterval(List<Booking> bookingList,DateTime start, DateTime end)
+    public static List<Booking> GetBookingsInTimeInterval(List<Booking> bookingList, DateTime start, DateTime end)
     {
         List<Booking> bookings = new List<Booking>();
         foreach (Booking booking in bookingList)
@@ -131,27 +131,40 @@
     /// <param name="bookingsList">The list of existing bookings to check for potential conflicts.</param>
     /// <param name="booking">The booking to validate against the existing bookings.</param>
     /// <exception cref="ArgumentException">Thrown if the boat in <paramref name="booking"/> is already booked for the specified time period.</exception>
-    public static bool ValidateBooking(List<Booking> bookingsList,Member member , Boat boat, DateTime startTime, DateTime endTime)
+    public static string ValidateBooking(List<Booking> bookingsList, Member? memberToCheck, Boat? boatToCheck, DateTime startTime, DateTime endTime)
     {
-        if (member == null)
-            return false;
+        string bookingStatus = "";
+        if (memberToCheck == null)
+            bookingStatus += "Member not selected.\n";
 
-        if (boat == null)
-            return false;
+        if (boatToCheck == null)
+            bookingStatus += "Boat not selected.\n";
+
+        if (startTime == DateTime.MinValue)
+            bookingStatus += "Start time not set.\n";
+
+        if (endTime == DateTime.MinValue)
+            bookingStatus += "End time not set.\n";
 
         if (startTime >= endTime)
-            return false;
+            bookingStatus += "End time must be after start time.\n";
 
 
         List<Booking> bookings = new List<Booking>();
 
         bookings = GetBookingsInTimeInterval(bookingsList, startTime, endTime);
+        bookings = GetBookingsByBoat(bookings, boatToCheck);
+        if (bookings.Count == 0)
+            return bookingStatus;
+        else
+        {
+            bookingStatus += $"Boat with Id {boatToCheck.Id} has conflicting bookings:\n";
+        }
         foreach (Booking b in bookings)
         {
-            if (b.Boat.Id == boat.Id)
-                return false;
+            bookingStatus += $"already booked from {b.StartTime.ToString("yyyy/MM/dd HH:mm:ss")} to {b.EndTime.ToString("yyyy/MM/dd HH:mm:ss")}.\n";
         }
 
-        return true;
+        return bookingStatus;
     }
 }

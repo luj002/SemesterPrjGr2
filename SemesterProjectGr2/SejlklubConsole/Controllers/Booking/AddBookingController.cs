@@ -87,36 +87,26 @@ public class AddBookingController
                     break;
                 case "5":
                     // Start time
-                    startTime = Helpers.DateTimeFromReadLine("Start time", DateTime.Now, DateTime.Now.AddYears(1), true);
+                    startTime = Helpers.DateTimeFromReadLine("Start time", DateTime.Now, DateTime.Now.AddYears(5), true);
 
-                    choices[4] = $"5. Start time - {startTime.ToShortDateString()} {startTime.ToShortTimeString()}";
+                    choices[4] = $"5. Start time - {startTime.ToString("yyyy/MM/dd HH:mm:ss")}";
                     break;
                 case "6":
                     // End time
-                    endTime = Helpers.DateTimeFromReadLine("End time", startTime, startTime.AddDays(2), true);
+                    endTime = Helpers.DateTimeFromReadLine("End time", startTime, startTime.AddDays(7), true);
 
-                    choices[5] = $"6. End time - {endTime.ToShortDateString()} {endTime.ToShortTimeString()}";
+                    choices[5] = $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}";
                     break;
                 default:
                     break;
             }
 
             // Validate booking
-            _validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat!, startTime, endTime);
-            string bookingStatus = "\nBooking status:";
-            if (!_validBooking)
-            {
-                if (member == null)
-                    bookingStatus += "\nMember not selected. ";
-                if (boat == null)
-                    bookingStatus += "\nBoat not selected. ";
-                if (startTime == DateTime.MinValue)
-                    bookingStatus += "\nStart time not set. ";
-                if (endTime == DateTime.MinValue)
-                    bookingStatus += "\nEnd time not set. ";
-            }
+            string bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+            _validBooking = bookingStatus.Length == 0;
+            bookingStatus = "\nBooking status:\n" + bookingStatus;
 
-            choices[6] = _validBooking ? "Booking is valid." : $"{bookingStatus}";
+            choices[6] = _validBooking ? "\nBooking is valid." : $"{bookingStatus}";
 
 
             theChoice = Helpers.ReadChoice(choices);
