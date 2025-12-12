@@ -102,7 +102,7 @@ public class AddBookingController
             }
 
             // Validate booking
-            _validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(),member , boat!, startTime, endTime);
+            _validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat!, startTime, endTime);
             string bookingStatus = "\nBooking status:";
             if (!_validBooking)
             {
