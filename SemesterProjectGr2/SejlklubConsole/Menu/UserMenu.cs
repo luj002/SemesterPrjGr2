@@ -6,6 +6,7 @@
 		MockData.PopulateMembers(_memberRepository);
 		MockData.PopulateBoats(_boatRepository);
 		MockData.PopulateBookings(_bookingRepository);
+		MockData.PopulateBoatSpaces(_boatSpaceRepository);
 		MockData.PopulateEvents(_eventRepository);
     }
 
@@ -27,12 +28,14 @@
         _menuChoices.Add("3. Boat menu");
         _menuChoices.Add("4. BoatSpace menu");
         _menuChoices.Add("5. BlogEntry menu");
-        _menuChoices.Add("6. Booking menu");
-        _menuChoices.Add("\nQ. Quit");
+		_menuChoices.Add("6. Booking menu");
+		_menuChoices.Add("7. Log menu");
+		_menuChoices.Add("\nQ. Quit");
     }
 	//DEBUG STUFF, CHANGE THIS LATER
 	public static Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
 	//END OF DEBUG STUFF
+
 	public void ShowMenu()
     {
         PopulateMenu();
@@ -62,11 +65,19 @@
                 case '6':
                     ShowBookingMenu();
                     break;
+				case '7':
+					ShowLogMenu();
+					break;
 
 			}
 			choice = Helpers.ReadChoiceKey(_menuChoices);
         }
 	}
+
+	public void ShowLogMenu()
+	{
+        Console.WriteLine("amogus");
+    }
 
 	private void ShowBookingMenu()
 	{

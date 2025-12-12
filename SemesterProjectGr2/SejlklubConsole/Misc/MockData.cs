@@ -30,6 +30,13 @@
         new Booking(members[3], boats[2], "River Trail", new DateTime(2026, 1, 14, 8, 0, 0), new DateTime(2026, 1, 14, 19, 0, 0), "N/A")
     };
 
+    private static List<BoatSpace> boatSpaces = new List<BoatSpace>()
+    {
+        new BoatSpace(1, null),
+        new BoatSpace(2, null),
+        new BoatSpace(3, null)
+    };
+
     //TODO RENAME THESE (we cannot fucking turn this in before renaming these)
     private static List<Event> events = new List<Event>()
     {
@@ -64,6 +71,14 @@
         foreach (var booking in bookings)
         {
             bookingRepository.Add(booking);
+        }
+    }
+
+    public static void PopulateBoatSpaces(IBoatSpaceRepository boatSpaceRepository)
+    {
+        foreach (var boatSpace in boatSpaces)
+        {
+            boatSpaceRepository.Add(boatSpace);
         }
     }
 

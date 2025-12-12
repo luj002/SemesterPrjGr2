@@ -18,6 +18,9 @@ public class RemoveBlogEntryController
 
 
 	#region Methods
+	/// <summary>
+	/// TO FILL OUT!!!!!
+	/// </summary>
 	public void RemoveBlogEntry()
 	{
 		if (_blogEntry == null)
@@ -41,7 +44,13 @@ public class RemoveBlogEntryController
 			Console.ReadKey();
 		}
 	}
-	private static BlogEntry? SelectBlogEntry(IBlogEntryRepository blogEntryRepository)
+
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="blogEntryRepository">TO FILL OUT!!!!!</param>
+    /// <returns>TO FILL OUT!!!!!</returns>
+    private static BlogEntry? SelectBlogEntry(IBlogEntryRepository blogEntryRepository)
 	{
 		bool validInput = false;
 		BlogEntry? selectedBlogEntry = null;

@@ -6,10 +6,10 @@ public static class Helpers
     /// <summary>
     /// Handles input of integers.
     /// </summary>
-    /// <param name="inputDescription">Description for what will be assigned with the input</param>
-    /// <param name="min">Minimum value for input</param>
-    /// <param name="max">Maximum value for input</param>
-    /// <returns>Int from ReadLine input in specified range</returns>
+    /// <param name="inputDescription">Description for what will be assigned with the input.</param>
+    /// <param name="min">Minimum value for input.</param>
+    /// <param name="max">Maximum value for input.</param>
+    /// <returns>Int from ReadLine input in specified range.</returns>
     public static int IntFromReadLine(string inputDescription, int min, int max)
     {
         int input = 0;
@@ -46,8 +46,8 @@ public static class Helpers
 	/// <summary>
 	/// Prints choices to console and reads user input.
 	/// </summary>
-	/// <param name="choices">List of strings of choices</param>
-	/// <returns>The user input</returns>
+	/// <param name="choices">List of strings of choices.</param>
+	/// <returns>The user input.</returns>
 	public static string ReadChoice(List<string> choices)
 	{
 		Console.Clear();
@@ -66,8 +66,8 @@ public static class Helpers
 	/// <summary>
 	/// Prints choices to console and reads next key pressed.
 	/// </summary>
-	/// <param name="choices">List of strings of choices</param>
-	/// <returns>The user input</returns>
+	/// <param name="choices">List of strings of choices.</param>
+	/// <returns>The user input.</returns>
 	public static char ReadChoiceKey(List<string> choices)
 	{
 		Console.Clear();
@@ -149,11 +149,23 @@ public static class Helpers
 		return input == 'y';
 	}
 
+	/// <summary>
+	/// Prints a string representation of a list.
+	/// </summary>
+	/// <param name="givenTable">The list to print.</param>
 	public static void PrintEnumerable(IEnumerable givenTable)
     {
         Console.WriteLine("{" + string.Join(", ",givenTable.Cast<object>()) + "}");
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="inputDescription">TO FILL OUT!!!!!</param>
+    /// <param name="min">TO FILL OUT!!!!!</param>
+    /// <param name="max">TO FILL OUT!!!!!</param>
+    /// <param name="timeIncluded">TO FILL OUT!!!!!</param>
+    /// <returns>TO FILL OUT!!!!!</returns>
     public static DateTime DateTimeFromReadLine(string inputDescription, DateTime min, DateTime max, bool timeIncluded = false)
     {
         DateTime time = DateTime.MinValue;

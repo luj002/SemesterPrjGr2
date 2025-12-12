@@ -3,8 +3,8 @@
     /// <summary>
     /// Finds booking by ID from user input.
     /// </summary>
-    /// <param name="bookingRepository">Repository to search from</param>
-    /// <returns>The booking with the given ID</returns>
+    /// <param name="bookingRepository">Repository to search from.</param>
+    /// <returns>The booking with the given ID.</returns>
     public static Booking SelectBooking(IBookingRepository bookingRepository)
     {
         bool validInput = false;
@@ -53,9 +53,9 @@
     /// <summary>
     /// Gets all bookings for a specific boat from a list of bookings.
     /// </summary>
-    /// <param name="bookingList">The list of bookings to get bookings from</param>
-    /// <param name="boat">The boat to get bookings for</param>
-    /// <returns>List of bookings that use the boat from the given list</returns>
+    /// <param name="bookingList">The list of bookings to get bookings from.</param>
+    /// <param name="boat">The boat to get bookings for.</param>
+    /// <returns>List of bookings that use the boat from the given list.</returns>
     public static List<Booking> GetBookingsByBoat(List<Booking> bookingList, Boat boat)
     {
         List<Booking> matchingBookings = new List<Booking>();
@@ -72,9 +72,9 @@
     /// <summary>
     /// Gets all bookings for a specific member from a list of bookings.
     /// </summary>
-    /// <param name="bookingList">The list of bookings to get bookings from</param>
-    /// <param name="member">The member to get bookings for</param>
-    /// <returns>List of bookings made by the member from the given list</returns>
+    /// <param name="bookingList">The list of bookings to get bookings from.</param>
+    /// <param name="member">The member to get bookings for.</param>
+    /// <returns>List of bookings made by the member from the given list.</returns>
     public static List<Booking> GetBookingsByMember(List<Booking> bookingList, Member member)
     {
         List<Booking> matchingBookings = new List<Booking>();
@@ -91,8 +91,8 @@
     /// <summary>
     /// Gets all active bookings from a list of bookings.
     /// </summary>
-    /// <param name="bookingList">The list of bookings to get bookings from</param>
-    /// <returns>List of bookings that are active from the given list</returns>
+    /// <param name="bookingList">The list of bookings to get bookings from.</param>
+    /// <returns>List of bookings that are active from the given list.</returns>
     public static List<Booking> GetActiveBookings(List<Booking> bookingList)
     {
         List<Booking> activeBookings = new List<Booking>();
@@ -109,9 +109,9 @@
     /// <summary>
     /// Gets all booking in the specified time interval.
     /// </summary>
-    /// <param name="bookingList">List of bookings to get bookings from</param>
-    /// <param name="start">Start time of interval</param>
-    /// <param name="end">End time of interval</param>
+    /// <param name="bookingList">List of bookings to get bookings from.</param>
+    /// <param name="start">Start time of interval.</param>
+    /// <param name="end">End time of interval.</param>
     /// <returns></returns>
     public static List<Booking> GetBookingsInTimeInterval(List<Booking> bookingList, DateTime start, DateTime end)
     {

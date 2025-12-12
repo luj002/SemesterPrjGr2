@@ -10,6 +10,9 @@ public class RemoveBoatController
         _boatRep = boatRep;
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
 	public void Remove()
     {
         _boatRep.Remove(BoatID);
@@ -22,6 +25,9 @@ public class RemoveBoatController
         Console.ReadKey();
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
 	public void RemoveBoat()
 	{
         while (true)

@@ -12,6 +12,11 @@ public class UpdateBoatController
 		DetectInput();
 	}
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="givenProperty">TO FILL OUT!!!!!</param>
+    /// <param name="givenValue">TO FILL OUT!!!!!</param>
 	public void UpdateBoat(PropertyInfo givenProperty, object givenValue)
 	{
         givenProperty.SetValue(ChosenBoat, givenValue);
@@ -24,7 +29,11 @@ public class UpdateBoatController
         Console.ReadKey();
     }
 
-    //This function converts merged text into spaced text (SailNumber --> Sail Number)
+    /// <summary>
+    /// Converts merged text into spaced text (SailNumber --> Sail Number)
+    /// </summary>
+    /// <param name="propertyName">A string of merged text.</param>
+    /// <returns>A string of spaced text.</returns>
     public string GetDisplayName(string propertyName)
     {
         StringBuilder displayName = new StringBuilder();
@@ -46,13 +55,18 @@ public class UpdateBoatController
         return displayName.ToString();
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="chosenNumber">TO FILL OUT!!!!!</param>
+    /// <param name="properties">TO FILL OUT!!!!!</param>
     public void DisplayEdit(int chosenNumber, List<PropertyInfo> properties)
     {
         while (true)
         {
             Console.Clear();
 
-            var property = properties[chosenNumber - 1];
+            PropertyInfo property = properties[chosenNumber - 1];
             string displayName = GetDisplayName(property.Name);
             Console.WriteLine("Editing property: " + displayName);
 
@@ -81,12 +95,16 @@ public class UpdateBoatController
         }
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <returns>TO FILL OUT!!!!!</returns>
     public List<PropertyInfo> DisplayOverview()
     {
         Console.WriteLine("Choose a property to edit:");
         Console.WriteLine();
 
-        var properties = typeof(Boat).GetProperties().Where(property => property.Name != "Id" && property.Name != "Log" && property.Name != "AssignedSpace" && property.Name != "Type" && property.Name != "ModelName" && property.Name != "BuildYear").ToList();
+        List<PropertyInfo> properties = typeof(Boat).GetProperties().Where(property => property.Name != "Id" && property.Name != "Log" && property.Name != "AssignedSpace" && property.Name != "Type" && property.Name != "ModelName" && property.Name != "BuildYear").ToList();
         int count = 0;
 
         foreach (var property in properties)
@@ -111,6 +129,9 @@ public class UpdateBoatController
         return properties;
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
 	public void DetectInput()
 	{
         //Pick boat.

@@ -1,10 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-using System.Net;
-using System.Reflection;
-using System.Xml.Linq;
-
-//go go gadget spaghetticode
-
+﻿//go go gadget spaghetticode
 public class UpdateEventController
 {
 	private IEventRepository _eventRepository;
@@ -22,7 +16,10 @@ public class UpdateEventController
 		_showEventController = new ShowEventController(eventRepository);
 	}
 
-	public void UpdateEvent()
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    public void UpdateEvent()
 	{
 		Event toBeEdited = null;
 		string theChoice = "";
