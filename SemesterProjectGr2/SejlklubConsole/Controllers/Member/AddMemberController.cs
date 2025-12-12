@@ -17,9 +17,9 @@ public class AddMemberController
 
     #region Methods
     /// <summary>
-    /// Creates a Member object from ReadLine inputs
+    /// Creates a Member object from ReadLine inputs.
     /// </summary>
-    /// <returns>returns the created Member object</returns>
+    /// <returns>returns the created Member object.</returns>
     private void Create()
     {
         List<string> choices = new List<string> { 
@@ -89,7 +89,7 @@ public class AddMemberController
     }
 
     /// <summary>
-    /// Adds the created member to the repository after confirmation
+    /// Adds the created member to the repository after confirmation.
     /// </summary>
     private void AddMember()
     {

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-public class RemoveEventController
+﻿public class RemoveEventController
 {
 	private IEventRepository _eventRepository;
 	private ShowEventController _showEventController;
@@ -17,7 +15,10 @@ public class RemoveEventController
         _showEventController = new ShowEventController(eventRepository);
     }
 
-	public void RemoveEvent()
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    public void RemoveEvent()
 	{
 		
 		Console.WriteLine("List of all events:");

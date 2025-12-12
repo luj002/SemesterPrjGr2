@@ -3,8 +3,8 @@
     /// <summary>
     /// Finds member by ID from user input.
     /// </summary>
-    /// <param name="memberRepository">Repository to search from</param>
-    /// <returns>The member with the given ID</returns>
+    /// <param name="memberRepository">Repository to search from.</param>
+    /// <returns>The member with the given ID.</returns>
     public static Member? SelectMember(IMemberRepository memberRepository)
     {
         bool validInput = false;
@@ -58,7 +58,7 @@
     /// <summary>
     /// Reads member type from console input.
     /// </summary>
-    /// <returns>Member type for corresponding input</returns>
+    /// <returns>Member type for corresponding input.</returns>
     public static MemberType memberTypeFromReadLine()
     {
         MemberType type = MemberType.SENIOR; // Type will be overwritten

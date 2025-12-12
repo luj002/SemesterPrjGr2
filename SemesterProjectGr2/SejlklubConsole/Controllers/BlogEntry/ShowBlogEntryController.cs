@@ -6,7 +6,10 @@
 		_blogEntryRepository = blogEntryRepository;
 	}
 
-	public void ShowAllBlogEntries()
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    public void ShowAllBlogEntries()
 	{
 		foreach (BlogEntry blogEntry in _blogEntryRepository.GetAll())
 		{

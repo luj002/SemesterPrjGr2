@@ -55,8 +55,8 @@ public class AssignToBoatSpaceController
     /// <summary>
     /// Asks for confirmation to assign the boat to the boat space, while checking for null values and already assigned values.
     /// </summary>
-    /// <param name="boat"></param>
-    /// <param name="boatSpace"></param>
+    /// <param name="boat">The boat to assign.</param>
+    /// <param name="boatSpace">The boat space to assign to.</param>
     public void AssignConfirm(Boat boat, BoatSpace? boatSpace)
     {
         Console.WriteLine(boat);

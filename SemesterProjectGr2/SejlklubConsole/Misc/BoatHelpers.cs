@@ -1,5 +1,10 @@
 ﻿public class BoatHelpers
 {
+    /// <summary>
+    /// Finds boat by number from user input.
+    /// </summary>
+    /// <param name="boatRepository">Repository to search from.</param>
+    /// <returns>The boat with the given ID.</returns>
     public static Boat SelectBoat(IBoatRepository boatRepository)
     {
         bool validInput = false;
