@@ -29,6 +29,7 @@ public class ShowBookingController
             "2. Show Active booking",
             "3. Show bookings for boat",
             "4. Show bookings for member",
+            "5. Activate/Finalize booking",
             "\nQ. Back to previous menu"
         };
 
@@ -49,6 +50,9 @@ public class ShowBookingController
                     break;
                 case "4":
                     ShowBookingsForMember();
+                    break;
+                case "5":
+                    BookingActivation();
                     break;
                 default:
 
@@ -76,7 +80,7 @@ public class ShowBookingController
     private void ShowActiveBookings()
     {
         Console.WriteLine("All active bookings:");
-        List<Booking> activeBookings = BookingHelpers.GetActiveBookings(_bookingRepository.GetAll());
+        List<Booking> activeBookings = BookingHelpers.GetActiveBookings(_bookingRepository.GetAllNonArchived());
         
         foreach (Booking booking in activeBookings)
         {
@@ -133,7 +137,52 @@ public class ShowBookingController
         Console.ReadKey();
     }
 
+    private void BookingActivation()
+    {
+        List<string> choices = new List<string>
+        {
+            "1. Activate booking",
+            "2. Finalize booking",
+            "\nQ. Back to previous menu"
+        };
 
+        string theChoice = Helpers.ReadChoice(choices);
+        while (theChoice != "q")
+        {
+            switch (theChoice)
+            {
+                case "1":
+                    Booking? bookingToActivate = BookingHelpers.SelectBooking(_bookingRepository);
+                    if (bookingToActivate == null)
+                    {
+                        Console.WriteLine("No booking selected. Press any key to go back.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    BookingActiveController bookingActiveController = new BookingActiveController(_bookingRepository, bookingToActivate);
+                    bookingActiveController.ActivateBooking();
+                    break;
+                case "2":
+                    Booking? bookingToFinalize = BookingHelpers.SelectBooking(_bookingRepository, BookingHelpers.GetActiveBookings(_bookingRepository.GetAll()));
+                    if (bookingToFinalize == null)
+                    {
+                        Console.WriteLine("No booking selected. Press any key to go back.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    BookingActiveController bookingFinalizeController = new BookingActiveController(_bookingRepository, bookingToFinalize);
+                    bookingFinalizeController.FinalizeBooking();
+                    break;
+                default:
+                    break;
+            }
+            theChoice = Helpers.ReadChoice(choices);
+        }
+
+
+        
+
+    }
 
 
     #endregion

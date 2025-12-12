@@ -37,6 +37,14 @@
         new BoatSpace(3, null)
     };
 
+    //TODO RENAME THESE (we cannot fucking turn this in before renaming these)
+    private static List<Event> events = new List<Event>()
+    {
+        new Event("Hanging with Saddam", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", new DateTime(2026, 1, 20, 10, 00, 00), new DateTime(2026, 1, 20, 15, 00, 00), Adminstrator),
+        new Event("Illegal speed boat racing tournament", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", new DateTime(2026, 2, 17, 12, 00, 00), new DateTime(2026, 2, 19, 12, 00, 00), Adminstrator),
+        new Event("Normal christmas lunch (NOT A CULT MEETING)", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", new DateTime(2026, 6, 06, 12, 00, 00), new DateTime(2026, 6, 06, 16, 30, 00), Adminstrator)
+    };
+
     public static void PopulateBlogEntries(IBlogEntryRepository blogEntryRepository)
     {
         foreach (var entry in blogEntries)
@@ -71,6 +79,14 @@
         foreach (var boatSpace in boatSpaces)
         {
             boatSpaceRepository.Add(boatSpace);
+        }
+    }
+
+    public static void PopulateEvents(IEventRepository eventRepository)
+    {
+        foreach (var schmevent in events)
+        {
+            eventRepository.AddEvent(schmevent);
         }
     }
 }

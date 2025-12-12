@@ -29,7 +29,7 @@ public class UpdateEventController
 		Console.WriteLine("Enter the ID of the event you wish to update:");
 		try
 		{
-            toBeEdited = _eventRepository.GetEventByID("#EVEN"+Int32.Parse(Console.ReadLine()!));
+            toBeEdited = _eventRepository.GetEventByID(StringId.GetID(IdPrefix.EVENT, Int32.Parse(Console.ReadLine()!)));
         }
 		catch (Exception e)
 		{

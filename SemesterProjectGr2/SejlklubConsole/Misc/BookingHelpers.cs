@@ -3,17 +3,20 @@
     /// <summary>
     /// Finds booking by ID from user input.
     /// </summary>
-    /// <param name="bookingRepository">Repository to search from.</param>
-    /// <returns>The booking with the given ID.</returns>
-    public static Booking SelectBooking(IBookingRepository bookingRepository)
+    /// <param name="bookingRepository">Repository to search from</param>
+    /// <param name="bookings">Optional list of bookings to select from</param>
+    /// <returns>The booking with the given ID</returns>
+    public static Booking SelectBooking(IBookingRepository bookingRepository, List<Booking>? bookings = null)
     {
         bool validInput = false;
         Booking? selectedBooking = null;
+        bookings ??= bookingRepository.GetAll();
+
         while (!validInput)
         {
-            foreach (Booking booking in bookingRepository.GetAll())
+            foreach (Booking booking in bookings)
             {
-                Console.WriteLine($"{booking.Id} - {booking.Member}");
+                Console.WriteLine($"{booking.Id} - {booking.Member.Id} {booking.Member.Name} - {booking.Boat.Id} {booking.Boat.Nickname}");
             }
             Console.Write("Enter Booking ID: ");
             try

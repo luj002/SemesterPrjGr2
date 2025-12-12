@@ -17,7 +17,7 @@ public class RemoveMemberController
 
     #region Methods
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Removes the selected member after confirmation.
     /// </summary>
     public void RemoveMember()
     {

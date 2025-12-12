@@ -66,7 +66,7 @@ public class UpdateBoatController
         {
             Console.Clear();
 
-            var property = properties[chosenNumber - 1];
+            PropertyInfo property = properties[chosenNumber - 1];
             string displayName = GetDisplayName(property.Name);
             Console.WriteLine("Editing property: " + displayName);
 
@@ -104,7 +104,7 @@ public class UpdateBoatController
         Console.WriteLine("Choose a property to edit:");
         Console.WriteLine();
 
-        var properties = typeof(Boat).GetProperties().Where(property => property.Name != "Id" && property.Name != "Log" && property.Name != "AssignedSpace" && property.Name != "Type" && property.Name != "ModelName" && property.Name != "BuildYear").ToList();
+        List<PropertyInfo> properties = typeof(Boat).GetProperties().Where(property => property.Name != "Id" && property.Name != "Log" && property.Name != "AssignedSpace" && property.Name != "Type" && property.Name != "ModelName" && property.Name != "BuildYear").ToList();
         int count = 0;
 
         foreach (var property in properties)

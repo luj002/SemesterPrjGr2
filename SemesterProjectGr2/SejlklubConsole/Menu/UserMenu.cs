@@ -7,6 +7,7 @@
 		MockData.PopulateBoats(_boatRepository);
 		MockData.PopulateBookings(_bookingRepository);
 		MockData.PopulateBoatSpaces(_boatSpaceRepository);
+		MockData.PopulateEvents(_eventRepository);
     }
 
 	private List<string> _menuChoices = new List<string>();
@@ -229,7 +230,7 @@
 
 	private void ShowEventMenu()
 	{
-		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "5. Register for event", "\nB. Back" };
         char choice = Helpers.ReadChoiceKey(choices);
 		while (choice != 'b')
 		{
@@ -250,6 +251,10 @@
 				case '4':
 					RemoveEventController removeEventController = new RemoveEventController(_eventRepository, currentUser);
 					removeEventController.RemoveEvent();
+					break;
+				case '5':
+					AddRegistrationController addRegistrationController = new AddRegistrationController(_eventRepository, currentUser);
+					addRegistrationController.Register();
 					break;
 			}
 			choice = Helpers.ReadChoiceKey(choices);

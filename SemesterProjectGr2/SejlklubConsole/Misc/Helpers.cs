@@ -158,14 +158,15 @@ public static class Helpers
         Console.WriteLine("{" + string.Join(", ",givenTable.Cast<object>()) + "}");
     }
 
+
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Gets a DateTime from ReadLine input within specified range.
     /// </summary>
-    /// <param name="inputDescription">TO FILL OUT!!!!!</param>
-    /// <param name="min">TO FILL OUT!!!!!</param>
-    /// <param name="max">TO FILL OUT!!!!!</param>
-    /// <param name="timeIncluded">TO FILL OUT!!!!!</param>
-    /// <returns>TO FILL OUT!!!!!</returns>
+    /// <param name="inputDescription">Description for the input</param>
+    /// <param name="min">Minimum DateTime to allow</param>
+    /// <param name="max">Maximum DateTime to allow</param>
+    /// <param name="timeIncluded">Whether or not to include time of the day</param>
+    /// <returns>A DateTime object corresponding to the given ReadLine inputs</returns>
     public static DateTime DateTimeFromReadLine(string inputDescription, DateTime min, DateTime max, bool timeIncluded = false)
     {
         DateTime time = DateTime.MinValue;
