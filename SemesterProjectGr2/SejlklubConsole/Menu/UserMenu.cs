@@ -134,7 +134,7 @@
 
 	private void ShowBoatSpaceMenu()
 	{
-		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "5. Assign boat to boatSpace", "\nB. Back" };
 		char choice = Helpers.ReadChoiceKey(choices);
 		while (choice != 'b')
 		{
@@ -154,6 +154,10 @@
 				case '4':
 					RemoveBoatSpaceController removeBoatSpaceController = new RemoveBoatSpaceController(_boatSpaceRepository);
 					removeBoatSpaceController.RemoveBoatSpace();
+					break;
+				case '5':
+					AssignToBoatSpaceController assignToBoatSpaceController = new AssignToBoatSpaceController(_boatSpaceRepository, _boatRepository);
+					assignToBoatSpaceController.Assign();
 					break;
 			}
 			choice = Helpers.ReadChoiceKey(choices);
