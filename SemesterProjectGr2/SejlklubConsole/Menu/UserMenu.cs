@@ -120,13 +120,31 @@
 					showBlogEntrysController.ShowAllBlogEntries();
 					break;
 				case '3':
-					UpdateBlogEntryController updateBlogEntryController = new UpdateBlogEntryController(_blogEntryRepository);
-					updateBlogEntryController.UpdateBlogEntry();
-					break;
+                    if (currentUser is not Adminstrator)
+                    {
+                        Console.WriteLine("Only administrators can update blog entries.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    else
+					{
+                        UpdateBlogEntryController updateBlogEntryController = new UpdateBlogEntryController(_blogEntryRepository);
+                        updateBlogEntryController.UpdateBlogEntry();
+                        break;
+                    }
 				case '4':
-					RemoveBlogEntryController removeBlogEntryController = new RemoveBlogEntryController(_blogEntryRepository);
-					removeBlogEntryController.RemoveBlogEntry();
-					break;
+					if (currentUser is not Adminstrator)
+					{
+						Console.WriteLine("Only administrators can remove blog entries.");
+						Console.ReadKey();
+						break;
+					}
+					else
+					{
+                        RemoveBlogEntryController removeBlogEntryController = new RemoveBlogEntryController(_blogEntryRepository);
+                        removeBlogEntryController.RemoveBlogEntry();
+                        break;
+                    }
 			}
 			choice = Helpers.ReadChoiceKey(choices);
 		}
