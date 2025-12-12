@@ -81,9 +81,9 @@
 
 	private void ShowBookingMenu()
 	{
-		List<string> choices = new List<string> { "1. Add booking", "2. Show bookings", "3. Update booking", "4. Remove booking", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add booking", "2. Show bookings", "3. Update booking", "4. Remove booking", "\nQ. Back" };
 		char choice = Helpers.ReadChoiceKey(choices);
-		while (choice != 'b')
+		while (choice != 'q')
 		{
 			switch (choice)
 			{
@@ -109,9 +109,9 @@
 
 	private void ShowBlogEntryMenu()
 	{
-		List<string> choices = new List<string> { "1. Add blogEntry", "2. Show blogEntrys", "3. Update blogEntry", "4. Remove blogEntry", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add blogEntry", "2. Show blogEntrys", "3. Update blogEntry", "4. Remove blogEntry", "\nQ. Back" };
 		char choice = Helpers.ReadChoiceKey(choices);
-		while (choice != 'b')
+		while (choice != 'q')
 		{
 			switch (choice)
 			{
@@ -164,9 +164,9 @@
 
 	private void ShowBoatSpaceMenu()
 	{
-		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "5. Assign boat to boatSpace", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add boatSpace", "2. Show boatSpaces", "3. Update boatSpace", "4. Remove boatSpace", "5. Assign boat to boatSpace", "\nQ. Back" };
 		char choice = Helpers.ReadChoiceKey(choices);
-		while (choice != 'b')
+		while (choice != 'q')
 		{
 			switch (choice)
 			{
@@ -197,9 +197,9 @@
 
 	private void ShowBoatMenu()
 	{
-		List<string> choices = new List<string> { "1. Add boat", "2. Show boats", "3. Update boat", "4. Remove boat", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add boat", "2. Show boats", "3. Update boat", "4. Remove boat", "\nQ. Back" };
 		char choice = Helpers.ReadChoiceKey(choices);
-		while (choice != 'b')
+		while (choice != 'q')
 		{
 			switch (choice)
 			{
@@ -230,9 +230,9 @@
 
 	private void ShowEventMenu()
 	{
-		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "5. Register for event", "\nB. Back" };
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "5. Register for event", "\nQ. Back" };
         char choice = Helpers.ReadChoiceKey(choices);
-		while (choice != 'b')
+		while (choice != 'q')
 		{
 			switch (choice)
 			{
@@ -263,9 +263,9 @@
 
 	private void ShowMemberMenu()
     {
-        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Remove member", "\nB. Back" };
+        List<string> choices = new List<string> { "1. Add member", "2. Show members", "3. Update member", "4. Remove member", "\nQ. Back" };
         char choice = Helpers.ReadChoiceKey(choices);
-        while (choice != 'b')
+        while (choice != 'q')
         {
             switch (choice)
             {
