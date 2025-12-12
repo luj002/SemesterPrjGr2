@@ -1,4 +1,6 @@
 ﻿
+using System.Security;
+
 public class AddBookingController
 {
     #region Instance fields
@@ -46,7 +48,7 @@ public class AddBookingController
 
         string theChoice = Helpers.ReadChoice(choices);
 
-        while ((theChoice != "c" && theChoice != "q") || !_validBooking)
+        while ((theChoice != "c" || !_validBooking) && theChoice != "q")
         {
             switch (theChoice)
             {
@@ -96,14 +98,25 @@ public class AddBookingController
                     choices[5] = $"6. End time - {endTime.ToShortDateString()} {endTime.ToShortTimeString()}";
                     break;
                 default:
-                    Console.WriteLine("Invalid choice. Press any button to try again.");
-                    Console.ReadKey();
                     break;
             }
-            // Validate booking
 
-            _validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), boat!, startTime, endTime);
-            choices[6] = _validBooking ? "Booking is valid." : "Booking is not valid";
+            // Validate booking
+            _validBooking = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(),member , boat!, startTime, endTime);
+            string bookingStatus = "\nBooking status:";
+            if (!_validBooking)
+            {
+                if (member == null)
+                    bookingStatus += "\nMember not selected. ";
+                if (boat == null)
+                    bookingStatus += "\nBoat not selected. ";
+                if (startTime == DateTime.MinValue)
+                    bookingStatus += "\nStart time not set. ";
+                if (endTime == DateTime.MinValue)
+                    bookingStatus += "\nEnd time not set. ";
+            }
+
+            choices[6] = _validBooking ? "Booking is valid." : $"{bookingStatus}";
 
 
             theChoice = Helpers.ReadChoice(choices);

@@ -131,8 +131,17 @@
     /// <param name="bookingsList">The list of existing bookings to check for potential conflicts.</param>
     /// <param name="booking">The booking to validate against the existing bookings.</param>
     /// <exception cref="ArgumentException">Thrown if the boat in <paramref name="booking"/> is already booked for the specified time period.</exception>
-    public static bool ValidateBooking(List<Booking> bookingsList, Boat boat, DateTime startTime, DateTime endTime)
+    public static bool ValidateBooking(List<Booking> bookingsList,Member member , Boat boat, DateTime startTime, DateTime endTime)
     {
+        if (member == null)
+            return false;
+
+        if (boat == null)
+            return false;
+
+        if (startTime >= endTime)
+            return false;
+
 
         List<Booking> bookings = new List<Booking>();
 
