@@ -18,9 +18,4 @@
 	{
 		return $"Boat Space {Number}: {(Occupied ? $"Occupied by {Boat}" : "Available")}";
 	}
-
-	public BoatSpace AssignSpace(Boat boat)
-	{
-        throw new NotImplementedException();
-    }
 }

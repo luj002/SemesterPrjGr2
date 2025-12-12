@@ -21,6 +21,7 @@
     /// </summary>
     public void ShowAllBoatSpaces()
     {
+        Console.WriteLine("Current boat space numbers:");
         foreach (BoatSpace boatSpace in _boatSpaceRepository.GetAll())
         {
             Console.WriteLine(boatSpace);

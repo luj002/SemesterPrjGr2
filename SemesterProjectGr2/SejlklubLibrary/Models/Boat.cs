@@ -13,7 +13,7 @@ public class Boat
 	public double Draft { get; set; }
 	public string BuildYear { get; }
 	public BoatLogEntryRepository Log { get; }
-	public int? AssignedSpace { get; }
+	public int? AssignedSpace { get; set; }
 	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
 		Id = StringId.Next(IdPrefix.BOAT);

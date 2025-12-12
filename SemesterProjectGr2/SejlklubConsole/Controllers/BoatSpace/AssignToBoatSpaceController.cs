@@ -7,10 +7,6 @@ public class AssignToBoatSpaceController
     private IBoatRepository _boatRepository;
     #endregion
 
-    #region Properties
-
-    #endregion
-
     #region Constructor
     public AssignToBoatSpaceController(IBoatSpaceRepository boatSpaceRepository, IBoatRepository boatRepository)
     {
@@ -20,33 +16,29 @@ public class AssignToBoatSpaceController
     #endregion
 
     #region Methods
-    /// <summary>
-    /// TO FILL OUT
-    /// </summary>
-    private void Assign()
+/// <summary>
+/// Prompts the user to input the values needed to assign a boat to a boat space.
+/// </summary>
+    public void Assign()
     {
         List<string> choices = new List<string> {
-            "1. Show boats",
-            "2. Select boat",
-            "3. Show boat spaces",
-            "4. Select boat space",
+            "1. Select boat",
+            "2. Select boat space",
             "\nC. Confirm",
             "Q. Cancel (Discard Boat Space)"
         };
+        Boat curBoat = null;
+        BoatSpace curBoatSpace = null;
         string theChoice = Helpers.ReadChoice(choices);
         while (theChoice != "c" && theChoice != "q")
         {
             switch (theChoice)
             {
                 case "1":
-                    BoatHelpers.SelectBoat(_boatRepository);
+                    curBoat = BoatHelpers.SelectBoat(_boatRepository);
                     break;
                 case "2":
-                    break;
-                case "3":
-                    BoatSpaceHelpers.SelectBoatSpace(_boatSpaceRepository);
-                    break;
-                case "4":
+                    curBoatSpace = BoatSpaceHelpers.SelectBoatSpace(_boatSpaceRepository);
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Press any button to try again.");
@@ -56,7 +48,51 @@ public class AssignToBoatSpaceController
         }
         if (theChoice == "c")
         {
-            throw new NotImplementedException();
+            AssignConfirm(curBoat, curBoatSpace);
+        }
+    }
+
+    /// <summary>
+    /// Asks for confirmation to assign the boat to the boat space, while checking for null values and already assigned values.
+    /// </summary>
+    /// <param name="boat"></param>
+    /// <param name="boatSpace"></param>
+    public void AssignConfirm(Boat boat, BoatSpace? boatSpace)
+    {
+        Console.WriteLine(boat);
+        if(boatSpace != null)
+        {
+            Console.WriteLine(boatSpace);
+        }
+        else
+        {
+            Console.WriteLine("No boat space.");
+        }
+        bool AddConfirmed = Helpers.YesOrNo("Assign this boat to this boat space?");
+        if (AddConfirmed)
+        {
+            if(boatSpace.Boat == null)
+            {
+                if (boat.AssignedSpace != null)
+                {
+                    _boatSpaceRepository.GetBoatSpaceByNumber(Convert.ToInt32(boat.AssignedSpace)).Boat = null;
+                }
+                if (boatSpace != null)
+                {
+                    boat.AssignedSpace = boatSpace.Number;
+                    boatSpace.Boat = boat;
+                }
+                else
+                {
+                    boat.AssignedSpace = null;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Boat space already occupied by {boatSpace.Boat.ModelName}");
+                Console.ReadKey();
+            }
+            
         }
     }
     #endregion
