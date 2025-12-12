@@ -6,7 +6,7 @@
     /// <param name="bookingRepository">Repository to search from</param>
     /// <param name="bookings">Optional list of bookings to select from</param>
     /// <returns>The booking with the given ID</returns>
-    public static Booking SelectBooking(IBookingRepository bookingRepository, List<Booking>? bookings = null)
+    public static Booking? SelectBooking(IBookingRepository bookingRepository, List<Booking>? bookings = null)
     {
         bool validInput = false;
         Booking? selectedBooking = null;
@@ -18,10 +18,15 @@
             {
                 Console.WriteLine($"{booking.Id} - {booking.Member.Id} {booking.Member.Name} - {booking.Boat.Id} {booking.Boat.Nickname}");
             }
-            Console.Write("Enter Booking ID: ");
+            Console.Write("Enter Booking ID (or Q to cancel): ");
             try
             {
-                int input = int.Parse(Console.ReadLine()!);
+                string stringInput = Console.ReadLine().ToLower();
+
+                if (stringInput.Length == 0 || stringInput[0] == 'q')
+                    return null;
+
+                int input = int.Parse(stringInput);
                 selectedBooking = bookingRepository.GetBookingById(StringId.GetID(IdPrefix.BOOK, input));
                 if (selectedBooking != null)
                 {

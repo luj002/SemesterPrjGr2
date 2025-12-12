@@ -155,8 +155,6 @@ public class ShowBookingController
                     Booking? bookingToActivate = BookingHelpers.SelectBooking(_bookingRepository);
                     if (bookingToActivate == null)
                     {
-                        Console.WriteLine("No booking selected. Press any key to go back.");
-                        Console.ReadKey();
                         break;
                     }
                     BookingActiveController bookingActiveController = new BookingActiveController(_bookingRepository, bookingToActivate);
@@ -166,8 +164,6 @@ public class ShowBookingController
                     Booking? bookingToFinalize = BookingHelpers.SelectBooking(_bookingRepository, BookingHelpers.GetActiveBookings(_bookingRepository.GetAll()));
                     if (bookingToFinalize == null)
                     {
-                        Console.WriteLine("No booking selected. Press any key to go back.");
-                        Console.ReadKey();
                         break;
                     }
                     BookingActiveController bookingFinalizeController = new BookingActiveController(_bookingRepository, bookingToFinalize);
