@@ -64,6 +64,9 @@
                 case '6':
                     ShowBookingMenu();
                     break;
+				case '7':
+					ShowLogMenu();
+					break;
 
 			}
 			choice = Helpers.ReadChoiceKey(_menuChoices);
