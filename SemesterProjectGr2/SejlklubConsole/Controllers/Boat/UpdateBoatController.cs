@@ -12,6 +12,11 @@ public class UpdateBoatController
 		DetectInput();
 	}
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="givenProperty">TO FILL OUT!!!!!</param>
+    /// <param name="givenValue">TO FILL OUT!!!!!</param>
 	public void UpdateBoat(PropertyInfo givenProperty, object givenValue)
 	{
         givenProperty.SetValue(ChosenBoat, givenValue);
@@ -24,7 +29,11 @@ public class UpdateBoatController
         Console.ReadKey();
     }
 
-    //This function converts merged text into spaced text (SailNumber --> Sail Number)
+    /// <summary>
+    /// Converts merged text into spaced text (SailNumber --> Sail Number)
+    /// </summary>
+    /// <param name="propertyName">A string of merged text.</param>
+    /// <returns>A string of spaced text.</returns>
     public string GetDisplayName(string propertyName)
     {
         StringBuilder displayName = new StringBuilder();
@@ -46,6 +55,11 @@ public class UpdateBoatController
         return displayName.ToString();
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="chosenNumber">TO FILL OUT!!!!!</param>
+    /// <param name="properties">TO FILL OUT!!!!!</param>
     public void DisplayEdit(int chosenNumber, List<PropertyInfo> properties)
     {
         while (true)
@@ -81,6 +95,10 @@ public class UpdateBoatController
         }
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <returns>TO FILL OUT!!!!!</returns>
     public List<PropertyInfo> DisplayOverview()
     {
         Console.WriteLine("Choose a property to edit:");
@@ -111,6 +129,9 @@ public class UpdateBoatController
         return properties;
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
 	public void DetectInput()
 	{
         //Pick boat.

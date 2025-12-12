@@ -31,7 +31,9 @@
         DetectInput();
     }
 
-    //Adds boat to boat repository. The console writing notifies the user that the boat has been succesfully added.
+    /// <summary>
+    /// Adds boat to boat repository. The console writing notifies the user that the boat has been succesfully added.
+    /// </summary>
     public void AddBoat()
     {
         Boat BoatInstance = new Boat(_properties[0], _properties[1], _properties[2], _properties[3], _properties[4], _properties[5], _properties[6], _properties[7], _properties[8]);
@@ -45,7 +47,11 @@
         Console.ReadKey();
     }
 
-    //Displays the variable editing.
+    /// <summary>
+    /// Displays the variable editing.
+    /// </summary>
+    /// <param name="entry">TO FILL OUT!!!!!</param>
+    /// <param name="chosenNumber">TO FILL OUT!!!!!</param>
     public void DisplayEdit(string entry,int chosenNumber)
     {
         while (true)
@@ -100,8 +106,11 @@
 
         Console.Clear();
     }
-    
-    //Display overview of variables to edit
+
+    /// <summary>
+    /// Display overview of variables to edit.
+    /// </summary>
+    /// <param name="options">TO FILL OUT!!!!!</param>
     public void DisplayOverview(List<string> options)
     {
         Console.WriteLine("Choose a property to edit:");
@@ -129,7 +138,9 @@
         Console.WriteLine();
     }
 
-    //Detect input of user and display overview or edit
+    /// <summary>
+    /// Detect input of user and display overview or edit.
+    /// </summary>
     public void DetectInput()
     {
         List<string> options = new List<string> { "1. Model Name", "2. Boat Type", "3. Length", "4. Width", "5. Draft", "6. Build Year", "7. Nickname", "8. Sail Number", "9. Motor", "10. Done", "11. Cancel"};

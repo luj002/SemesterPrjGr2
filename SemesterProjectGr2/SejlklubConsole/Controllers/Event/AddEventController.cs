@@ -1,8 +1,4 @@
-﻿
-
-using System.Diagnostics.Metrics;
-
-public class AddEventController
+﻿public class AddEventController
 {
 	private IEventRepository _eventRepository;
     public Event eventToAdd { get; set; }
@@ -25,6 +21,10 @@ public class AddEventController
         _eventRepository = eventRepository;
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="maker">TO FILL OUT!!!!!</param>
     public void Create(Adminstrator maker)
     {
         //TODO MAKE THIS MORE LIKE AddMemberController
@@ -74,6 +74,9 @@ public class AddEventController
         eventToAdd = new Event(eventName, eventDesc, startTime, endTime, maker);
     }
 
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
     public void AddEvent()
     {
         try

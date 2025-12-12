@@ -14,10 +14,13 @@
 		_author = author;
 		Create();
 	}
-	#endregion
+    #endregion
 
-	#region Methods
-	private void Create()
+    #region Methods
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    private void Create()
 	{
 		List<string> blogEntryInfoFields = new List<string> { $"1. Title: {_blogEntries[_author.Id].Title}", $"2. Content{_blogEntries[_author.Id].Content}", "\nB. Back (don't save)", "D. Cancel and save as draft", "S. Save and create"};
 		string title = _blogEntries[_author.Id].Title;
@@ -63,13 +66,16 @@
 		}
 	}
 
-	public void AddBlogEntry()
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    public void AddBlogEntry()
 	{
 		Console.WriteLine(_blogEntries[_author.Id]);
 		bool AddConfirmed = Helpers.YesOrNoKey("Add this blogEntry?");
 		if (AddConfirmed)
 			_blogEntryRepository.Add(_blogEntries[_author.Id]);
-	}
+    }
 	#endregion
 }
 

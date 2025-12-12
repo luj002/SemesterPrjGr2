@@ -7,7 +7,11 @@
 		_boatRep = boatRepository;
 	}
 
-	public void ShowAllBoats(string callType)
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    /// <param name="callType">TO FILL OUT!!!!!</param>
+    public void ShowAllBoats(string callType)
 	{
 		List<Boat> allBoats = _boatRep.GetAll();
         

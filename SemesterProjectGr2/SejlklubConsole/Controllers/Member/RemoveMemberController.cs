@@ -16,6 +16,9 @@ public class RemoveMemberController
 
 
     #region Methods
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
     public void RemoveMember()
     {
         if (_member == null)

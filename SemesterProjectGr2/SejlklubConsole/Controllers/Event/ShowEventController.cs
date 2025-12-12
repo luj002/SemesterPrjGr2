@@ -7,7 +7,10 @@
 		_eventRepository = eventRepository;
 	}
 
-	internal void ShowAllEvents()
+    /// <summary>
+    /// TO FILL OUT!!!!!
+    /// </summary>
+    internal void ShowAllEvents()
 	{
 		foreach (Event e in _eventRepository.GetAll())
 		{

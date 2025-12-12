@@ -11,10 +11,6 @@
     }
     #endregion
 
-    #region Properties
-
-    #endregion
-
     #region Methods
     /// <summary>
     /// Prints all boat spaces in the repository.
