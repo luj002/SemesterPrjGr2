@@ -1,6 +1,7 @@
 ﻿public class BookingRepository : IBookingRepository
 {
     private Dictionary<string, Booking> _bookings;
+    private Dictionary<string, Booking> _archivedBookings;
     public int Count
     {
         get
@@ -12,6 +13,7 @@
     public BookingRepository()
     {
         _bookings = new Dictionary<string, Booking>();
+        _archivedBookings = new Dictionary<string, Booking>();
     }
 
     public List<Booking> GetAll()
@@ -28,6 +30,20 @@
         else
         {
             throw new RepositoryException(RepositoryExceptionType.Add, "Given booking is already in the bookings dictionary.");
+        }
+    }
+
+    public void ArchiveBooking(string id)
+    {
+        if (_bookings.ContainsKey(id))
+        {
+            Booking bookingToArchive = _bookings[id];
+            _archivedBookings[id] = bookingToArchive;
+            _bookings.Remove(id);
+        }
+        else
+        {
+            throw new RepositoryException(RepositoryExceptionType.Remove, "No booking found to Remove.");
         }
     }
 

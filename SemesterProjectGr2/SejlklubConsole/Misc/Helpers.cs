@@ -163,17 +163,20 @@ public static class Helpers
             Console.Write($"{inputDescription}: ");
             try
             {
-                int year = IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
+                int year = (min.Year == max.Year) ? min.Year : IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
 
                 int minMonth = (year == min.Year) ? min.Month : 1;
                 int maxMonth = (year == max.Year) ? max.Month : 12;
 
-                int month = IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
+                int month = ((min.Year == max.Year) 
+						  && (min.Month == max.Month)) ? min.Month : IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
 
                 int minDay = (year == min.Year && month == min.Month) ? min.Day : 1;
                 int maxDay = (year == max.Year && month == max.Month) ? max.Day : DateTime.DaysInMonth(year, month);
                 
-                int day = IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
+                int day = ((min.Year == max.Year) 
+						&& (min.Month == max.Month) 
+						&& (min.Day == max.Day)) ? min.Day : IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
 
                 if (timeIncluded)
                 {
