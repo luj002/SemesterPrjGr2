@@ -18,7 +18,6 @@ public class AddBoatSpaceController
 	public AddBoatSpaceController(IBoatSpaceRepository boatSpaceRepository)
 	{
         _boatSpaceRepository = boatSpaceRepository;
-        Create();
     }
     #endregion
 
@@ -26,7 +25,7 @@ public class AddBoatSpaceController
     /// <summary>
     /// Begins the process of creating a new boat space to add.
     /// </summary>
-    private void Create()
+    public void Create()
     {
         List<string> choices = new List<string> {
             "1. Number",
@@ -64,10 +63,21 @@ public class AddBoatSpaceController
     /// </summary>
     public void AddBoatSpace()
 	{
-        Console.WriteLine(BoatSpace);
+        Console.WriteLine(_boatSpace);
         bool AddConfirmed = Helpers.YesOrNo("Add this boat space?");
         if (AddConfirmed)
-            _boatSpaceRepository.Add(BoatSpace);
+        {
+            if(_boatSpaceRepository.GetBoatSpaceByNumber(_boatSpace.Number) == null)
+            {
+                _boatSpaceRepository.Add(_boatSpace);
+            }
+            else
+            {
+                Console.WriteLine("BoatSpace with that number already exists.");
+                Console.ReadKey();
+            }
+        }
+            
 	}
     #endregion
 }

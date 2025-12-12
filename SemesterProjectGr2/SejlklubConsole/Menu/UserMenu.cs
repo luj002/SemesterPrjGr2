@@ -170,8 +170,9 @@
 			switch (choice)
 			{
 				case '1':
-					AddBoatSpaceController boatSpaceController = new AddBoatSpaceController(_boatSpaceRepository);
-					break;
+					AddBoatSpaceController addBoatSpaceController = new AddBoatSpaceController(_boatSpaceRepository);
+					addBoatSpaceController.Create();
+                    break;
 				case '2':
 					ShowBoatSpaceController showBoatSpacesController = new ShowBoatSpaceController(_boatSpaceRepository);
 					showBoatSpacesController.ShowAllBoatSpaces();
