@@ -50,8 +50,8 @@
     /// <summary>
     /// Displays the variable editing.
     /// </summary>
-    /// <param name="entry">TO FILL OUT!!!!!</param>
-    /// <param name="chosenNumber">TO FILL OUT!!!!!</param>
+    /// <param name="entry"> entry is the value of index chosenNumber in the list "options". entry example: "1. Model Name". </param>
+    /// <param name="chosenNumber"> chosenNumber is the number that the user typed in DetectInput(). chosenNumber decides which property will be edited. </param>
     public void DisplayEdit(string entry,int chosenNumber)
     {
         while (true)
@@ -110,7 +110,7 @@
     /// <summary>
     /// Display overview of variables to edit.
     /// </summary>
-    /// <param name="options">TO FILL OUT!!!!!</param>
+    /// <param name="options"> options is a list that contains display information for AddBoatController. You can view the list at the top of DetectInput(). </param>
     public void DisplayOverview(List<string> options)
     {
         Console.WriteLine("Choose a property to edit:");

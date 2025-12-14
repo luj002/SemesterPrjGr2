@@ -13,10 +13,11 @@ public class UpdateBoatController
 	}
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// UpdateBoat() takes the givenProperty and sets it to givenValue. 
+    /// Afterwards it tells the user that the boat has been updated.
     /// </summary>
-    /// <param name="givenProperty">TO FILL OUT!!!!!</param>
-    /// <param name="givenValue">TO FILL OUT!!!!!</param>
+    /// <param name="givenProperty"> Property passed as the 1st argument. It is a "PropertyInfo" which has a SetValue() function. </param>
+    /// <param name="givenValue"> The value that is used to update the boat property. For example: ModelName (givenProperty) = "TheGorba2000" (givenValue). </param>
 	public void UpdateBoat(PropertyInfo givenProperty, object givenValue)
 	{
         givenProperty.SetValue(ChosenBoat, givenValue);
@@ -56,10 +57,10 @@ public class UpdateBoatController
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Displays the property to edit, and uses the user input to call UpdateBoat().
     /// </summary>
-    /// <param name="chosenNumber">TO FILL OUT!!!!!</param>
-    /// <param name="properties">TO FILL OUT!!!!!</param>
+    /// <param name="chosenNumber"> The number that the user typed in. It determines which property that is being edited. </param>
+    /// <param name="properties"> List of properties that is returned from DisplayOverview(). </param>
     public void DisplayEdit(int chosenNumber, List<PropertyInfo> properties)
     {
         while (true)
@@ -96,9 +97,10 @@ public class UpdateBoatController
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Displays properties that can be updated (those that have set; in their property field).
     /// </summary>
-    /// <returns>TO FILL OUT!!!!!</returns>
+    /// <returns> Returns a list of boat properties. 
+    /// You can see the properties list being defined by the GetProperties(). Where() excludes properties that do not have set; in their property field. </returns>
     public List<PropertyInfo> DisplayOverview()
     {
         Console.WriteLine("Choose a property to edit:");
@@ -130,7 +132,8 @@ public class UpdateBoatController
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Pick boat: Shows boats, and then detects user input for a boat id to pick a boat.
+    /// Edit boat: Displays property overview and waits for user input. The input that is handled as "chosenNumber", determines which property will be edited in DisplayEdit().
     /// </summary>
 	public void DetectInput()
 	{

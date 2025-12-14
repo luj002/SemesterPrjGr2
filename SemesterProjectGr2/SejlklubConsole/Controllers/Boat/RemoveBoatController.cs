@@ -11,7 +11,8 @@ public class RemoveBoatController
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Removes boat by calling the BoatRepository Remove() function.
+    /// It then tells the user the boat has been removed.
     /// </summary>
 	public void Remove()
     {
@@ -26,7 +27,8 @@ public class RemoveBoatController
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Waits for the user to input an id of the boat they want to delete.
+    /// The BoatID variable is defined based on user input, so RemoveBoat() can call Remove().
     /// </summary>
 	public void RemoveBoat()
 	{
