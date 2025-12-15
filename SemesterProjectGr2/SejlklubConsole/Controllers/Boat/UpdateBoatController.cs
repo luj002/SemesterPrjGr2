@@ -72,7 +72,7 @@ public class UpdateBoatController
             Console.WriteLine("Editing property: " + displayName);
 
             Console.Write("Value: ");
-            string defaultInput = Console.ReadLine();
+            string defaultInput = Console.ReadLine().ToLower();
             dynamic handledInput = null;
 
             if (property.PropertyType == typeof(string))
@@ -150,13 +150,19 @@ public class UpdateBoatController
             Console.WriteLine();
 
             Console.Write("Update boat by id number: ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
             int chosenNumber;
 
             if (int.TryParse(input, out chosenNumber) == true)
             {
                 string BoatID = "#BOAT_" + chosenNumber.ToString("0000");
                 ChosenBoat = _boatRep.GetBoatById(BoatID);
+
+                if (ChosenBoat == null)
+                {
+                    continue;
+                }
+
                 break;
             }
 

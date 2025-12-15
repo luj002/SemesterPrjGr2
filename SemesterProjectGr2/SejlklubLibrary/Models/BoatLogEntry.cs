@@ -1,7 +1,7 @@
 ﻿public class BoatLogEntry
 {
-	public DateTime Timestamp { get; }
-	public string Description { get; }
+	public DateTime Timestamp { get; set; }
+	public string Description { get; set; }
 	public BoatLogEntry(string description, DateTime? timeStamp = null)
 	{
 		Timestamp = timeStamp ?? DateTime.Now;

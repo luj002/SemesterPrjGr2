@@ -37,6 +37,10 @@
 	{
 		Entries.Add(entry);
 	}
+	public void RemoveEntry(BoatLogEntry entry)
+	{
+		Entries.Remove(entry);
+	}
 	public override string ToString()
 	{
 		return $"Boat Log for {Boat.ModelName}:\n" + string.Join("\n", Entries);

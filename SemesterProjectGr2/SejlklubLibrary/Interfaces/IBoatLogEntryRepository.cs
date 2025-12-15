@@ -5,4 +5,5 @@
     List<BoatLogEntry> Entries { get; }
     DateTime? LatestEntryTime { get; }
     void AddEntry(BoatLogEntry entry);
+    void RemoveEntry(BoatLogEntry entry);
 }

@@ -76,7 +76,106 @@
 
 	public void ShowLogMenu()
 	{
-        Console.WriteLine("amogus");
+		//Pick boat
+		IBoatRepository boatRep = _boatRepository;
+		Boat? chosenBoat;
+
+        while (true)
+        {
+            Console.Clear();
+
+            ShowBoatController SBC = new ShowBoatController(boatRep);
+            string callType = "log";
+            SBC.ShowAllBoats(callType);
+
+            Console.WriteLine("Q. Cancel");
+            Console.WriteLine();
+
+            Console.WriteLine("You have to pick a boat to view its log history.");
+            Console.Write("Pick boat by id number: ");
+            string input = Console.ReadLine();
+            int chosenNumber;
+
+            if (int.TryParse(input, out chosenNumber) == true)
+            {
+                string boatID = "#BOAT_" + chosenNumber.ToString("0000");
+                chosenBoat = boatRep.GetBoatById(boatID);
+
+				if (chosenBoat == null)
+				{
+					continue;
+				}
+
+                break;
+            }
+
+            else if (input == "q")
+            {
+                return;
+            }
+        }
+
+        //Pick action (add, show, remove, update)
+        IBoatLogEntryRepository _logRepository = new BoatLogEntryRepository(chosenBoat);
+        List<string> actions = new List<string> {"1. Add log","2. Show logs","3. Remove log","4. Update log"};
+
+		while (true)
+		{
+            Console.Clear();
+
+            Console.WriteLine($"Editing boat: {chosenBoat.Id}");
+            Console.WriteLine();
+
+			foreach (string action in actions)
+			{
+                Console.WriteLine(action);
+			}
+
+            Console.WriteLine();
+            Console.WriteLine("Q. Cancel");
+            Console.WriteLine();
+
+            Console.Write("Your choice: ");
+            string input = Console.ReadLine().ToLower();
+
+			switch (input)
+			{
+				case "1":
+
+                    //Add BoatLog to boat
+                    AddBoatLogController ABLC = new AddBoatLogController(_logRepository,chosenBoat);
+					ABLC.AddLog();
+                    break;
+
+				case "2":
+
+					//Show BoatLogs for boat
+					ShowBoatLogController SBLC = new ShowBoatLogController(_logRepository);
+					string callType = "display";
+					SBLC.ShowLogs(callType);
+					break;
+
+				case "3":
+
+					//Remove BoatLog from boat
+					RemoveBoatLogController RBLC = new RemoveBoatLogController(_logRepository);
+					RBLC.RemoveLog();
+					break;
+
+				case "4":
+
+					//Update BoatLog for boat
+					UpdateBoatLogController UBLC = new UpdateBoatLogController(_logRepository,chosenBoat);
+					UBLC.UpdateLog();
+					break;
+
+				case "q":
+
+					//Exit BoatLog menu
+					return;
+
+            }
+        }
     }
 
 	private void ShowBookingMenu()

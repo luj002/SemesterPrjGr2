@@ -47,9 +47,16 @@ public class RemoveBoatController
             string input = Console.ReadLine().ToLower();
             int chosenNumber;
 
-            if (int.TryParse(input, out chosenNumber) == true && chosenNumber < 10)
+            if (int.TryParse(input, out chosenNumber) == true)
             {
                 BoatID = "#BOAT_" + chosenNumber.ToString("0000");
+                Boat? chosenBoat = _boatRep.GetBoatById(BoatID);
+
+                if (chosenBoat == null)
+                {
+                    continue;
+                }
+
                 Remove();
                 break;
             }
