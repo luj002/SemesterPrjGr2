@@ -12,7 +12,8 @@ public static class LogHelpers
             Console.WriteLine("Q. Cancel");
             Console.WriteLine();
 
-            Console.Write("Update log by order number: ");
+            string displayCallType = char.ToUpper(callType[0]) + callType.Substring(1);
+            Console.Write($"{displayCallType} log by order number: ");
             string input = Console.ReadLine().ToLower();
             int chosenNumber;
 
