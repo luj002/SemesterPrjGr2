@@ -31,7 +31,7 @@ public class RemoveBoatSpaceController
         Console.WriteLine(BoatSpace);
         Console.WriteLine();
 
-        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this boat space?");
+        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this boat space?") ?? false;
 
         if (confirm)
             _boatSpaceRepository.Remove(BoatSpace.Number);

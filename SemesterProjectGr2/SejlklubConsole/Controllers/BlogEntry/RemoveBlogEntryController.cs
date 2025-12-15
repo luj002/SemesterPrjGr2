@@ -62,10 +62,10 @@ public class RemoveBlogEntryController
 			}
 			try
 			{
-				int input = Helpers.IntFromReadLine("Write the number of the blogentry ID (or 0 to cancel)",0,blogEntryRepository.Count);
-				if (input == 0)
+				int? input = Helpers.IntFromReadLine("Write the number of the blogentry ID",0,blogEntryRepository.Count);
+				if (input == null)
 					return null;
-				selectedBlogEntry = blogEntryRepository.GetBlogEntryById(StringId.GetID(IdPrefix.BLOGENTRY, input));
+				selectedBlogEntry = blogEntryRepository.GetBlogEntryById(StringId.GetID(IdPrefix.BLOGENTRY, (int)input));
 				if (selectedBlogEntry != null)
 				{
 					validInput = true;

@@ -22,12 +22,12 @@ public class AddMemberController
     /// <returns>returns the created Member object.</returns>
     private void Create()
     {
-        List<string> choices = new List<string> { 
-            "1. Name", 
-            "2. Address", 
-            "3. Email", 
-            "4. Date of birth", 
-            "5. Member type", 
+        List<string> choices = new List<string> {
+            "1. Name",
+            "2. Address",
+            "3. Email",
+            "4. Date of birth",
+            "5. Member type",
             "\nC. Confirm",
             "Q. Cancel (Discard Member)"
         };
@@ -62,14 +62,22 @@ public class AddMemberController
                     choices[2] = $"3. Email - {email}";
                     break;
                 case "4":
-                    dateOfBirth = Helpers.DateTimeFromReadLine("Enter date of birth", new DateTime(1900, 1, 1), DateTime.Now);
+                    DateTime? dateOfBirthInput = Helpers.DateTimeFromReadLine("Enter date of birth", new DateTime(1900, 1, 1), DateTime.Now);
+                    if (dateOfBirthInput != null)
+                    {
+                        dateOfBirth = (DateTime)dateOfBirthInput;
 
-                    choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
+                        choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
+                    }
                     break;
                 case "5":
-                    memberType = MemberHelpers.memberTypeFromReadLine();
+                    MemberType? memberTypeInput = MemberHelpers.memberTypeFromReadLine();
+                    if (memberTypeInput != null)
+                    {
+                        memberType = (MemberType)memberTypeInput;
 
-                    choices[4] = $"5. Member type - {memberType}";
+                        choices[4] = $"5. Member type - {memberType}";
+                    }
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Press any button to try again.");
@@ -79,7 +87,7 @@ public class AddMemberController
             theChoice = Helpers.ReadChoice(choices);
         }
 
-        
+
 
         if (theChoice == "c")
         {
@@ -94,7 +102,7 @@ public class AddMemberController
     private void AddMember()
     {
         Console.WriteLine(_member);
-        bool AddConfirmed = Helpers.YesOrNo("Add this member?");
+        bool AddConfirmed = Helpers.YesOrNo("Add this member?") ?? false;
         if (AddConfirmed)
             _memberRepository.Add(_member);
     }

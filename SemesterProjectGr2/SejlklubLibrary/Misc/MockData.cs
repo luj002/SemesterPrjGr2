@@ -28,7 +28,9 @@
         new Booking(members[1], boats[0], "Coastal Waters", new DateTime(2026, 1, 11, 15, 0, 0), new DateTime(2026, 1, 11, 9, 0, 0), "N/A"),
         new Booking(members[1], boats[0], "Coastal Waters", new DateTime(2026, 3, 11, 15, 0, 0), new DateTime(2026, 3, 11, 9, 0, 0), "N/A"),
         new Booking(members[2], boats[1], "Lakeside",new DateTime(2026, 1, 28, 18, 0, 0), new DateTime(2026, 1, 28, 10, 0, 0), "N/A"),
-        new Booking(members[3], boats[2], "River Trail", new DateTime(2026, 1, 14, 19, 0, 0), new DateTime(2026, 1, 14, 8, 0, 0), "N/A")
+        new Booking(members[3], boats[2], "River Trail", new DateTime(2026, 1, 14, 19, 0, 0), new DateTime(2026, 1, 14, 8, 0, 0), "N/A"),
+        new Booking(members[3], boats[2], "River Trail", new DateTime(2026, 2, 14, 19, 0, 0), new DateTime(2026, 2, 14, 8, 0, 0), "N/A"),
+        new Booking(members[3], boats[1], "Lakeside", new DateTime(2026, 2, 28, 18, 0, 0), new DateTime(2026, 2, 28, 10, 0, 0), "N/A")
     };
 
     private static List<BoatSpace> boatSpaces = new List<BoatSpace>()

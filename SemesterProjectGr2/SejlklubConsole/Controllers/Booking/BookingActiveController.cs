@@ -37,7 +37,7 @@
             return;
         }
 
-        bool activate = Helpers.YesOrNo($"Do you want to activate {_booking.Id}?");
+        bool activate = Helpers.YesOrNo($"Do you want to activate {_booking.Id}?") ?? false;
         if (activate)
         {
             _booking.IsActive = true;
@@ -59,7 +59,7 @@
             return;
         }
 
-        bool finalize = Helpers.YesOrNo($"Do you want to finalize {_booking.Id}?");
+        bool finalize = Helpers.YesOrNo($"Do you want to finalize {_booking.Id}?") ?? false;
         if (finalize)
         {
             _booking.IsActive = false;

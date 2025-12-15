@@ -57,7 +57,7 @@ public class UpdateBoatSpaceController
             theChoice = Helpers.ReadChoice(boatSpaceInfoFields);
         }
 
-        bool confirm = Helpers.YesOrNo("Save changes to boat space?");
+        bool confirm = Helpers.YesOrNo("Save changes to boat space?") ?? false;
 
         if (confirm)
         {

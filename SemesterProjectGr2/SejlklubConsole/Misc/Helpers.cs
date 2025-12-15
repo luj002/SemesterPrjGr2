@@ -10,16 +10,20 @@ public static class Helpers
     /// <param name="min">Minimum value for input.</param>
     /// <param name="max">Maximum value for input.</param>
     /// <returns>Int from ReadLine input in specified range.</returns>
-    public static int IntFromReadLine(string inputDescription, int min, int max)
+    public static int? IntFromReadLine(string inputDescription, int min, int max)
     {
         int input = 0;
         bool validInput = false;
         while (!validInput)
         {
-            Console.Write($"{inputDescription} ");
+            Console.Write($"{inputDescription} (or Q to cancel): ");
             try
             {
-                input = int.Parse(Console.ReadLine()!);
+				string inputString = Console.ReadLine().ToLower();
+				if (inputString == "q")
+					return null;
+
+                input = int.Parse(inputString);
 
                 if (input < min)
                     throw new ArgumentException($"Input must be at least {min}");
@@ -87,18 +91,22 @@ public static class Helpers
 	/// </summary>
 	/// <param name="question">The question being displayed in console.</param>
 	/// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
-	public static bool YesOrNo(string question)
+	public static bool? YesOrNo(string question)
 	{
 		string input = "";
 		bool choiceFinalized = false;
 		while (!choiceFinalized)
 		{
-			Console.Write($"{question} [ y / n ]: ");
+			Console.Write($"{question} [ y / n ] (Q to cancel): ");
 			try
 			{
 				input = Console.ReadLine()!.ToLower();
-				if (input[0] != 'y' && input[0] != 'n')
+				if (input == "q")
+					return null;
+
+                if (input[0] != 'y' && input[0] != 'n')
 					throw new ArgumentException($"Input was not 'y' or 'n'");
+
 				choiceFinalized = true;
 			}
 			catch (ArgumentException aex)
@@ -167,7 +175,7 @@ public static class Helpers
     /// <param name="max">Maximum DateTime to allow</param>
     /// <param name="timeIncluded">Whether or not to include time of the day</param>
     /// <returns>A DateTime object corresponding to the given ReadLine inputs</returns>
-    public static DateTime DateTimeFromReadLine(string inputDescription, DateTime min, DateTime max, bool timeIncluded = false)
+    public static DateTime? DateTimeFromReadLine(string inputDescription, DateTime min, DateTime max, bool timeIncluded = false)
     {
         DateTime time = DateTime.MinValue;
         bool validInput = false;
@@ -176,26 +184,43 @@ public static class Helpers
             Console.Write($"{inputDescription}: ");
             try
             {
-                int year = (min.Year == max.Year) ? min.Year : IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
+				int? yearInput = IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
+				if (yearInput == null)
+					return null;
+
+                int year = (min.Year == max.Year) ? min.Year : (int)yearInput;
 
                 int minMonth = (year == min.Year) ? min.Month : 1;
                 int maxMonth = (year == max.Year) ? max.Month : 12;
 
-                int month = ((min.Year == max.Year) 
-						  && (min.Month == max.Month)) ? min.Month : IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
+				int? monthInput = IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
+				if (monthInput == null)
+					return null;
+
+                int month = ((min.Year == max.Year)
+						  && (min.Month == max.Month)) ? min.Month : (int)monthInput;
 
                 int minDay = (year == min.Year && month == min.Month) ? min.Day : 1;
                 int maxDay = (year == max.Year && month == max.Month) ? max.Day : DateTime.DaysInMonth(year, month);
-                
-                int day = ((min.Year == max.Year) 
-						&& (min.Month == max.Month) 
-						&& (min.Day == max.Day)) ? min.Day : IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
+
+				int? dayInput = IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
+				if (dayInput == null)
+					return null;
+
+                int day = ((min.Year == max.Year)
+						&& (min.Month == max.Month)
+						&& (min.Day == max.Day)) ? min.Day : (int)dayInput;
 
                 if (timeIncluded)
                 {
-                    int hour = IntFromReadLine("Hour (0-23):", 0, 23);
-                    int minute = IntFromReadLine("Minute (0-59):", 0, 59);
-                    time = new DateTime(year, month, day, hour, minute, 0);
+                    int? hourInput = IntFromReadLine("Hour (0-23):", 0, 23);
+					if (hourInput == null)
+						return null;
+
+                    int? minuteInput = IntFromReadLine("Minute (0-59):", 0, 59);
+					if (minuteInput == null)
+						return null;
+                    time = new DateTime(year, month, day, (int)hourInput, (int)minuteInput, 0);
                 }
                 else
                 {
