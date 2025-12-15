@@ -1,4 +1,4 @@
-﻿public class BoatHelpers
+﻿public static class BoatHelpers
 {
     /// <summary>
     /// Finds boat by number from user input.

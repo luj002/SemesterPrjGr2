@@ -1,4 +1,4 @@
-﻿public class BoatSpaceHelpers
+﻿public static class BoatSpaceHelpers
 {
     /// <summary>
     /// Finds boat space by number from user input.
