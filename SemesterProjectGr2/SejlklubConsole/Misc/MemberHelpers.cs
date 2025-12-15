@@ -1,4 +1,4 @@
-﻿public class MemberHelpers
+﻿public static class MemberHelpers
 {
     /// <summary>
     /// Finds member by ID from user input.

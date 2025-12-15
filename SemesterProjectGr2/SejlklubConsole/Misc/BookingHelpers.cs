@@ -1,4 +1,4 @@
-﻿public class BookingHelpers
+﻿public static class BookingHelpers
 {
     /// <summary>
     /// Finds booking by ID from user input.
@@ -14,10 +14,7 @@
 
         while (!validInput)
         {
-            foreach (Booking booking in bookings)
-            {
-                Console.WriteLine($"{booking.Id} - {booking.Member.Id} {booking.Member.Name} - {booking.Boat.Id} {booking.Boat.Nickname}");
-            }
+            PrintBookings(bookings);
             Console.Write("Enter Booking ID (or Q to cancel): ");
             try
             {
@@ -137,8 +134,10 @@
     /// time interval.
     /// </summary>
     /// <param name="bookingsList">The list of existing bookings to check for potential conflicts.</param>
-    /// <param name="booking">The booking to validate against the existing bookings.</param>
-    /// <exception cref="ArgumentException">Thrown if the boat in <paramref name="booking"/> is already booked for the specified time period.</exception>
+    /// <param name="memberToCheck">The member making the booking.</param>
+    /// <param name="boatToCheck">The boat being booked.</param>
+    /// <param name="startTime">The start time of the booking.</param>
+    /// <param name="endTime">The end time of the booking.</param>
     public static string ValidateBooking(List<Booking> bookingsList, Member? memberToCheck, Boat? boatToCheck, DateTime startTime, DateTime endTime)
     {
         string bookingStatus = "";
@@ -175,4 +174,242 @@
 
         return bookingStatus;
     }
+
+    /// <summary>
+    /// Prints a list of bookings to the console with key information.
+    /// </summary>
+    /// <param name="bookings">List of bookings to print</param>
+    public static void PrintBookings(List<Booking> bookings)
+    {
+        foreach (Booking booking in bookings)
+        {
+            Console.WriteLine($"{booking.Id} " +
+                $"- {booking.StartTime.ToString("yyyy/MM/dd HH:mm:ss")} to {booking.EndTime.ToString("yyyy/MM/dd HH:mm:ss")}" +
+                $"- {booking.Member.Id} {booking.Member.Name} " +
+                $"- {booking.Boat.Id} {booking.Boat.Nickname}");
+        }
+    }
+
+    /// <summary>
+    /// Basic statistics for a boat from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <param name="boat">The boat to gather statistics about</param>
+    /// <returns>Returns a string containing information about the total number of bookings and total time booked</returns>
+    public static string BookingStatisticForBoatString(List<Booking> bookings, Boat boat)
+    {
+        int totalBookings = 0;
+        TimeSpan totalDuration = TimeSpan.Zero;
+        foreach (Booking booking in bookings)
+        {
+            if (booking.Boat.Id == boat.Id)
+            {
+                totalBookings++;
+                totalDuration += (booking.EndTime - booking.StartTime);
+            }
+        }
+        return $"Boat {boat.Id} {boat.Nickname} " +
+            $"\n\tTotal Bookings : {totalBookings}" +
+            $"\n\tTotal booking duration {totalDuration.TotalHours} hours";
+    }
+
+    /// <summary>
+    /// Gets the total time a boat has been booked for from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <param name="boat">The boat to check</param>
+    /// <returns>TimeSpan corresponding to the total time the boat has been booked</returns>
+    public static TimeSpan TotalTimeBookedForBoat(List<Booking> bookings, Boat boat)
+    {
+        TimeSpan totalDuration = TimeSpan.Zero;
+        foreach (Booking booking in bookings)
+        {
+            if (booking.Boat.Id == boat.Id)
+            {
+                totalDuration += (booking.EndTime - booking.StartTime);
+            }
+        }
+        return totalDuration;
+    }
+
+    /// <summary>
+    /// Gets the boat with the most bookings from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <returns>The boat with the most bookings or null if no bookings exist</returns>
+    public static Boat? GetBoatWithMostBookings(List<Booking> bookings)
+    {
+        if (bookings.Count == 0)
+            return null;
+
+        Boat mostBookedBoat = bookings[0].Boat;
+        int maxBookings = 0;
+        Dictionary<string, int> boatBookingCounts = new Dictionary<string, int>();
+        foreach (Booking booking in bookings)
+        {
+            string boatId = booking.Boat.Id;
+            if (boatBookingCounts.ContainsKey(boatId))
+            {
+                boatBookingCounts[boatId]++;
+            }
+            else
+            {
+                boatBookingCounts[boatId] = 1;
+                
+            }
+
+            if (boatBookingCounts[boatId] > maxBookings)
+            {
+                maxBookings = boatBookingCounts[boatId];
+                mostBookedBoat = booking.Boat;
+            }
+        }
+        return mostBookedBoat;
+    }
+
+    /// <summary>
+    /// Gets the boat with the longest total booking time from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <returns>The boat with the longest total booking time or null if no bookings exist</returns>
+    public static Boat? GetBoatWithLongestBookingTime(List<Booking> bookings)
+    {
+        if (bookings.Count == 0)
+            return null;
+
+        Boat longestBookedBoat = bookings[0].Boat;
+        TimeSpan maxDuration = TimeSpan.Zero;
+        Dictionary<string, TimeSpan> boatBookingDurations = new Dictionary<string, TimeSpan>();
+        foreach (Booking booking in bookings)
+        {
+            string boatId = booking.Boat.Id;
+            TimeSpan bookingDuration = booking.EndTime - booking.StartTime;
+            if (boatBookingDurations.ContainsKey(boatId))
+            {
+                boatBookingDurations[boatId] += bookingDuration;
+            }
+            else
+            {
+                boatBookingDurations[boatId] = bookingDuration;
+            }
+
+            if (boatBookingDurations[boatId] > maxDuration)
+            {
+                maxDuration = boatBookingDurations[boatId];
+                longestBookedBoat = booking.Boat;
+            }
+        }
+        return longestBookedBoat;
+    }
+
+    /// <summary>
+    /// Basic statistics for a member from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <param name="member">The member to check</param>
+    /// <returns>A string with information about the total number of bookings and total time booked</returns>
+    public static string MemberStatisticsString(List<Booking> bookings, Member member)
+    {
+        int totalBookings = 0;
+        TimeSpan totalDuration = TimeSpan.Zero;
+        foreach (Booking booking in bookings)
+        {
+            if (booking.Member.Id == member.Id)
+            {
+                totalBookings++;
+                totalDuration += (booking.EndTime - booking.StartTime);
+            }
+        }
+        return $"Member {member.Id} {member.Name} " +
+            $"\n\tTotal Bookings : {totalBookings}" +
+            $"\n\tTotal booking duration {totalDuration.TotalHours} hours";
+    }
+
+    /// <summary>
+    /// Gets the total time a member has booked from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check</param>
+    /// <param name="member">The member to check</param>
+    /// <returns>A TimeSpan corresponding to the total time the member has booked a boat</returns>
+    public static TimeSpan TotalTimeBookedForMember(List<Booking> bookings, Member member)
+    {
+        TimeSpan totalDuration = TimeSpan.Zero;
+        foreach (Booking booking in bookings)
+        {
+            if (booking.Member.Id == member.Id)
+            {
+                totalDuration += (booking.EndTime - booking.StartTime);
+            }
+        }
+        return totalDuration;
+    }
+
+    /// <summary>
+    /// Gets the member with the most bookings from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <returns>The member with most bookings or null if no bookings exist</returns>
+    public static Member? GetMemberWithMostBookings(List<Booking> bookings)
+    {
+        if (bookings.Count == 0)
+            return null;
+
+        Member mostActiveMember = bookings[0].Member;
+        int maxBookings = 0;
+        Dictionary<string, int> memberBookingCounts = new Dictionary<string, int>();
+        foreach (Booking booking in bookings)
+        {
+            string memberId = booking.Member.Id;
+            if (memberBookingCounts.ContainsKey(memberId))
+            {
+                memberBookingCounts[memberId]++;
+            }
+            else
+            {
+                memberBookingCounts[memberId] = 1;
+            }
+            if (memberBookingCounts[memberId] > maxBookings)
+            {
+                maxBookings = memberBookingCounts[memberId];
+                mostActiveMember = booking.Member;
+            }
+        }
+        return mostActiveMember;
+    }
+
+    /// <summary>
+    /// Gets the member with the longest total booking time from a list of bookings.
+    /// </summary>
+    /// <param name="bookings">List of bookings to check from</param>
+    /// <returns>The member with the longest total booking time or null if no bookings exist</returns>
+    public static Member? GetMemberWithLongestBookingTime(List<Booking> bookings)
+    {
+        if (bookings.Count == 0)
+            return null;
+
+        Member longestBookingMember = bookings[0].Member;
+        TimeSpan maxDuration = TimeSpan.Zero;
+        Dictionary<string, TimeSpan> memberBookingDurations = new Dictionary<string, TimeSpan>();
+        foreach (Booking booking in bookings)
+        {
+            string memberId = booking.Member.Id;
+            TimeSpan bookingDuration = booking.EndTime - booking.StartTime;
+            if (memberBookingDurations.ContainsKey(memberId))
+            {
+                memberBookingDurations[memberId] += bookingDuration;
+            }
+            else
+            {
+                memberBookingDurations[memberId] = bookingDuration;
+            }
+            if (memberBookingDurations[memberId] > maxDuration)
+            {
+                maxDuration = memberBookingDurations[memberId];
+                longestBookingMember = booking.Member;
+            }
+        }
+        return longestBookingMember;
+    }
+
+
 }

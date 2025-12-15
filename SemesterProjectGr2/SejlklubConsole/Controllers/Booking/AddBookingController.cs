@@ -8,7 +8,6 @@ public class AddBookingController
     private IBoatRepository _boatRepository;
     private IMemberRepository _memberRepository;
     private Booking _booking;
-    private string _statusText;
     private bool _validBooking;
     #endregion
 
@@ -16,7 +15,6 @@ public class AddBookingController
     public AddBookingController(IBookingRepository bookingRepository, IBoatRepository boatRepository, IMemberRepository memberRepository)
     {
         _validBooking = false;
-        _statusText = "";
         _bookingRepository = bookingRepository;
         _boatRepository = boatRepository;
         _memberRepository = memberRepository;
@@ -27,6 +25,17 @@ public class AddBookingController
     #region Methods
     private void Create()
     {
+        Member? member = null;
+        Boat? boat = null;
+        string sailingArea = "";
+        string destination = "";
+        DateTime startTime = DateTime.MinValue;
+        DateTime endTime = DateTime.MinValue;
+
+        string bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+        _validBooking = bookingStatus.Length == 0;
+        bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
+
         List<string> choices = new List<string> {
             "1. Member",
             "2. Boat",
@@ -34,17 +43,10 @@ public class AddBookingController
             "4. Destination",
             "5. Start time",
             "6. End time",
-            $"",
+            $"{bookingStatus}",
             "C. Confirm",
             "Q. Cancel (Discard Booking)"
         };
-
-        Member? member = null;
-        Boat? boat = null;
-        string sailingArea = "";
-        string destination = "";
-        DateTime startTime = DateTime.MinValue;
-        DateTime endTime = DateTime.MinValue;
 
         string theChoice = Helpers.ReadChoice(choices);
 
@@ -102,12 +104,11 @@ public class AddBookingController
             }
 
             // Validate booking
-            string bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+            bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
             _validBooking = bookingStatus.Length == 0;
-            bookingStatus = "\nBooking status:\n" + bookingStatus;
+            bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
 
-            choices[6] = _validBooking ? "\nBooking is valid." : $"{bookingStatus}";
-
+            choices[6] = bookingStatus;
 
             theChoice = Helpers.ReadChoice(choices);
 

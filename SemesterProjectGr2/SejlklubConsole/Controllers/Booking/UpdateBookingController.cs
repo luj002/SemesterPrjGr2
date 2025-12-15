@@ -5,10 +5,13 @@ public class UpdateBookingController
     private IMemberRepository _memberRepository;
     private IBoatRepository _boatRepository;
     private Booking? _booking;
+    private bool _validBooking;
 
     public UpdateBookingController(IBookingRepository bookingRepository, IMemberRepository memberRepository, IBoatRepository boatRepository)
     {
         _bookingRepository = bookingRepository;
+        _memberRepository = memberRepository;
+        _boatRepository = boatRepository;
         _booking = BookingHelpers.SelectBooking(_bookingRepository);
     }
 
@@ -28,20 +31,26 @@ public class UpdateBookingController
         DateTime startTime = _booking.StartTime;
         DateTime endTime = _booking.EndTime;
 
+        string bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+        _validBooking = bookingStatus.Length == 0;
+        bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
+
         List<string> choices = new List<string> {
             $"1. Member - {member.Id} {member.Name}",
             $"2. Boat - {boat.Id} {boat.Nickname} {boat.ModelName}",
             $"3. Sailing area - {sailingArea}",
             $"4. Destination - {destination}",
-            $"5. Start time - {startTime.ToShortDateString()} {startTime.ToShortTimeString()}",
-            $"6. End time - {endTime.ToShortDateString()} {endTime.ToShortTimeString()}",
-            "\nC. Confirm",
+            $"5. Start time - {startTime.ToString("yyyy/MM/dd HH:mm:ss")}",
+            $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}",
+            $"{bookingStatus}",
+            "C. Confirm",
             "Q. Cancel (Discard Booking)"
         };
 
+
         string theChoice = Helpers.ReadChoice(choices);
 
-        while (theChoice != "q")
+        while ((theChoice != "c"||_validBooking) && theChoice != "q")
         {
             switch (theChoice)
             {
@@ -73,24 +82,42 @@ public class UpdateBookingController
                 case "5":
                     startTime = Helpers.DateTimeFromReadLine("Start time:", DateTime.Now, endTime, true);
 
-                    choices[4] = $"5. Start time - {startTime.ToShortDateString()} {startTime.ToShortTimeString()}";
+                    choices[4] = $"5. Start time - {startTime.ToString("yyyy/MM/dd HH:mm:ss")}";
                     break;
                 case "6":
-                    endTime = Helpers.DateTimeFromReadLine("End time:", startTime, startTime.AddDays(3));
+                    endTime = Helpers.DateTimeFromReadLine("End time:", startTime, startTime.AddDays(7), true);
 
-                    choices[5] = $"6. End time - {endTime.ToShortDateString()} {endTime.ToShortTimeString()}";
+                    choices[5] = $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}";
                     break;
-                case "c":
-                    _booking.Member = member;
-                    _booking.Boat = boat;
-                    _booking.SailingArea = sailingArea;
-                    _booking.Destination = destination.Length == 0 ? "N/A" : destination;
-                    _booking.StartTime = startTime;
-                    _booking.EndTime = endTime;
-                    Console.WriteLine("Booking updated. Press any key to continue.");
-                    Console.ReadKey();
-                    return;
+                default:
+                    break;
             }
+
+            bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+            _validBooking = bookingStatus.Length == 0;
+            bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
+
+            choices[6] = bookingStatus;
+
+            theChoice = Helpers.ReadChoice(choices);
+        }
+
+        if (theChoice == "c")
+        {
+            if (!Helpers.YesOrNo("Save changes to booking?"))
+            {
+                Console.WriteLine("Booking not updated. Press any key to continue.");
+                Console.ReadKey();
+                return;
+            }
+            _booking.Member = member;
+            _booking.Boat = boat;
+            _booking.SailingArea = sailingArea;
+            _booking.Destination = destination.Length == 0 ? "N/A" : destination;
+            _booking.StartTime = startTime;
+            _booking.EndTime = endTime;
+            Console.WriteLine("Booking updated. Press any key to continue.");
+            Console.ReadKey();
         }
     }
 }

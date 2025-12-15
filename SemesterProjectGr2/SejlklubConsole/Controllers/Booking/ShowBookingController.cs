@@ -29,7 +29,8 @@ public class ShowBookingController
             "2. Show Active booking",
             "3. Show bookings for boat",
             "4. Show bookings for member",
-            "5. Activate/Finalize booking",
+            "5. Show booking statistics",
+            "6. Activate/Finalize booking",
             "\nQ. Back to previous menu"
         };
 
@@ -52,6 +53,9 @@ public class ShowBookingController
                     ShowBookingsForMember();
                     break;
                 case "5":
+                    BookingStatisticsMenu();
+                    break;
+                case "6":
                     BookingActivation();
                     break;
                 default:
@@ -81,7 +85,7 @@ public class ShowBookingController
     {
         Console.WriteLine("All active bookings:");
         List<Booking> activeBookings = BookingHelpers.GetActiveBookings(_bookingRepository.GetAllNonArchived());
-        
+
         foreach (Booking booking in activeBookings)
         {
             if (booking.IsActive)
@@ -128,7 +132,7 @@ public class ShowBookingController
             return;
         }
         Console.WriteLine($"Bookings for member {member.Id} {member.Name}: ");
-        
+
         List<Booking> bookingsForMember = BookingHelpers.GetBookingsByMember(_bookingRepository.GetAll(), member);
         foreach (Booking booking in bookingsForMember)
         {
@@ -137,6 +141,9 @@ public class ShowBookingController
         Console.ReadKey();
     }
 
+    /// <summary>
+    /// Menu for activating or finalizing a booking.
+    /// </summary>
     private void BookingActivation()
     {
         List<string> choices = new List<string>
@@ -174,12 +181,148 @@ public class ShowBookingController
             }
             theChoice = Helpers.ReadChoice(choices);
         }
-
-
-        
-
     }
 
+    /// <summary>
+    /// Menu for showing booking statistics.
+    /// </summary>
+    private void BookingStatisticsMenu()
+    {
+        List<string> choices = new List<string>
+        {
+            "1. Show booking statistics for boat",
+            "2. Show booking statistics for member",
+            "\nQ. Back to previous menu"
+        };
+        string theChoice = Helpers.ReadChoice(choices);
+        while (theChoice != "q")
+        {
+            switch (theChoice)
+            {
+                case "1":
+                    // Show booking statistics for boat
+                    BoatStatisticsMenu();
+                    break;
+                case "2":
+                    // Show booking statistics for member
+                    MemberStatisticsMenu();
+                    break;
+                default:
+                    break;
+            }
+            theChoice = Helpers.ReadChoice(choices);
+        }
+    }
+
+    /// <summary>
+    /// Menu for showing boat statistics
+    /// </summary>
+    private void BoatStatisticsMenu()
+    {
+        Boat? mostBookedBoat = BookingHelpers.GetBoatWithMostBookings(_bookingRepository.GetAll());
+        Boat? longestBookingTimeBoat = BookingHelpers.GetBoatWithLongestBookingTime(_bookingRepository.GetAll());
+
+        int mostBookedCount = mostBookedBoat != null ? BookingHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), mostBookedBoat).Count : 0;
+        TimeSpan longestBookingTime = longestBookingTimeBoat != null ? BookingHelpers.TotalTimeBookedForBoat(_bookingRepository.GetAll(), longestBookingTimeBoat) : TimeSpan.Zero;
+
+        List<string> choices = new List<string>
+        {
+            "1. Show boat statistics for boat (Search by id)",
+            "2. Show boat statistics for all boats",
+            $"\nMost booked boat ({mostBookedCount} bookings) - {mostBookedBoat.Id} {mostBookedBoat.Nickname}",
+            $"Boat with longest booking time ({longestBookingTime.Hours} hours) - {longestBookingTimeBoat.Id} {longestBookingTimeBoat.Nickname}",
+            "\nQ. Back to previous menu"
+        };
+        string theChoice = Helpers.ReadChoice(choices);
+        while (theChoice != "q")
+        {
+            switch (theChoice)
+            {
+                case "1":
+                    // Show boat statistics for boat
+                    Boat? boat = BoatHelpers.SelectBoat(_boatRepository);
+                    if (boat == null)
+                    {
+                        Console.WriteLine("No boat selected. Press any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    Console.WriteLine(BookingHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), boat));
+                    Console.WriteLine("-------------------------------------------------------");
+                    Console.WriteLine("Press any key to go back.");
+                    Console.ReadKey();
+                    break;
+                case "2":
+                    // Show boat statistics for all boats
+                    foreach (Boat b in _boatRepository.GetAll())
+                    {
+                        Console.WriteLine(BookingHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), b));
+                        Console.WriteLine("---------------------------------------------------");
+                    }
+                    Console.WriteLine("End of boat statistics. Press any key to go back.");
+                    Console.ReadKey();
+                    break;
+                default:
+                    break;
+            }
+            theChoice = Helpers.ReadChoice(choices);
+        }
+    }
+
+    /// <summary>
+    /// Menu for showing member statistics
+    /// </summary>
+    private void MemberStatisticsMenu()
+    {
+        Member? memberMostBookings = BookingHelpers.GetMemberWithMostBookings(_bookingRepository.GetAll());
+        Member? memberLongestBookingTime = BookingHelpers.GetMemberWithLongestBookingTime(_bookingRepository.GetAll());
+
+        int mostBookingsCount = BookingHelpers.GetBookingsByMember(_bookingRepository.GetAll(), memberMostBookings).Count;
+        TimeSpan longestBookingTime = BookingHelpers.TotalTimeBookedForMember(_bookingRepository.GetAll(), memberLongestBookingTime);
+
+        List<string> choices = new List<string>
+        {
+            "1. Show member statistics for member (Search by id)",
+            "2. Show member statistics for all members",
+            $"\nMember with most bookings ({mostBookingsCount} bookings) - {memberMostBookings.Id} {memberMostBookings.Name}",
+            $"Member with longest booking time ({longestBookingTime.Hours} hours) - {memberLongestBookingTime.Id} {memberLongestBookingTime.Name}",
+            "\nQ. Back to previous menu"
+        };
+        string theChoice = Helpers.ReadChoice(choices);
+        while (theChoice != "q")
+        {
+            switch (theChoice)
+            {
+                case "1":
+                    // Show member statistics for member
+                    Member? member = MemberHelpers.SelectMember(_memberRepository);
+                    if (member == null)
+                    {
+                        Console.WriteLine("No member selected. Press any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    Console.WriteLine(BookingHelpers.MemberStatisticsString(_bookingRepository.GetAll(), member));
+                    Console.WriteLine("-------------------------------------------------------");
+                    Console.WriteLine("Press any key to go back.");
+                    Console.ReadKey();
+                    break;
+                case "2":
+                    // Show member statistics for all members
+                    foreach (Member m in _memberRepository.GetAll())
+                    {
+                        Console.WriteLine(BookingHelpers.MemberStatisticsString(_bookingRepository.GetAll(), m));
+                        Console.WriteLine("---------------------------------------------------");
+                    }
+                    Console.WriteLine("End of member statistics. Press any key to go back.");
+                    Console.ReadKey();
+                    break;
+                default:
+                    break;
+            }
+            theChoice = Helpers.ReadChoice(choices);
+        }
+    }
 
     #endregion
 }
