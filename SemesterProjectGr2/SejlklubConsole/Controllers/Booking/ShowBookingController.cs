@@ -219,7 +219,7 @@ public class ShowBookingController
     /// </summary>
     private void BoatStatisticsMenu()
     {
-        Boat? mostBookedBoat = BookingHelpers.GetBoatWithMostBookings(_bookingRepository.GetAll());
+        Boat? mostBookedBoat = BookingHelpers.GetMostBookedBoat(_bookingRepository.GetAll());
         Boat? longestBookingTimeBoat = BookingHelpers.GetBoatWithLongestBookingTime(_bookingRepository.GetAll());
 
         int mostBookedCount = mostBookedBoat != null ? BookingHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), mostBookedBoat).Count : 0;

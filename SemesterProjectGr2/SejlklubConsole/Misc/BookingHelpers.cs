@@ -237,7 +237,7 @@
     /// </summary>
     /// <param name="bookings">List of bookings to check from</param>
     /// <returns>The boat with the most bookings or null if no bookings exist</returns>
-    public static Boat? GetBoatWithMostBookings(List<Booking> bookings)
+    public static Boat? GetMostBookedBoat(List<Booking> bookings)
     {
         if (bookings.Count == 0)
             return null;

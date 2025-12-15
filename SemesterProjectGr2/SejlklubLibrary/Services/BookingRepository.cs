@@ -1,25 +1,25 @@
 ﻿public class BookingRepository : IBookingRepository
 {
-    private Dictionary<string, Booking> _bookings;
+    private Dictionary<string, Booking> _nonArchivedBookings;
     private Dictionary<string, Booking> _archivedBookings;
     public int Count
     {
         get
         {
-            return _bookings.Count + _archivedBookings.Count;
+            return _nonArchivedBookings.Count + _archivedBookings.Count;
         }
     }
 
     public BookingRepository()
     {
-        _bookings = new Dictionary<string, Booking>();
+        _nonArchivedBookings = new Dictionary<string, Booking>();
         _archivedBookings = new Dictionary<string, Booking>();
     }
 
     public List<Booking> GetAll()
     {
         Dictionary<string, Booking> allBookings = new Dictionary<string, Booking>(_archivedBookings);
-        foreach (var booking in _bookings)
+        foreach (var booking in _nonArchivedBookings)
         {
             allBookings[booking.Key] = booking.Value;
         }
@@ -28,7 +28,7 @@
 
     public List<Booking> GetAllNonArchived()
     {
-        return _bookings.Values.ToList();
+        return _nonArchivedBookings.Values.ToList();
     }
     public List<Booking> GetAllArchived()
     {
@@ -37,22 +37,22 @@
 
     public void Archive(string id)
     {
-        if (_bookings.ContainsKey(id))
+        if (_nonArchivedBookings.ContainsKey(id))
         {
-            _archivedBookings[id] = _bookings[id];
-            _bookings.Remove(id);
+            _archivedBookings[id] = _nonArchivedBookings[id];
+            _nonArchivedBookings.Remove(id);
         }
         else
         {
-            throw new RepositoryException(RepositoryExceptionType.Update, "No booking found to archive.");
+            throw new RepositoryException(RepositoryExceptionType.Archive, "No booking found to archive.");
         }
     }
 
     public void Add(Booking givenBooking)
     {
-        if (!_bookings.ContainsKey(givenBooking.Id) && !_archivedBookings.ContainsKey(givenBooking.Id))
+        if (!_nonArchivedBookings.ContainsKey(givenBooking.Id) && !_archivedBookings.ContainsKey(givenBooking.Id))
         {
-            _bookings[givenBooking.Id] = givenBooking;
+            _nonArchivedBookings[givenBooking.Id] = givenBooking;
         }
         else
         {
@@ -62,9 +62,9 @@
 
     public void Remove(string id)
     {
-        if (_bookings[id] != null)
+        if (_nonArchivedBookings[id] != null)
         {
-            _bookings.Remove(id);
+            _nonArchivedBookings.Remove(id);
         }
         else if (_archivedBookings[id] != null)
         {
@@ -78,9 +78,9 @@
 
     public Booking? GetBookingById(string id)
     {
-        if (_bookings.ContainsKey(id))
+        if (_nonArchivedBookings.ContainsKey(id))
         {
-            return _bookings[id];
+            return _nonArchivedBookings[id];
         }
         else if (_archivedBookings.ContainsKey(id))
         {

@@ -7,6 +7,7 @@ public enum RepositoryExceptionType
 	Read,
 	Update,
 	Delete,
+	Archive,
 }
 
 public class RepositoryException : Exception
