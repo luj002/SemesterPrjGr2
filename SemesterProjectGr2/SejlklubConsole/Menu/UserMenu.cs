@@ -329,7 +329,7 @@
 
 	private void ShowEventMenu()
 	{
-		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "5. Register for event", "\nQ. Back" };
+		List<string> choices = new List<string> { "1. Add event", "2. Show events", "3. Update event", "4. Remove event", "5. Register for event", "6. Unregister for an event", "\nQ. Back" };
         char choice = Helpers.ReadChoiceKey(choices);
 		while (choice != 'q')
 		{
@@ -354,6 +354,10 @@
 				case '5':
 					AddRegistrationController addRegistrationController = new AddRegistrationController(_eventRepository, currentUser);
 					addRegistrationController.Register();
+					break;
+				case '6':
+					RemoveRegistrationController removeRegistrationController = new RemoveRegistrationController(_eventRepository, currentUser);
+					removeRegistrationController.Unregister();
 					break;
 			}
 			choice = Helpers.ReadChoiceKey(choices);

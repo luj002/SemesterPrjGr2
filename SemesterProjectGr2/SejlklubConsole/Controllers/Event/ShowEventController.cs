@@ -10,7 +10,7 @@
     /// <summary>
     /// TO FILL OUT!!!!!
     /// </summary>
-    internal void ShowAllEvents()
+    public void ShowAllEvents()
 	{
 		foreach (Event e in _eventRepository.GetAll())
 		{
