@@ -1,6 +1,6 @@
 ﻿public static class MockData
 {
-    public static Adminstrator Adminstrator = new Adminstrator("Alice Admin", "123 Admin St, Admin City, Adminland", "alice@admin.dk", new DateTime(1990, 1, 1), MemberType.SENIOR);
+    public static Adminstrator Adminstrator = new Adminstrator("Alice Admin", "123 Admin St, Admin City, Adminland", "alice@admin.dk", new DateTime(1990, 1, 1), MemberType.SENIOR, "ThisPasswordIsSecure");
     private static List<BlogEntry> blogEntries = new List<BlogEntry>()
     {
         new BlogEntry("Welcome to our Sailing Club!", "We are excited to have", Adminstrator),
@@ -11,9 +11,9 @@
     private static List<Member> members = new List<Member>()
     {
         Adminstrator,
-        new Member("Bob Boater", "456 Boat Ln, Boattown, Boatia", "bob@email.dk", new DateTime(1985, 5, 15), MemberType.SENIOR),
-        new Member("Cathy Cruiser", "789 Cruise Rd, Cruisecity, Cruiseland", "cathy@email.dk", new DateTime(1992, 8, 22), MemberType.JUNIOR),
-        new Member("Derek Dinghy", "101 Dinghy St, Dinghytown, Dinghyland", "derek@email.dk", new DateTime(2000, 3, 10), MemberType.JUNIOR)
+        new Member("Bob Boater", "456 Boat Ln, Boattown, Boatia", "bob@email.dk", new DateTime(1985, 5, 15), MemberType.SENIOR, "mynamebob"),
+        new Member("Cathy Cruiser", "789 Cruise Rd, Cruisecity, Cruiseland", "cathy@email.dk", new DateTime(1992, 8, 22), MemberType.JUNIOR, "CruiseCityRulez!!"),
+        new Member("Derek Dinghy", "101 Dinghy St, Dinghytown, Dinghyland", "derek@email.dk", new DateTime(2000, 3, 10), MemberType.JUNIOR, "mewheniboat")
     };
 
     private static List<Boat> boats = new List<Boat>()

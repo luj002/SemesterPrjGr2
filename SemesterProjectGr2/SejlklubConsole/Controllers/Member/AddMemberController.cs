@@ -83,7 +83,8 @@ public class AddMemberController
 
         if (theChoice == "c")
         {
-            _member = new Member(name, address, email, dateOfBirth, memberType);
+            //TODO MAKE MEMBER PASSWORDS CUSTOMIZABLE
+            _member = new Member(name, address, email, dateOfBirth, memberType, "placeholder");
             AddMember();
         }
     }

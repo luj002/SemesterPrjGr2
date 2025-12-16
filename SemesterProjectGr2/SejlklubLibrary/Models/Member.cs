@@ -6,16 +6,30 @@
 	public string Email { get; set; }
 	public DateTime DateOfBirth { get; set; }
 	public MemberType Type { get; set; }
-	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type)
+	private string _password;
+	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type, string password)
+    {
+        Id = StringId.Next(IdPrefix.MEMBER);
+        Name = name;
+        Address = address;
+        Email = email;
+        DateOfBirth = dateOfBirth;
+        Type = type;
+        _password = password;
+    }
+	//DEEPLY UNSAFE WAY TO CHECK PASSWORDS!!!
+	public bool CheckPassword(string input)
 	{
-		Id = StringId.Next(IdPrefix.MEMBER);
-		Name = name;
-		Address = address;
-		Email = email;
-		DateOfBirth = dateOfBirth;
-		Type = type;
+		if (input == _password)
+		{
+			return true;
+		} 
+		else
+		{ 
+			return false; 
+		}
 	}
-	public override string ToString()
+     public override string ToString()
 	{
 		return $"Member {Id}: {Name}, Address: {Address}, Email: {Email}, DOB: {DateOfBirth.ToShortDateString()}, Type: {Type}";
 	}

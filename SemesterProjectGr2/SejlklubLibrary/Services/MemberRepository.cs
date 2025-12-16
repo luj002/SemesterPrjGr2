@@ -24,7 +24,8 @@ public class MemberRepository : IMemberRepository
     #region Methods
     public void Create(string name, string address, string email, DateTime dateOfBirth, MemberType type)
     {
-        Add(new Member(name, address, email, dateOfBirth, type));
+        //TODO MAKE MEMBERS PASSWORDS CUSTOMIZABLE
+        Add(new Member(name, address, email, dateOfBirth, type, "placeholder"));
     }
     
     public void Add(Member member)

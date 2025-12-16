@@ -1,18 +1,23 @@
 ﻿public class UserMenu
 {
-	public UserMenu()
+	public UserMenu(string memberId)
 	{
-		MockData.PopulateBlogEntries(_blogEntryRepository);
+        //in reality we'd probably fetch from a database here
+        MockData.PopulateBlogEntries(_blogEntryRepository);
 		MockData.PopulateMembers(_memberRepository);
 		MockData.PopulateBoats(_boatRepository);
 		MockData.PopulateBookings(_bookingRepository);
 		MockData.PopulateBoatSpaces(_boatSpaceRepository);
 		MockData.PopulateEvents(_eventRepository);
+
+		currentUser = _memberRepository.GetMemberById(memberId);
     }
 
 	private List<string> _menuChoices = new List<string>();
-    //for now just use menuChoices.Add() in PopulateMenu() to add stuff
-    //todo find a better way to populate this list
+	//for now just use menuChoices.Add() in PopulateMenu() to add stuff
+	//todo find a better way to populate this list
+
+	public static Member currentUser;
 
     private IBlogEntryRepository _blogEntryRepository = new BlogEntryRepository();
     private IBoatRepository _boatRepository = new BoatRepository();
@@ -33,7 +38,7 @@
 		_menuChoices.Add("\nQ. Quit");
     }
 	//DEBUG STUFF, CHANGE THIS LATER
-	public static Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
+	//public static Member currentUser = new Adminstrator("John Testman", "121 Test Road, Testville, Testlandia", "test@test.test", new DateTime(1984, 6, 22), MemberType.SENIOR);
 	//END OF DEBUG STUFF
 
 	public void ShowMenu()
