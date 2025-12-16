@@ -88,4 +88,11 @@
         }
         return null;
     }
+
+    public List<Booking> BookingsSortedByStartTime()
+    {
+        List<Booking> allBookings = GetAll();
+        BookingStartTimeQuickSort.QuickSort(allBookings, 0, (allBookings.Count-1));
+        return allBookings;
+    }
 }
