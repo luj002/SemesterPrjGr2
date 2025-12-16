@@ -1,4 +1,24 @@
 ﻿@page "/Boating"
 @model GorbaModel
-@{
+
+@section cssForPage {
+
+    <link rel="stylesheet" href="~/css/BoatIndex.css" />
+
 }
+
+<div class="text-center">
+
+    <h2>Welcome to the boat overview.</h2>
+
+</div>
+
+<div>
+
+    <form method="post" style="margin-top: 5vh">
+
+        <button type="submit" asp-page-handler="ShowBoats">View All Boats</button>
+
+    </form>
+
+</div>
