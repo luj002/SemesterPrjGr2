@@ -16,7 +16,7 @@
 
         List<BoatLogEntry> allLogs = _logRep.Entries;
         allLogs.Sort((valueA,valueB) => valueB.Timestamp.CompareTo(valueA.Timestamp));
-
+        
         for (int index = 0; index < allLogs.Count; index++)
         {
             BoatLogEntry locatedLog = allLogs[index];
