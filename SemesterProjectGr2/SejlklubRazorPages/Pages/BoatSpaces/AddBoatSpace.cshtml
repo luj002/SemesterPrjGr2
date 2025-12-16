@@ -1,0 +1,16 @@
+﻿@page
+@model SejlklubRazorPages.Pages.BoatSpaces.AddBoatSpaceModel
+@{
+	ViewData["Title"] = "Add boat space";
+}
+<h1>Add boat space</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.NewBoatSpace.Number"></label>
+        <input asp-for="@Model.NewBoatSpace.Number" class="form-control" />
+    </div>
+    <div>
+        <input type="submit" value="Add boat space" class="btn btn-primary" />
+    </div>
+
+</form>
