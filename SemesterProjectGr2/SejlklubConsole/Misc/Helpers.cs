@@ -1,70 +1,5 @@
 ﻿using System.Collections;
 
-public class HeapSort
-{
-    private static void Heapify(List<double> heapList, int lengthOfHeap, int parent)
-    {
-
-        int largestMember = parent;
-        int leftChild = (2 * parent) + 1;
-        int rightChild = (2 * parent) + 2;
-
-        if (leftChild < lengthOfHeap && heapList[leftChild] > heapList[largestMember])
-        {
-
-            largestMember = leftChild;
-
-        }
-
-        if (rightChild < lengthOfHeap && heapList[rightChild] > heapList[largestMember])
-        {
-
-            largestMember = rightChild;
-
-        }
-
-        if (largestMember != parent)
-        {
-
-            (heapList[parent], heapList[largestMember]) = (heapList[largestMember], heapList[parent]);
-            Heapify(heapList, lengthOfHeap, largestMember);
-
-        }
-
-    }
-
-    public static List<double> sort(List<double> givenList)
-    {
-
-        List<double> heapList = givenList;
-        int lengthOfHeap = heapList.Count;
-        int lastBranch = (lengthOfHeap / 2) - 1;
-
-        for (; lastBranch >= 0; lastBranch -= 1)
-        {
-
-            Heapify(heapList, lengthOfHeap, lastBranch);
-
-        }
-
-        for (int index = lengthOfHeap - 1; index > 0; index -= 1)
-        {
-
-            //double ancestor = heapList[0];
-            //double donePosition = heapList[index];
-            (heapList[index], heapList[0]) = (heapList[0], heapList[index]);
-
-            lengthOfHeap = index;
-            Heapify(heapList, lengthOfHeap, 0);
-
-        }
-
-        return heapList;
-
-    }
-
-}
-
 public static class Helpers
 {
     /// <summary>
@@ -306,5 +241,71 @@ public static class Helpers
         }
 
         return time;
+    }
+
+    //sorts
+    public class HeapSort
+    {
+        private static void Heapify(List<double> heapList, int lengthOfHeap, int parent)
+        {
+
+            int largestMember = parent;
+            int leftChild = (2 * parent) + 1;
+            int rightChild = (2 * parent) + 2;
+
+            if (leftChild < lengthOfHeap && heapList[leftChild] > heapList[largestMember])
+            {
+
+                largestMember = leftChild;
+
+            }
+
+            if (rightChild < lengthOfHeap && heapList[rightChild] > heapList[largestMember])
+            {
+
+                largestMember = rightChild;
+
+            }
+
+            if (largestMember != parent)
+            {
+
+                (heapList[parent], heapList[largestMember]) = (heapList[largestMember], heapList[parent]);
+                Heapify(heapList, lengthOfHeap, largestMember);
+
+            }
+
+        }
+
+        public static List<double> sort(List<double> givenList)
+        {
+
+            List<double> heapList = givenList;
+            int lengthOfHeap = heapList.Count;
+            int lastBranch = (lengthOfHeap / 2) - 1;
+
+            for (; lastBranch >= 0; lastBranch -= 1)
+            {
+
+                Heapify(heapList, lengthOfHeap, lastBranch);
+
+            }
+
+            for (int index = lengthOfHeap - 1; index > 0; index -= 1)
+            {
+
+                //double ancestor = heapList[0];
+                //double donePosition = heapList[index];
+                (heapList[index], heapList[0]) = (heapList[0], heapList[index]);
+
+                lengthOfHeap = index;
+                Heapify(heapList, lengthOfHeap, 0);
+
+            }
+
+            return heapList;
+
+        }
+
     }
 }
