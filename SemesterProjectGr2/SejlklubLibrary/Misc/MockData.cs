@@ -18,9 +18,9 @@
 
     private static List<Boat> boats = new List<Boat>()
     {
-        new Boat("FastBoat1", BoatType.Sailboat, 1, 1, 2000, "Sea Breeze"),
-        new Boat("FasterBoat", BoatType.Motorboat, 2, 0, 2015, "Wave Rider"),
-        new Boat("FastestBoat", BoatType.Kayak, 1, 0, 2018, "River Runner")
+        new Boat("B001", BoatType.Sailboat, 1, 1, 2000, "Sea Breeze"),
+        new Boat("B002", BoatType.Motorboat, 2, 0, 2015, "Wave Rider"),
+        new Boat("B003", BoatType.Kayak, 1, 0, 2018, "River Runner")
     };
 
     private static List<Booking> bookings = new List<Booking>()

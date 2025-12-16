@@ -1,11 +1,20 @@
 ﻿@page "/ShowBoats"
 @model SpectraModel
 
+@using Microsoft.AspNetCore.Html
+@using System.Text
+
 @section cssForPage {
 
     <link rel="stylesheet" href="~/css/Boat.css"/>
 
 }
+
+<div>
+
+    @GenerateList();
+
+</div>
 
 <div>
 
@@ -16,3 +25,21 @@
     </form>
 
 </div>
+
+@functions {
+    public IHtmlContent GenerateList()
+    {
+        StringBuilder stringToReturn = new StringBuilder();
+        stringToReturn.Append("<ul class=\"listContainer\">");
+
+        foreach (var locatedBoat in Model.BoatList)
+        {
+            stringToReturn.Append("<li class=\"boatEntry\">");
+            stringToReturn.Append(locatedBoat.ModelName);
+            stringToReturn.Append("</li>");
+        }
+        stringToReturn.Append("</ul>");
+
+        return new HtmlString(stringToReturn.ToString());
+    }
+}
