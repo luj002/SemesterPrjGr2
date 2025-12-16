@@ -3,21 +3,24 @@
 
 @section cssForPage {
 
-    <link rel="stylesheet" href="~/css/BoatIndex.css" />
+    <link rel="stylesheet" href="~/css/Boat.css"/>
 
 }
 
 <div class="text-center">
 
-    <h2>Welcome to the boat overview.</h2>
+    <h2 class="text1"> Welcome to the boat overview :D</h2>
 
 </div>
 
 <div>
 
-    <form method="post" style="margin-top: 5vh">
+    <form method="post">
 
-        <button type="submit" asp-page-handler="ShowBoats">View All Boats</button>
+        <button class="button1" type="submit" asp-page-handler="ShowBoats">View All Boats</button>
+        <button class="button2" type="submit" asp-page-handler="AddBoat">Add Boat</button>
+        <button class="button3" type="submit" asp-page-handler="RemoveBoat">Remove Boat</button>
+        <button class="button4" type="submit" asp-page-handler="UpdateBoat">Update Boat</button>
 
     </form>
 

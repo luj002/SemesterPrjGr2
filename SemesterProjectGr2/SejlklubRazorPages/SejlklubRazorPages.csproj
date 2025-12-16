@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\BoatIndex.css" />
+    <None Include="wwwroot\css\Boat.css" />
   </ItemGroup>
 
 </Project>
