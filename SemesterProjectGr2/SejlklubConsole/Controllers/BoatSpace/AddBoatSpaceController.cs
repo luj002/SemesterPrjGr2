@@ -41,7 +41,11 @@ public class AddBoatSpaceController
             switch (theChoice)
             {
                 case "1":
-                    number = Helpers.IntFromReadLine("Enter number: ", 1, 255);
+                    int? numberInput = Helpers.IntFromReadLine("Enter number: ", 1, 255);
+                    if (numberInput == null)
+                        break;
+
+                    number = (int)numberInput;
 
                     choices[0] = $"1. Number - {number}";
                     break;
@@ -64,7 +68,7 @@ public class AddBoatSpaceController
     public void AddBoatSpace()
 	{
         Console.WriteLine(_boatSpace);
-        bool AddConfirmed = Helpers.YesOrNo("Add this boat space?");
+        bool AddConfirmed = Helpers.YesOrNo("Add this boat space?") ?? false;
         if (AddConfirmed)
         {
             if(_boatSpaceRepository.GetBoatSpaceByNumber(_boatSpace.Number) == null)

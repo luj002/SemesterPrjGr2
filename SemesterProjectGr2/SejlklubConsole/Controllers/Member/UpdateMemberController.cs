@@ -71,20 +71,23 @@
                     choices[2] = $"3. Email - {email}";
                     break;
                 case "4":
-                    Console.WriteLine("Enter date of birth");
-                    int birthYear = Helpers.IntFromReadLine("Year:", 1900, DateTime.Now.Year);
-                    int birthMonth = Helpers.IntFromReadLine("Month:", 1, 12);
-                    int daysInBirthMonth = DateTime.DaysInMonth(birthYear, birthMonth);
-                    int birthDay = Helpers.IntFromReadLine("Date:", 1, daysInBirthMonth);
+                    DateTime? dateOfBirthInput = Helpers.DateTimeFromReadLine("Enter date of birth", new DateTime(1900, 1, 1), DateTime.Now);
+                    if (dateOfBirthInput != null)
+                    {
+                        dateOfBirth = (DateTime)dateOfBirthInput;
 
-                    dateOfBirth = new DateTime(birthYear, birthMonth, birthDay, 0, 0, 0);
-
-                    choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
+                        choices[3] = $"4. Date of birth - {dateOfBirth.ToShortDateString()}";
+                    }
+                    break;
                     break;
                 case "5":
-                    memberType = MemberHelpers.memberTypeFromReadLine();
+                    MemberType? memberTypeInput = MemberHelpers.memberTypeFromReadLine();
+                    if (memberTypeInput != null)
+                    {
+                        memberType = (MemberType)memberTypeInput;
 
-                    choices[4] = $"5. Member type - {memberType}";
+                        choices[4] = $"5. Member type - {memberType}";
+                    }
                     break;
                 default:
                     break;
@@ -104,7 +107,7 @@
         }
         else
         {
-            bool confirm = Helpers.YesOrNo("Discard changes?");
+            bool confirm = Helpers.YesOrNo("Discard changes?") ?? false;
             if (confirm)
             {
                 Console.WriteLine("Changes discarded. Press any key to continue.");

@@ -84,7 +84,7 @@ public class ShowBookingController
     private void ShowActiveBookings()
     {
         Console.WriteLine("All active bookings:");
-        List<Booking> activeBookings = BookingHelpers.GetActiveBookings(_bookingRepository.GetAllNonArchived());
+        List<Booking> activeBookings = BookingRepositoryHelpers.GetActiveBookings(_bookingRepository.GetAllNonArchived());
 
         foreach (Booking booking in activeBookings)
         {
@@ -111,7 +111,7 @@ public class ShowBookingController
         }
         Console.WriteLine($"Bookings for boat {boat.Id} {boat.Nickname} {boat.ModelName}: ");
 
-        List<Booking> bookingsForBoat = BookingHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), boat);
+        List<Booking> bookingsForBoat = BookingRepositoryHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), boat);
         foreach (Booking booking in bookingsForBoat)
         {
             Console.WriteLine(booking);
@@ -133,7 +133,7 @@ public class ShowBookingController
         }
         Console.WriteLine($"Bookings for member {member.Id} {member.Name}: ");
 
-        List<Booking> bookingsForMember = BookingHelpers.GetBookingsByMember(_bookingRepository.GetAll(), member);
+        List<Booking> bookingsForMember = BookingRepositoryHelpers.GetBookingsByMember(_bookingRepository.GetAll(), member);
         foreach (Booking booking in bookingsForMember)
         {
             Console.WriteLine(booking);
@@ -168,7 +168,7 @@ public class ShowBookingController
                     bookingActiveController.ActivateBooking();
                     break;
                 case "2":
-                    Booking? bookingToFinalize = BookingHelpers.SelectBooking(_bookingRepository, BookingHelpers.GetActiveBookings(_bookingRepository.GetAll()));
+                    Booking? bookingToFinalize = BookingHelpers.SelectBooking(_bookingRepository, BookingRepositoryHelpers.GetActiveBookings(_bookingRepository.GetAll()));
                     if (bookingToFinalize == null)
                     {
                         break;
@@ -219,11 +219,11 @@ public class ShowBookingController
     /// </summary>
     private void BoatStatisticsMenu()
     {
-        Boat? mostBookedBoat = BookingHelpers.GetMostBookedBoat(_bookingRepository.GetAll());
-        Boat? longestBookingTimeBoat = BookingHelpers.GetBoatWithLongestBookingTime(_bookingRepository.GetAll());
+        Boat? mostBookedBoat = BookingRepositoryHelpers.GetMostBookedBoat(_bookingRepository.GetAll());
+        Boat? longestBookingTimeBoat = BookingRepositoryHelpers.GetBoatWithLongestBookingTime(_bookingRepository.GetAll());
 
-        int mostBookedCount = mostBookedBoat != null ? BookingHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), mostBookedBoat).Count : 0;
-        TimeSpan longestBookingTime = longestBookingTimeBoat != null ? BookingHelpers.TotalTimeBookedForBoat(_bookingRepository.GetAll(), longestBookingTimeBoat) : TimeSpan.Zero;
+        int mostBookedCount = mostBookedBoat != null ? BookingRepositoryHelpers.GetBookingsByBoat(_bookingRepository.GetAll(), mostBookedBoat).Count : 0;
+        TimeSpan longestBookingTime = longestBookingTimeBoat != null ? BookingRepositoryHelpers.TotalTimeBookedForBoat(_bookingRepository.GetAll(), longestBookingTimeBoat) : TimeSpan.Zero;
 
         List<string> choices = new List<string>
         {
@@ -247,7 +247,7 @@ public class ShowBookingController
                         Console.ReadKey();
                         break;
                     }
-                    Console.WriteLine(BookingHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), boat));
+                    Console.WriteLine(BookingRepositoryHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), boat));
                     Console.WriteLine("-------------------------------------------------------");
                     Console.WriteLine("Press any key to go back.");
                     Console.ReadKey();
@@ -256,7 +256,7 @@ public class ShowBookingController
                     // Show boat statistics for all boats
                     foreach (Boat b in _boatRepository.GetAll())
                     {
-                        Console.WriteLine(BookingHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), b));
+                        Console.WriteLine(BookingRepositoryHelpers.BookingStatisticForBoatString(_bookingRepository.GetAll(), b));
                         Console.WriteLine("---------------------------------------------------");
                     }
                     Console.WriteLine("End of boat statistics. Press any key to go back.");
@@ -274,11 +274,11 @@ public class ShowBookingController
     /// </summary>
     private void MemberStatisticsMenu()
     {
-        Member? memberMostBookings = BookingHelpers.GetMemberWithMostBookings(_bookingRepository.GetAll());
-        Member? memberLongestBookingTime = BookingHelpers.GetMemberWithLongestBookingTime(_bookingRepository.GetAll());
+        Member? memberMostBookings = BookingRepositoryHelpers.GetMemberWithMostBookings(_bookingRepository.GetAll());
+        Member? memberLongestBookingTime = BookingRepositoryHelpers.GetMemberWithLongestBookingTime(_bookingRepository.GetAll());
 
-        int mostBookingsCount = BookingHelpers.GetBookingsByMember(_bookingRepository.GetAll(), memberMostBookings).Count;
-        TimeSpan longestBookingTime = BookingHelpers.TotalTimeBookedForMember(_bookingRepository.GetAll(), memberLongestBookingTime);
+        int mostBookingsCount = BookingRepositoryHelpers.GetBookingsByMember(_bookingRepository.GetAll(), memberMostBookings).Count;
+        TimeSpan longestBookingTime = BookingRepositoryHelpers.TotalTimeBookedForMember(_bookingRepository.GetAll(), memberLongestBookingTime);
 
         List<string> choices = new List<string>
         {
@@ -302,7 +302,7 @@ public class ShowBookingController
                         Console.ReadKey();
                         break;
                     }
-                    Console.WriteLine(BookingHelpers.MemberStatisticsString(_bookingRepository.GetAll(), member));
+                    Console.WriteLine(BookingRepositoryHelpers.MemberStatisticsString(_bookingRepository.GetAll(), member));
                     Console.WriteLine("-------------------------------------------------------");
                     Console.WriteLine("Press any key to go back.");
                     Console.ReadKey();
@@ -311,7 +311,7 @@ public class ShowBookingController
                     // Show member statistics for all members
                     foreach (Member m in _memberRepository.GetAll())
                     {
-                        Console.WriteLine(BookingHelpers.MemberStatisticsString(_bookingRepository.GetAll(), m));
+                        Console.WriteLine(BookingRepositoryHelpers.MemberStatisticsString(_bookingRepository.GetAll(), m));
                         Console.WriteLine("---------------------------------------------------");
                     }
                     Console.WriteLine("End of member statistics. Press any key to go back.");

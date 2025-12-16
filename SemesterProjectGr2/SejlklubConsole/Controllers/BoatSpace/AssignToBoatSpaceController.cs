@@ -68,7 +68,7 @@ public class AssignToBoatSpaceController
         {
             Console.WriteLine("No boat space.");
         }
-        bool AddConfirmed = Helpers.YesOrNo("Assign this boat to this boat space?");
+        bool AddConfirmed = Helpers.YesOrNo("Assign this boat to this boat space?") ?? false;
         if (AddConfirmed)
         {
             if(boatSpace.Boat == null)

@@ -31,7 +31,7 @@ public class UpdateBookingController
         DateTime startTime = _booking.StartTime;
         DateTime endTime = _booking.EndTime;
 
-        string bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+        string bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
         _validBooking = bookingStatus.Length == 0;
         bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
 
@@ -80,20 +80,30 @@ public class UpdateBookingController
                     choices[3] = $"4. Destination - {destination}";
                     break;
                 case "5":
-                    startTime = Helpers.DateTimeFromReadLine("Start time:", DateTime.Now, endTime, true);
+                    // Start time
+                    DateTime? startTimeInput = Helpers.DateTimeFromReadLine("Start time", DateTime.Now, DateTime.Now.AddYears(5), true);
+                    if (startTimeInput != null)
+                    {
+                        startTime = (DateTime)startTimeInput;
 
-                    choices[4] = $"5. Start time - {startTime.ToString("yyyy/MM/dd HH:mm:ss")}";
+                        choices[4] = $"5. Start time - {startTime.ToString("yyyy/MM/dd HH:mm:ss")}";
+                    }
                     break;
                 case "6":
-                    endTime = Helpers.DateTimeFromReadLine("End time:", startTime, startTime.AddDays(7), true);
+                    // End time
+                    DateTime? endTimeInput = Helpers.DateTimeFromReadLine("End time", startTime, startTime.AddDays(7), true);
+                    if (endTimeInput != null)
+                    {
+                        endTime = (DateTime)endTimeInput;
 
-                    choices[5] = $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}";
+                        choices[5] = $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}";
+                    }
                     break;
                 default:
                     break;
             }
 
-            bookingStatus = BookingHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+            bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
             _validBooking = bookingStatus.Length == 0;
             bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
 
@@ -104,7 +114,7 @@ public class UpdateBookingController
 
         if (theChoice == "c")
         {
-            if (!Helpers.YesOrNo("Save changes to booking?"))
+            if (!Helpers.YesOrNo("Save changes to booking?") ?? false)
             {
                 Console.WriteLine("Booking not updated. Press any key to continue.");
                 Console.ReadKey();

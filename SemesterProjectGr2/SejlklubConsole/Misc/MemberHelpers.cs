@@ -59,7 +59,7 @@
     /// Reads member type from console input.
     /// </summary>
     /// <returns>Member type for corresponding input.</returns>
-    public static MemberType memberTypeFromReadLine()
+    public static MemberType? memberTypeFromReadLine()
     {
         MemberType type = MemberType.SENIOR; // Type will be overwritten
         MemberType[] memberTypes = Enum.GetValues<MemberType>();
@@ -71,9 +71,11 @@
             Console.WriteLine($"{(int)memberTypeEnum + 1}. {memberTypeEnum}");
         }
 
-        int input = Helpers.IntFromReadLine("\nSelect member type by number:", 1, memberTypes.Length);
+        int? input = Helpers.IntFromReadLine("\nSelect member type by number:", 1, memberTypes.Length);
+        if (input == null)
+            return null;
 
-        type = memberTypes[input - 1];
+        type = memberTypes[(int)input - 1];
 
         return type;
     }

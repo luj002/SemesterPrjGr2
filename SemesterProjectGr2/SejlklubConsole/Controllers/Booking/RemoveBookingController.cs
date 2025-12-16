@@ -26,7 +26,7 @@ public class RemoveBookingController
 
         Console.WriteLine($"Booking to delete:\n{_booking}\n");
 
-        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this booking?");
+        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this booking?") ?? false;
 
         if (confirm)
         {

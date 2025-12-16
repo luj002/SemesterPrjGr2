@@ -26,7 +26,7 @@ public class RemoveMemberController
 
         Console.WriteLine($"Member to delete:\n{_member}\n");
 
-        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this member?");
+        bool confirm = Helpers.YesOrNo("Are you sure you want to remove this member?") ?? false;
 
         if (confirm)
         {
