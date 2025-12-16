@@ -6,7 +6,7 @@
     /// <param name="bookings">List of bookings to sort</param>
     /// <param name="low"></param>
     /// <param name="high"></param>
-    private static void QuickSort(List<Booking> bookings, int low, int high)
+    public static void QuickSort(List<Booking> bookings, int low, int high)
     {
         if (low < high)
         {
