@@ -158,7 +158,7 @@ public class ShowBookingController
             switch (theChoice)
             {
                 case "1":
-                    Booking? bookingToActivate = BookingHelpers.SelectBooking(_bookingRepository);
+                    Booking? bookingToActivate = BookingHelpers.SelectBooking(_bookingRepository, _bookingRepository.GetAllNonArchived());
                     if (bookingToActivate == null)
                     {
                         break;
