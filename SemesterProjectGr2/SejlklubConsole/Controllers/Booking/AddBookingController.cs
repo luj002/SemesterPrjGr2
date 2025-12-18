@@ -23,6 +23,9 @@ public class AddBookingController
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Begins the process of creating a booking by gathering necessary information from user input.
+    /// </summary>
     private void Create()
     {
         Member? member = null;
@@ -131,7 +134,9 @@ public class AddBookingController
 
     }
 
-
+    /// <summary>
+    /// Adds the booking to the booking repository after user confirmation.
+    /// </summary>
     private void AddBooking()
     {
         Console.WriteLine(_booking);

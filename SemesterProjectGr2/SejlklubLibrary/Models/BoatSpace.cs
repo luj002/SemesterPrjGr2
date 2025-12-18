@@ -14,6 +14,10 @@
 		Number = number;
 		Boat = boat;
 	}
+	public BoatSpace()
+	{
+
+	}
 	public override string ToString()
 	{
 		return $"Boat Space {Number}: {(Occupied ? $"Occupied by {Boat}" : "Available")}";

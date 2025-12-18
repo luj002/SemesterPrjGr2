@@ -20,7 +20,7 @@ namespace SejlklubRazorPages.Pages.BoatSpaces
 
         public IActionResult OnPost()
         {
-            BoatSpace bsNew = _bsrepo.GetBoatSpaceByNumber(BoatSpace.Number);
+            BoatSpace bsNew = BoatSpace;
             bsNew.Number = BoatSpace.Number;
             return RedirectToPage("Index");
         }

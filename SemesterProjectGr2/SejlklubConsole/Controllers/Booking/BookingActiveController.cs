@@ -5,13 +5,6 @@
     private Booking _booking;
     #endregion
 
-    #region Properties
-    public Booking Booking
-    {
-        get { return _booking; }
-    }
-    #endregion
-
     #region Constructor
     public BookingActiveController(IBookingRepository bookingRepository, Booking booking)
     {
@@ -21,6 +14,9 @@
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Activates booking indicating that the person has departed.
+    /// </summary>
     public void ActivateBooking()
     {
         if (_booking.IsActive)
@@ -50,6 +46,12 @@
         Console.ReadKey();
     }
 
+    /// <summary>
+    /// Finalizes booking indicating that the person has returned.
+    /// </summary>
+    /// <remarks>
+    /// Once a booking has been finalized it cannot be re-activated, since ActivateBooking checks for this.
+    /// </remarks>
     public void FinalizeBooking()
     {
         if (!_booking.IsActive)

@@ -9,7 +9,7 @@
     public UpdateMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        _member = MemberHelpers.SelectMember(_memberRepository);
+        _member = MemberHelpers.SelectMember(_memberRepository); // Select the member to update
     }
     #endregion
 

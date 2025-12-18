@@ -11,6 +11,7 @@ namespace SejlklubRazorPages.Pages.BoatSpaces
         public BoatSpace NewBoatSpace { get; set; }
         public AddBoatSpaceModel(IBoatSpaceRepository bsrepo)
         {
+            NewBoatSpace = new BoatSpace(0);
             _bsrepo = bsrepo;
         }
 

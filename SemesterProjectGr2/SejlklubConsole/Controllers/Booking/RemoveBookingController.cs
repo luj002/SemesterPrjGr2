@@ -10,11 +10,14 @@ public class RemoveBookingController
     public RemoveBookingController(IBookingRepository bookingRepository)
     {
         _bookingRepository = bookingRepository;
-        _booking = BookingHelpers.SelectBooking(_bookingRepository);
+        _booking = BookingHelpers.SelectBooking(_bookingRepository); // Select booking to remove
     }
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Removes the selected booking after user confirmation.
+    /// </summary>
     public void RemoveBooking()
     {
         if (_booking == null)

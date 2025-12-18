@@ -10,7 +10,7 @@ public class RemoveMemberController
     public RemoveMemberController(IMemberRepository memberRepository)
     {
         _memberRepository = memberRepository;
-        _member = MemberHelpers.SelectMember(_memberRepository);
+        _member = MemberHelpers.SelectMember(_memberRepository); // Selects the member to remove
     }
     #endregion
 
