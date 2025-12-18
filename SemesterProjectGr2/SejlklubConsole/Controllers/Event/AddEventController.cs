@@ -22,9 +22,9 @@
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Creates a new event.
     /// </summary>
-    /// <param name="maker">TO FILL OUT!!!!!</param>
+    /// <param name="maker">The administrator to credit as the creator.</param>
     public void Create(Adminstrator maker)
     {
         //TODO MAKE THIS MORE LIKE AddMemberController
