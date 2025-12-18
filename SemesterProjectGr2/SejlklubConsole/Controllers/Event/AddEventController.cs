@@ -5,17 +5,17 @@
 
     public AddEventController(IEventRepository eventRepository, Member maker)
     {
-        if (maker is not Adminstrator)
+        if (maker is not Administrator)
         {
             //this should probably be a different exception type but that's solidly a later me problem
             throw new RepositoryException(RepositoryExceptionType.Add, "Only administrators may create events!");
         }
 
         _eventRepository = eventRepository;
-        Create((Adminstrator)maker);
+        Create((Administrator)maker);
 
     }
-	public AddEventController(string title, string description, DateTime startTime, DateTime endTime, Adminstrator creator, IEventRepository eventRepository)
+	public AddEventController(string title, string description, DateTime startTime, DateTime endTime, Administrator creator, IEventRepository eventRepository)
     {
         eventToAdd = new Event(title, description, startTime, endTime, creator);
         _eventRepository = eventRepository;

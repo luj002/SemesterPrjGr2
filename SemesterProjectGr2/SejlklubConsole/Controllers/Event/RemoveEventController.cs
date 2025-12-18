@@ -5,7 +5,7 @@
 
 	public RemoveEventController(IEventRepository eventRepository, Member remover)
 	{
-        if (remover is not Adminstrator)
+        if (remover is not Administrator)
         {
             //this should probably be a different exception type but that's solidly a later me problem
             throw new RepositoryException(RepositoryExceptionType.Add, "Only administrators may remove events!");

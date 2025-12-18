@@ -1,6 +1,6 @@
 ﻿public static class MockData
 {
-    public static Adminstrator Adminstrator = new Adminstrator("Alice Admin", "123 Admin St, Admin City, Adminland", "alice@admin.dk", new DateTime(1990, 1, 1), MemberType.SENIOR, "ThisPasswordIsSecure");
+    public static Administrator Adminstrator = new Administrator("Alice Admin", "123 Admin St, Admin City, Adminland", "alice@admin.dk", new DateTime(1990, 1, 1), MemberType.SENIOR, "ThisPasswordIsSecure");
     private static List<BlogEntry> blogEntries = new List<BlogEntry>()
     {
         new BlogEntry("Welcome to our Sailing Club!", "We are excited to have", Adminstrator),

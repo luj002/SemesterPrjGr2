@@ -220,7 +220,7 @@
 			switch (choice)
 			{
 				case '1':
-					if (currentUser is not Adminstrator)
+					if (currentUser is not Administrator)
 					{
 						Console.WriteLine("Only administrators can add blog entries.");
 						Console.ReadKey();
@@ -228,7 +228,7 @@
 					}
 					else
 					{
-						AddBlogEntryController blogEntryController = new AddBlogEntryController(_blogEntryRepository, (Adminstrator) currentUser);
+						AddBlogEntryController blogEntryController = new AddBlogEntryController(_blogEntryRepository, (Administrator) currentUser);
 						break;
 					}
 				case '2':
@@ -236,7 +236,7 @@
 					showBlogEntrysController.ShowAllBlogEntries();
 					break;
 				case '3':
-                    if (currentUser is not Adminstrator)
+                    if (currentUser is not Administrator)
                     {
                         Console.WriteLine("Only administrators can update blog entries.");
                         Console.ReadKey();
@@ -249,7 +249,7 @@
                         break;
                     }
 				case '4':
-					if (currentUser is not Adminstrator)
+					if (currentUser is not Administrator)
 					{
 						Console.WriteLine("Only administrators can remove blog entries.");
 						Console.ReadKey();

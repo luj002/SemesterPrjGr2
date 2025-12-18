@@ -5,7 +5,7 @@
 	public string Description { get; set; }
 	public DateTime StartTime { get; set; }
 	public DateTime EndTime { get; set; }
-	public Adminstrator Creator { get; }
+	public Administrator Creator { get; }
 	public List<Registration> Registrations { get; }
 	public List<Member> Attendees
 	{
@@ -19,7 +19,7 @@
 			return attendees;
 		}
 	}
-	public Event(string title, string description, DateTime startTime, DateTime endTime, Adminstrator creator)
+	public Event(string title, string description, DateTime startTime, DateTime endTime, Administrator creator)
 	{
 		Id = StringId.Next(IdPrefix.EVENT);
 		Title = title;

@@ -1,11 +1,11 @@
 ﻿public class BlogEntry
 {
 	public string Id { get; }
-	public Adminstrator Author { get; }
+	public Administrator Author { get; }
 	public string Title { get; set; }
 	public string Content { get; set; }
 	public DateTime CreatedAt { get; }
-	public BlogEntry(string title, string content, Adminstrator auther)
+	public BlogEntry(string title, string content, Administrator auther)
 	{
 		Id = StringId.Next(IdPrefix.BLOGENTRY);
 		Title = title;

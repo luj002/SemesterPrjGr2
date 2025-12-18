@@ -6,7 +6,7 @@ public class UpdateEventController
 
 	public UpdateEventController(IEventRepository eventRepository, Member editor)
 	{
-        if (editor is not Adminstrator)
+        if (editor is not Administrator)
         {
             //this should probably be a different exception type but that's solidly a later me problem
             throw new RepositoryException(RepositoryExceptionType.Add, "Only administrators may edit events!");

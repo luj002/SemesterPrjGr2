@@ -1,6 +1,6 @@
-﻿public class Adminstrator : Member
+﻿public class Administrator : Member
 {
-	public Adminstrator(string name, string address, string email, DateTime dateOfBirth, MemberType type, string password)
+	public Administrator(string name, string address, string email, DateTime dateOfBirth, MemberType type, string password)
 		: base(name, address, email, dateOfBirth, type, password)
 	{
 	}

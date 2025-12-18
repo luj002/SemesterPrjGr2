@@ -3,11 +3,11 @@
 	private static Dictionary<string, BlogEntry> _blogEntries = new();
 	#region Instance fields
 	private IBlogEntryRepository _blogEntryRepository;
-	private Adminstrator _author;
+	private Administrator _author;
 	#endregion
 
 	#region Constructor
-	public AddBlogEntryController(IBlogEntryRepository blogEntryRepository, Adminstrator author)
+	public AddBlogEntryController(IBlogEntryRepository blogEntryRepository, Administrator author)
 	{
 		_blogEntryRepository = blogEntryRepository;
 		if (!_blogEntries.ContainsKey(author.Id)) _blogEntries[author.Id] = new BlogEntry("", "", author);
