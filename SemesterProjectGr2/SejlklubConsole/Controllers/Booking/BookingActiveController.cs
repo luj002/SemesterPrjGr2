@@ -64,7 +64,6 @@
         bool finalize = Helpers.YesOrNo($"Do you want to finalize {_booking.Id}?") ?? false;
         if (finalize)
         {
-            _booking.IsActive = false;
             _bookingRepository.Archive(_booking.Id);
             Console.WriteLine($"Booking {_booking.Id} is now finalized.");
         }

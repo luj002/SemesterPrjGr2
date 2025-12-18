@@ -65,6 +65,7 @@
         if (_nonArchivedBookings.ContainsKey(id))
         {
             _archivedBookings[id] = _nonArchivedBookings[id];
+            _archivedBookings[id].IsActive = false;
             _nonArchivedBookings.Remove(id);
         }
         else
