@@ -1,5 +1,4 @@
-﻿
-public class RemoveBoatController
+﻿public class RemoveBoatController
 {
     public string BoatID { get; set; }
     private IBoatRepository _boatRep;
