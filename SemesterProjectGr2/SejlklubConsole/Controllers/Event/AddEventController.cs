@@ -1,8 +1,14 @@
 ﻿public class AddEventController
 {
-	private IEventRepository _eventRepository;
-    public Event eventToAdd { get; set; }
+    #region Instance field
+    private IEventRepository _eventRepository;
+    #endregion
 
+    #region Properties
+    public Event eventToAdd { get; set; }
+    #endregion
+
+    #region Constructor
     public AddEventController(IEventRepository eventRepository, Member maker)
     {
         if (maker is not Administrator)
@@ -15,12 +21,9 @@
         Create((Administrator)maker);
 
     }
-	public AddEventController(string title, string description, DateTime startTime, DateTime endTime, Administrator creator, IEventRepository eventRepository)
-    {
-        eventToAdd = new Event(title, description, startTime, endTime, creator);
-        _eventRepository = eventRepository;
-    }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Creates a new event.
     /// </summary>
@@ -75,7 +78,7 @@
     }
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Attempts to add the created event to the event repository, throwing an error if it fails to do so.
     /// </summary>
     public void AddEvent()
     {
@@ -90,4 +93,5 @@
         }
         
     }
+    #endregion
 }

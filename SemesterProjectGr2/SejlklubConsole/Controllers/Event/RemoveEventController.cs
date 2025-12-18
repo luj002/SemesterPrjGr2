@@ -1,9 +1,12 @@
 ﻿public class RemoveEventController
 {
-	private IEventRepository _eventRepository;
+    #region Instance field
+    private IEventRepository _eventRepository;
 	private ShowEventController _showEventController;
+    #endregion
 
-	public RemoveEventController(IEventRepository eventRepository, Member remover)
+    #region Constructor
+    public RemoveEventController(IEventRepository eventRepository, Member remover)
 	{
         if (remover is not Administrator)
         {
@@ -14,9 +17,11 @@
         _eventRepository = eventRepository;
         _showEventController = new ShowEventController(eventRepository);
     }
+    #endregion
 
+    #region Methods
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Removes the event from the event repository.
     /// </summary>
     public void RemoveEvent()
 	{
@@ -33,4 +38,5 @@
 			Console.WriteLine($"No event found!: {e.Message}");
 		}
 	}
+    #endregion
 }

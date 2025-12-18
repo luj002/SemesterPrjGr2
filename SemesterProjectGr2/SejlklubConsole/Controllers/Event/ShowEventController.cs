@@ -1,14 +1,19 @@
 ﻿public class ShowEventController
 {
-	IEventRepository _eventRepository;
+    #region Instance field
+    IEventRepository _eventRepository;
+    #endregion
 
-	public ShowEventController(IEventRepository eventRepository)
+    #region Constructor
+    public ShowEventController(IEventRepository eventRepository)
 	{
 		_eventRepository = eventRepository;
-	}
+    }
+    #endregion
 
+    #region Methods
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Prints all events in the event repository to the console.
     /// </summary>
     public void ShowAllEvents()
 	{
@@ -18,4 +23,5 @@
 		}
 		Console.ReadKey();
 	}
+    #endregion
 }

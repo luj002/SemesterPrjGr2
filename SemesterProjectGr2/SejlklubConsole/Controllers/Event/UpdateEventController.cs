@@ -1,10 +1,14 @@
 ﻿//go go gadget spaghetticode
 public class UpdateEventController
 {
-	private IEventRepository _eventRepository;
+    #region Instance field
+    private IEventRepository _eventRepository;
 	private ShowEventController _showEventController;
+    #endregion
 
-	public UpdateEventController(IEventRepository eventRepository, Member editor)
+    #region Constructor
+
+    public UpdateEventController(IEventRepository eventRepository, Member editor)
 	{
         if (editor is not Administrator)
         {
@@ -14,10 +18,13 @@ public class UpdateEventController
 
         _eventRepository = eventRepository;
 		_showEventController = new ShowEventController(eventRepository);
-	}
+    }
+    #endregion
+
+    #region Methods
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Updates the event within the event repository.
     /// </summary>
     public void UpdateEvent()
 	{
@@ -130,4 +137,5 @@ public class UpdateEventController
 			theChoice = Helpers.ReadChoice(choices);
 		}
 	}
+    #endregion
 }
