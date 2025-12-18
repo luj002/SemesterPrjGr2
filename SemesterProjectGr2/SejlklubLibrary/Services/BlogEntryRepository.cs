@@ -1,21 +1,28 @@
 ﻿public class BlogEntryRepository : IBlogEntryRepository
 {
-	private Dictionary<string, BlogEntry> _blogEntries;
+    #region Instance field
+    private Dictionary<string, BlogEntry> _blogEntries;
+    #endregion
 
-	public int Count
+    #region Properties
+    public int Count
 	{
 		get
 		{
 			return _blogEntries.Count;
 		}
-	}
+    }
+    #endregion
 
-	public BlogEntryRepository()
+    #region Constructor
+    public BlogEntryRepository()
 	{
 		_blogEntries = new Dictionary<string, BlogEntry>();
-	}
+    }
+    #endregion
 
-	public void Add(BlogEntry blogEntry)
+    #region Methods
+    public void Add(BlogEntry blogEntry)
 	{
 		if (blogEntry == null)
 		{
@@ -45,4 +52,5 @@
 	{
 		return _blogEntries.Values.ToList();
 	}
+    #endregion
 }

@@ -1,6 +1,10 @@
 ﻿public class EventRepository : IEventRepository
 {
+    #region Instance field
     private Dictionary<string, Event> _events;
+    #endregion
+
+    #region Properties
     public int Count { 
         
         get
@@ -9,12 +13,16 @@
         }
 
     }
+    #endregion
 
+    #region Constructor
     public EventRepository()
     {
         _events = new Dictionary<string, Event>();
     }
+    #endregion
 
+    #region Methods
     public List<Event> GetAll()
     {
         return _events.Values.ToList();
@@ -55,4 +63,5 @@
             throw new RepositoryException(RepositoryExceptionType.Remove, "No event found to remove.");
         }
     }
+    #endregion
 }

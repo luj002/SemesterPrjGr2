@@ -1,6 +1,7 @@
 ﻿public class BoatLogEntryRepository : IBoatLogEntryRepository
 {
-	public Boat Boat { get; }
+    #region Properties
+    public Boat Boat { get; }
     public int Count
     {
         get
@@ -27,13 +28,19 @@
 			}
 			return latest;
 		}
-	}
-	public BoatLogEntryRepository(Boat boat)
+    }
+    #endregion
+
+    #region Constructor
+    public BoatLogEntryRepository(Boat boat)
 	{
 		Boat = boat;
 		Entries = new List<BoatLogEntry>();
-	}
-	public void AddEntry(BoatLogEntry entry)
+    }
+    #endregion
+
+    #region Methods
+    public void AddEntry(BoatLogEntry entry)
 	{
 		Entries.Add(entry);
 	}
@@ -45,4 +52,5 @@
 	{
 		return $"Boat Log for {Boat.ModelName}:\n" + string.Join("\n", Entries);
 	}
+    #endregion
 }

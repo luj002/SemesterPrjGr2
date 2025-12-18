@@ -1,7 +1,11 @@
 ﻿public static class StringId
 {
-	private static Dictionary<IdPrefix, int> _counters = new();
-	public static string Next(IdPrefix prefix)
+    #region Instance field
+    private static Dictionary<IdPrefix, int> _counters = new();
+    #endregion
+
+    #region Methods
+    public static string Next(IdPrefix prefix)
 	{
 		if (!_counters.ContainsKey(prefix))
 		{
@@ -32,4 +36,5 @@
 			throw new ArgumentException("Invalid numeric ID format.");
 		}
 	}
+    #endregion
 }
