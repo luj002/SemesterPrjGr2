@@ -7,7 +7,7 @@
 	}
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Prints all blog entries in the repository to the console.
     /// </summary>
     public void ShowAllBlogEntries()
 	{

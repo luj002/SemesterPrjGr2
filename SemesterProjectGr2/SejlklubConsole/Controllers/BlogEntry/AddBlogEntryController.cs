@@ -18,7 +18,7 @@
 
     #region Methods
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Creates a new blog entry.
     /// </summary>
     private void Create()
 	{
@@ -67,7 +67,7 @@
 	}
 
     /// <summary>
-    /// TO FILL OUT!!!!!
+    /// Adds the created blog entry to the blog entry repository.
     /// </summary>
     public void AddBlogEntry()
 	{

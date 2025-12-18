@@ -13,7 +13,7 @@
 
     #region Methods
     /// <summary>
-    /// Prints all boat spaces in the repository.
+    /// Prints all boat spaces in the repository to the console.
     /// </summary>
     public void ShowAllBoatSpaces()
     {

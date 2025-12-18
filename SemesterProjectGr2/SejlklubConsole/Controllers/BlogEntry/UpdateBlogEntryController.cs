@@ -13,9 +13,6 @@
 	}
 	#endregion
 
-	#region Properties
-	#endregion
-
 	#region Methods
 	/// <summary>
 	/// Updates the blogEntry's information, from ReadLine inputs.
@@ -82,10 +79,10 @@
 		}
 	}
 	/// <summary>
-	/// TO FILL OUT!!!!!
+	/// Prompts the user to select a blog entry from the repository.
 	/// </summary>
-	/// <param name="blogEntryRepository">TO FILL OUT!!!!!</param>
-	/// <returns>TO FILL OUT!!!!!</returns>
+	/// <param name="blogEntryRepository">The repository to select from.</param>
+	/// <returns>The selected blog entry, or null if none was found.</returns>
 	private static BlogEntry? SelectBlogEntry(IBlogEntryRepository blogEntryRepository)
 	{
 		bool validInput = false;
