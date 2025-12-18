@@ -1,12 +1,17 @@
 ﻿public class ShowBoatLogController
 {
+    #region Instance field
     private IBoatLogEntryRepository _logRep;
+    #endregion
 
+    #region Constructor
     public ShowBoatLogController(IBoatLogEntryRepository givenRep)
     {
         _logRep = givenRep;
     }
+    #endregion
 
+    #region Methods
     public List<BoatLogEntry> ShowLogs(string callType)
     {
         Console.Clear();
@@ -34,4 +39,5 @@
         return allLogs;
 
     }
+    #endregion
 }

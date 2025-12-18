@@ -1,14 +1,19 @@
 ﻿public class RemoveBoatController
 {
+    #region Instance field
     public string BoatID { get; set; }
     private IBoatRepository _boatRep;
+    #endregion
 
+    #region Constructor
     public RemoveBoatController(IBoatRepository boatRep)
     {
         BoatID = "";
         _boatRep = boatRep;
     }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Removes boat by calling the BoatRepository Remove() function.
     /// It then tells the user the boat has been removed.
@@ -68,4 +73,5 @@
 
         Console.Clear();
     }
+    #endregion
 }

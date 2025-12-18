@@ -3,15 +3,20 @@ using System.Text;
 
 public class UpdateBoatController
 {
-	public Boat ChosenBoat { get; set; }
+    #region Instance field
+    public Boat ChosenBoat { get; set; }
 	private IBoatRepository _boatRep;
+    #endregion
 
-	public UpdateBoatController(IBoatRepository boatRepository)
+    #region Constructor
+    public UpdateBoatController(IBoatRepository boatRepository)
 	{
 		_boatRep = boatRepository;
 		DetectInput();
-	}
+    }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// UpdateBoat() takes the givenProperty and sets it to givenValue. 
     /// Afterwards it tells the user that the boat has been updated.
@@ -195,4 +200,5 @@ public class UpdateBoatController
             }
         }
     }
+    #endregion
 }

@@ -2,14 +2,21 @@
 
 public class AddBoatLogController
 {
+    #region Instance field
     private IBoatLogEntryRepository _logRep;
     private Boat _chosenBoat;
+    #endregion
+
+    #region Constructor
 
     public AddBoatLogController(IBoatLogEntryRepository givenRep, Boat givenBoat)
     {
         _logRep = givenRep;
         _chosenBoat = givenBoat;
     }
+    #endregion
+
+    #region Methods
 
     public void AddLog()
     {
@@ -64,4 +71,5 @@ public class AddBoatLogController
             }
         }
     }
+    #endregion
 }

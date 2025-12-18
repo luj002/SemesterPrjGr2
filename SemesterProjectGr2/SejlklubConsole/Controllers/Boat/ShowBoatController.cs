@@ -1,12 +1,18 @@
 ﻿public class ShowBoatController
 {
-	IBoatRepository _boatRep;
+    #region Instance field
+    IBoatRepository _boatRep;
+    #endregion
 
-	public ShowBoatController(IBoatRepository boatRepository)
+    #region Constructor
+
+    public ShowBoatController(IBoatRepository boatRepository)
 	{
 		_boatRep = boatRepository;
-	}
+    }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Loops over a list of all boats.
     /// </summary>
@@ -28,4 +34,5 @@
             Console.ReadLine();
         }
 	}
+    #endregion
 }

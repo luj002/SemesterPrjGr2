@@ -1,6 +1,6 @@
 ﻿public class AddBoatController
 {
-    
+    #region Instance field
     //Variables for class.
     private IBoatRepository _boatRep;
     private string _modelName;
@@ -15,9 +15,13 @@
 
     //Dynamic is to prevent type error when creating the BoatInstance. The variable types never change.
     private List<dynamic> _properties;
-    
-    public bool ShouldAdd { get; set;}
+    #endregion
 
+    #region Properties
+    public bool ShouldAdd { get; set; }
+    #endregion
+
+    #region Constructor
     //Constructor initializes variables for controller object and calls the "DetectInput" function.
     public AddBoatController(IBoatRepository boatRep)
     {
@@ -30,7 +34,9 @@
         _properties = new List<dynamic> { _modelName, _type, _length, _width, _draft, _buildYear, _nickname, _sailNumber, _motor, "", "cancel" };
         DetectInput();
     }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Adds boat to boat repository. The console writing notifies the user that the boat has been succesfully added.
     /// </summary>
@@ -173,4 +179,5 @@
             Console.Clear();
         }
     }
+    #endregion
 }

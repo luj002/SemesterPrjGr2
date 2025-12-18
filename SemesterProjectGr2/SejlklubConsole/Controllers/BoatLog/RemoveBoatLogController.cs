@@ -1,12 +1,17 @@
 ﻿public class RemoveBoatLogController
 {
+    #region Instance field
     private IBoatLogEntryRepository _logRep;
+    #endregion
 
+    #region Constructor
     public RemoveBoatLogController(IBoatLogEntryRepository givenRep)
     {
         _logRep = givenRep;
     }
+    #endregion
 
+    #region Methods
     public void RemoveLog()
     {
         string callType = "remove";
@@ -26,4 +31,5 @@
         Console.Write("Press any key to return to boat selection.");
         Console.ReadKey();
     }
+    #endregion
 }

@@ -1,14 +1,19 @@
 ﻿public class UpdateBoatLogController
 {
+    #region Instance field
     private IBoatLogEntryRepository _logRep;
     private Boat _chosenBoat;
+    #endregion
 
+    #region Constructor
     public UpdateBoatLogController(IBoatLogEntryRepository givenRep, Boat givenBoat)
     {
         _logRep = givenRep;
         _chosenBoat = givenBoat;
     }
+    #endregion
 
+    #region Methods
     public void UpdateLog()
     {
         //Define logEntry
@@ -71,4 +76,5 @@
             }
         }
     }
+    #endregion
 }
