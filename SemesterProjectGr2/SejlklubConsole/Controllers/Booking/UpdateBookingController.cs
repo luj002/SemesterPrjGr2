@@ -1,12 +1,15 @@
 ﻿
 public class UpdateBookingController
 {
+    #region Instance fields
     private IBookingRepository _bookingRepository;
     private IMemberRepository _memberRepository;
     private IBoatRepository _boatRepository;
     private Booking? _booking;
     private bool _validBooking;
+    #endregion
 
+    #region Constructor
     public UpdateBookingController(IBookingRepository bookingRepository, IMemberRepository memberRepository, IBoatRepository boatRepository)
     {
         _bookingRepository = bookingRepository;
@@ -14,7 +17,12 @@ public class UpdateBookingController
         _boatRepository = boatRepository;
         _booking = BookingHelpers.SelectBooking(_bookingRepository);
     }
+    #endregion
 
+    #region Methods
+    /// <summary>
+    /// Updates booking from user inputs
+    /// </summary>
     public void UpdateBooking()
     {
         if (_booking == null)
@@ -130,4 +138,5 @@ public class UpdateBookingController
             Console.ReadKey();
         }
     }
+    #endregion
 }
