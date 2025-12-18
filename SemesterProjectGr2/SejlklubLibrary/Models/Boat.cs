@@ -2,7 +2,8 @@
 
 public class Boat
 {
-	public string Id { get; }
+    #region Properties
+    public string Id { get; }
 	public string ModelName { get; }
 	public BoatType Type { get; }
 	public string? Nickname { get; set; }
@@ -14,7 +15,10 @@ public class Boat
 	public string BuildYear { get; }
 	public BoatLogEntryRepository Log { get; }
 	public int? AssignedSpace { get; set; }
-	public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
+    #endregion
+
+    #region Constructor
+    public Boat(string modelName, BoatType type, double length, double width, double draft, string buildYear, string? nickname = null, string? sailNumber = null, string? motor = null)
 	{
 		Id = StringId.Next(IdPrefix.BOAT);
 		ModelName = modelName;
@@ -27,9 +31,13 @@ public class Boat
 		SailNumber = sailNumber;
 		Motor = motor;
 		Log = new BoatLogEntryRepository(this);
-	}
-	public override string ToString()
+    }
+    #endregion
+
+    #region Methods
+    public override string ToString()
 	{
 		return $"Model Name: {ModelName}, ({Type}), Length: {Length}m, Width: {Width}m, Draft: {Draft}m, Built: {BuildYear}, Nickname: {Nickname ?? "N/A"}, Sail Number: {SailNumber ?? "N/A"}, Motor: {Motor ?? "N/A"}, Boat space: {AssignedSpace.ToString() ?? "N/A"}";
 	}
+    #endregion
 }

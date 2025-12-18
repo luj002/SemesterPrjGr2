@@ -1,6 +1,7 @@
 ﻿public class BoatSpace
 {
-	public int Number { get; set; }
+    #region Properties
+    public int Number { get; set; }
 	public bool Occupied
 	{
 		get
@@ -9,7 +10,10 @@
 		}
 	}
 	public Boat? Boat { get; set; }
-	public BoatSpace(int number, Boat? boat = null)
+    #endregion
+
+    #region Constructor
+    public BoatSpace(int number, Boat? boat = null)
 	{
 		Number = number;
 		Boat = boat;
@@ -17,9 +21,13 @@
 	public BoatSpace()
 	{
 
-	}
-	public override string ToString()
+    }
+    #endregion
+
+    #region Methods
+    public override string ToString()
 	{
 		return $"Boat Space {Number}: {(Occupied ? $"Occupied by {Boat}" : "Available")}";
 	}
+    #endregion
 }

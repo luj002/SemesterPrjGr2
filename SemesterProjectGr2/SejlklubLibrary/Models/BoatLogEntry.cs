@@ -1,14 +1,22 @@
 ﻿public class BoatLogEntry
 {
-	public DateTime Timestamp { get; set; }
+    #region Properties
+    public DateTime Timestamp { get; set; }
 	public string Description { get; set; }
-	public BoatLogEntry(string description, DateTime? timeStamp = null)
+    #endregion
+
+    #region Constructor
+    public BoatLogEntry(string description, DateTime? timeStamp = null)
 	{
 		Timestamp = timeStamp ?? DateTime.Now;
 		Description = description;
-	}
-	public override string ToString()
+    }
+    #endregion
+
+    #region Methods
+    public override string ToString()
 	{
 		return $"{Timestamp}: {Description}";
 	}
+    #endregion
 }

@@ -1,6 +1,7 @@
 ﻿public class Event
 {
-	public string Id { get; }
+    #region Properties
+    public string Id { get; }
 	public string Title { get; set; }
 	public string Description { get; set; }
 	public DateTime StartTime { get; set; }
@@ -18,8 +19,11 @@
 			}
 			return attendees;
 		}
-	}
-	public Event(string title, string description, DateTime startTime, DateTime endTime, Administrator creator)
+    }
+    #endregion
+
+    #region Constructor
+    public Event(string title, string description, DateTime startTime, DateTime endTime, Administrator creator)
 	{
 		Id = StringId.Next(IdPrefix.EVENT);
 		Title = title;
@@ -28,9 +32,13 @@
 		EndTime = endTime;
 		Registrations = new List<Registration>();
 		Creator = creator;
-	}
-	public override string ToString()
+    }
+    #endregion
+
+    #region Methods
+    public override string ToString()
 	{
 		return $"Event {Id}: {Title}, Description: {Description}, Start: {StartTime}, End: {EndTime}, Creator: {Creator.Name}, Registrations: {Registrations.Count}";
 	}
+    #endregion
 }

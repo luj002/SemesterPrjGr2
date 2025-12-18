@@ -1,13 +1,20 @@
 ﻿public class Member
 {
-	public string Id { get; }
+    #region Instance field
+    private string _password;
+    #endregion
+
+    #region Properties
+    public string Id { get; }
 	public string Name { get; set; }
 	public string Address { get; set; }
 	public string Email { get; set; }
 	public DateTime DateOfBirth { get; set; }
 	public MemberType Type { get; set; }
-	private string _password;
-	public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type, string password)
+    #endregion
+
+    #region Constructor
+    public Member(string name, string address, string email, DateTime dateOfBirth, MemberType type, string password)
     {
         Id = StringId.Next(IdPrefix.MEMBER);
         Name = name;
@@ -17,8 +24,11 @@
         Type = type;
         _password = password;
     }
-	//DEEPLY UNSAFE WAY TO CHECK PASSWORDS!!!
-	public bool CheckPassword(string input)
+    #endregion
+
+    #region Methods
+    //DEEPLY UNSAFE WAY TO CHECK PASSWORDS!!!
+    public bool CheckPassword(string input)
 	{
 		if (input == _password)
 		{
@@ -33,4 +43,5 @@
 	{
 		return $"Member {Id}: {Name}, Address: {Address}, Email: {Email}, DOB: {DateOfBirth.ToShortDateString()}, Type: {Type}";
 	}
+    #endregion
 }

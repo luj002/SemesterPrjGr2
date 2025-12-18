@@ -1,6 +1,7 @@
 ﻿public class Booking
 {
-	public string Id { get; }
+    #region Properties
+    public string Id { get; }
 	public Member Member { get; set; }
     public DateTime StartTime { get; set; }
 	public DateTime EndTime { get; set; }
@@ -8,7 +9,10 @@
 	public string? Destination { get; set; }
 	public bool IsActive { get; set; }
 	public Boat Boat { get; set; }
-	public Booking(Member member, Boat boat, string sailingArea, DateTime endTime, DateTime? startTime = null, string? destination = null)
+    #endregion
+
+    #region Constructor
+    public Booking(Member member, Boat boat, string sailingArea, DateTime endTime, DateTime? startTime = null, string? destination = null)
 	{
 		Id = StringId.Next(IdPrefix.BOOK);
 		Member = member;
@@ -18,9 +22,13 @@
 		SailingArea = sailingArea;
 		Destination = destination;
 		IsActive = false;
-	}
-	public override string ToString()
+    }
+    #endregion
+
+    #region Methods
+    public override string ToString()
 	{
 		return $"Booking {Id}: From {StartTime} to {EndTime}, Area: {SailingArea}, Destination: {Destination ?? "N/A"}, Active: {IsActive}";
 	}
+    #endregion
 }
