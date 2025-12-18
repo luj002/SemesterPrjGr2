@@ -1,4 +1,4 @@
-﻿public class BookingActiveController
+﻿public class BookingActivationController
 {
     #region Instance fields
     private IBookingRepository _bookingRepository;
@@ -6,7 +6,7 @@
     #endregion
 
     #region Constructor
-    public BookingActiveController(IBookingRepository bookingRepository, Booking booking)
+    public BookingActivationController(IBookingRepository bookingRepository, Booking booking)
     {
         _bookingRepository = bookingRepository;
         _booking = booking;

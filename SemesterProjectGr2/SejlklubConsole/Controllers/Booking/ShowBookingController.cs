@@ -16,7 +16,6 @@ public class ShowBookingController
     }
     #endregion
 
-
     #region Methods
     /// <summary>
     /// Menu for showing bookings based on different filtering option.
@@ -164,7 +163,7 @@ public class ShowBookingController
                     {
                         break;
                     }
-                    BookingActiveController bookingActiveController = new BookingActiveController(_bookingRepository, bookingToActivate);
+                    BookingActivationController bookingActiveController = new BookingActivationController(_bookingRepository, bookingToActivate);
                     bookingActiveController.ActivateBooking();
                     break;
                 case "2":
@@ -173,7 +172,7 @@ public class ShowBookingController
                     {
                         break;
                     }
-                    BookingActiveController bookingFinalizeController = new BookingActiveController(_bookingRepository, bookingToFinalize);
+                    BookingActivationController bookingFinalizeController = new BookingActivationController(_bookingRepository, bookingToFinalize);
                     bookingFinalizeController.FinalizeBooking();
                     break;
                 default:
