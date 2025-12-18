@@ -113,7 +113,7 @@
     /// Gets a booking by its id
     /// </summary>
     /// <param name="id">The id of the booking to return</param>
-    /// <returns>The booking with the given Id</returns>
+    /// <returns>The booking with the given Id or null if none was found</returns>
     public Booking? GetBookingById(string id)
     {
         if (_nonArchivedBookings.ContainsKey(id))
