@@ -25,7 +25,7 @@
     /// Creates a new event.
     /// </summary>
     /// <param name="maker">The administrator to credit as the creator.</param>
-    public void Create(Adminstrator maker)
+    public void Create(Administrator maker)
     {
         //TODO MAKE THIS MORE LIKE AddMemberController
 
