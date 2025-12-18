@@ -2,17 +2,22 @@
 
 public class LoginMenu
 {
+    #region Instance field
     private IMemberRepository _memberRepository = new MemberRepository();
     private string _email;
     private string _password;
     private int _toReturn;
+    #endregion
 
+    #region Constructor
     public LoginMenu()
     {
         //in reality we'd probably fetch from a database here
         MockData.PopulateMembers(_memberRepository);
     }
+    #endregion
 
+    #region Methods
     public string Login()
     {
         while (true)
@@ -39,6 +44,6 @@ public class LoginMenu
             Console.ReadKey();
             Console.Clear();
         }
-        
     }
+    #endregion
 }

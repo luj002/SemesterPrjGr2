@@ -1,6 +1,7 @@
 ﻿public class UserMenu
 {
-	public UserMenu(string memberId)
+    #region Constructor
+    public UserMenu(string memberId)
 	{
         //in reality we'd probably fetch from a database here
         MockData.PopulateBlogEntries(_blogEntryRepository);
@@ -12,12 +13,14 @@
 
 		currentUser = _memberRepository.GetMemberById(memberId);
     }
+    #endregion
 
-	private List<string> _menuChoices = new List<string>();
-	//for now just use menuChoices.Add() in PopulateMenu() to add stuff
-	//todo find a better way to populate this list
+    #region Instance field
+    private List<string> _menuChoices = new List<string>();
+    //for now just use menuChoices.Add() in PopulateMenu() to add stuff
+    //todo find a better way to populate this list
 
-	public static Member currentUser;
+    public static Member currentUser;
 
     private IBlogEntryRepository _blogEntryRepository = new BlogEntryRepository();
     private IBoatRepository _boatRepository = new BoatRepository();
@@ -25,7 +28,9 @@
     private IBookingRepository _bookingRepository = new BookingRepository();
     private IEventRepository _eventRepository = new EventRepository();
     private IMemberRepository _memberRepository = new MemberRepository();
+    #endregion
 
+    #region Methods
     private void PopulateMenu()
     {
         _menuChoices.Add("1. Event menu");
@@ -396,5 +401,6 @@
             choice = Helpers.ReadChoiceKey(choices);
         }
     }
+    #endregion
 }
 

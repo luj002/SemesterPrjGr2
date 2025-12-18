@@ -2,17 +2,26 @@
 
 public class RemoveRegistrationController
 {
+    #region Instance field
     private IEventRepository _eventRepository;
+    #endregion
 
+    #region Properties
     public Member ThisMember;
+    #endregion
 
+    #region Constructor
     public RemoveRegistrationController(IEventRepository eventRepository, Member thisMember)
     {
         _eventRepository = eventRepository;
         ThisMember = thisMember;
     }
+    #endregion
 
-    //Method to run the menu to unregister from an event
+    #region Methods
+    /// <summary>
+    /// Method to run the menu to unregister from an event
+    /// </summary>
     public void Unregister()
     {
         List<Event> eventsRegistered = new List<Event>();
@@ -53,4 +62,5 @@ public class RemoveRegistrationController
             input = Console.ReadLine();
         }
     }
+    #endregion
 }

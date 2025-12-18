@@ -2,17 +2,27 @@
 
 public class AddRegistrationController
 {
+    #region Instance field
     private IEventRepository _eventRepository;
-    public Member ThisMember { get; set; }
+    #endregion
 
+    #region Properties
+    public Member ThisMember { get; set; }
+    #endregion
+
+    #region Constructor
     public AddRegistrationController(IEventRepository eventRepository, Member thisMember)
     {
         _eventRepository = eventRepository;
         ThisMember = thisMember;
     }
+    #endregion
 
-    //method to register for an event
+    #region Methods
     //todo make this more like RemoveRegistrationController if i can be bothered and have time
+    /// <summary>
+    /// Registers the user to an event.
+    /// </summary>
     public void Register()
     {
         Event eventToRegister = null;
@@ -37,4 +47,5 @@ public class AddRegistrationController
         Registration regist = new Registration(ThisMember, eventToRegister, comment);
         eventToRegister.Registrations.Add(regist);
     }
+    #endregion
 }

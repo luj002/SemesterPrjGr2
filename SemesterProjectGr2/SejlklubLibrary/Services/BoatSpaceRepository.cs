@@ -49,6 +49,10 @@ public class BoatSpaceRepository : IBoatSpaceRepository
         return (_boatSpaces.ContainsKey(number)) ? _boatSpaces[number] : null;
     }
 
+    /// <summary>
+    /// Removes a boat space with a given number.
+    /// </summary>
+    /// <param name="number">The number of the boat space to remove.</param>
     public void Remove(int number)
     {
         _boatSpaces.Remove(number);
