@@ -28,6 +28,7 @@ public class AddMemberController
             "3. Email",
             "4. Date of birth",
             "5. Member type",
+            "6. Password",
             "\nC. Confirm",
             "Q. Cancel (Discard Member)"
         };
@@ -36,6 +37,7 @@ public class AddMemberController
         string email = "";
         DateTime dateOfBirth = new DateTime(0);
         MemberType memberType = MemberType.SENIOR;
+        string password = "placeholder";
 
         string theChoice = Helpers.ReadChoice(choices);
 
@@ -79,6 +81,12 @@ public class AddMemberController
                         choices[4] = $"5. Member type - {memberType}";
                     }
                     break;
+                case "6":
+                    Console.Write("Enter password: ");
+                    password = Console.ReadLine()!;
+
+                    choices[5] = $"6. Password - {password}";
+                    break;
                 default:
                     Console.WriteLine("Invalid choice. Press any button to try again.");
                     Console.ReadKey();
@@ -91,8 +99,7 @@ public class AddMemberController
 
         if (theChoice == "c")
         {
-            //TODO MAKE MEMBER PASSWORDS CUSTOMIZABLE
-            _member = new Member(name, address, email, dateOfBirth, memberType, "placeholder");
+            _member = new Member(name, address, email, dateOfBirth, memberType, password);
             AddMember();
         }
     }
