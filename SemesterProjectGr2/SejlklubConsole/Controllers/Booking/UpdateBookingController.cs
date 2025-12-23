@@ -39,7 +39,7 @@ public class UpdateBookingController
         DateTime startTime = _booking.StartTime;
         DateTime endTime = _booking.EndTime;
 
-        string bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+        string bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime, _booking);
         _validBooking = bookingStatus.Length == 0;
         bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
 
@@ -52,13 +52,13 @@ public class UpdateBookingController
             $"6. End time - {endTime.ToString("yyyy/MM/dd HH:mm:ss")}",
             $"{bookingStatus}",
             "C. Confirm",
-            "Q. Cancel (Discard Booking)"
+            "Q. Cancel (Discard changes)"
         };
 
 
         string theChoice = Helpers.ReadChoice(choices);
 
-        while ((theChoice != "c"||_validBooking) && theChoice != "q")
+        while ((theChoice != "c" || !_validBooking) && theChoice != "q")
         {
             switch (theChoice)
             {
@@ -111,7 +111,7 @@ public class UpdateBookingController
                     break;
             }
 
-            bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime);
+            bookingStatus = BookingRepositoryHelpers.ValidateBooking(_bookingRepository.GetAll(), member, boat, startTime, endTime, _booking);
             _validBooking = bookingStatus.Length == 0;
             bookingStatus = "\nBooking status:\n" + (_validBooking ? "Booking is valid" : bookingStatus);
 

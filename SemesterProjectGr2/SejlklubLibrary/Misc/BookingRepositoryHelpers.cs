@@ -83,7 +83,7 @@
     /// <param name="boatToCheck">The boat being booked.</param>
     /// <param name="startTime">The start time of the booking.</param>
     /// <param name="endTime">The end time of the booking.</param>
-    public static string ValidateBooking(List<Booking> bookingsList, Member? memberToCheck, Boat? boatToCheck, DateTime startTime, DateTime endTime)
+    public static string ValidateBooking(List<Booking> bookingsList, Member? memberToCheck, Boat? boatToCheck, DateTime startTime, DateTime endTime, Booking? bookingToUpdate = null)
     {
         string bookingStatus = "";
         if (memberToCheck == null)
@@ -108,6 +108,18 @@
         bookings = GetBookingsByBoat(bookings, boatToCheck);
         if (bookings.Count == 0)
             return bookingStatus;
+        else if (bookingToUpdate != null)
+        {
+            int count = 0;
+            foreach (Booking b in bookings)
+            {
+                if (b.Id != bookingToUpdate.Id)
+                    count++;
+            }
+
+            if (count == 0)
+                return bookingStatus;
+        }
         else
         {
             bookingStatus += $"Boat with Id {boatToCheck.Id} has conflicting bookings:\n";
