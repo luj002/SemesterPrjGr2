@@ -18,9 +18,9 @@ public static class Helpers
             Console.Write($"{inputDescription} (or Q to cancel): ");
             try
             {
-				string inputString = Console.ReadLine().ToLower();
-				if (inputString == "q")
-					return null;
+                string inputString = Console.ReadLine().ToLower();
+                if (inputString == "q")
+                    return null;
 
                 input = int.Parse(inputString);
 
@@ -46,123 +46,123 @@ public static class Helpers
         return input;
     }
 
-	/// <summary>
-	/// Prints choices to console and reads user input.
-	/// </summary>
-	/// <param name="choices">List of strings of choices.</param>
-	/// <returns>The user input.</returns>
-	public static string ReadChoice(List<string> choices)
-	{
-		Console.Clear();
-		foreach (string s in choices)
-		{
-			Console.WriteLine(s);
-		}
-		Console.Write("\nYour choice: ");
-		string choice = Console.ReadLine()!;
-		Console.Clear();
+    /// <summary>
+    /// Prints choices to console and reads user input.
+    /// </summary>
+    /// <param name="choices">List of strings of choices.</param>
+    /// <returns>The user input.</returns>
+    public static string ReadChoice(List<string> choices)
+    {
+        Console.Clear();
+        foreach (string s in choices)
+        {
+            Console.WriteLine(s);
+        }
+        Console.Write("\nYour choice: ");
+        string choice = Console.ReadLine()!;
+        Console.Clear();
 
-		return choice.ToLower();
+        return choice.ToLower();
 
-	}
+    }
 
-	/// <summary>
-	/// Prints choices to console and reads next key pressed.
-	/// </summary>
-	/// <param name="choices">List of strings of choices.</param>
-	/// <returns>The user input.</returns>
-	public static char ReadChoiceKey(List<string> choices)
-	{
-		Console.Clear();
-		foreach (string s in choices)
-		{
-			Console.WriteLine(s);
-		}
-		Console.Write("\nYour choice: ");
-		char choice = Console.ReadKey().KeyChar;
-		Console.Clear();
+    /// <summary>
+    /// Prints choices to console and reads next key pressed.
+    /// </summary>
+    /// <param name="choices">List of strings of choices.</param>
+    /// <returns>The user input.</returns>
+    public static char ReadChoiceKey(List<string> choices)
+    {
+        Console.Clear();
+        foreach (string s in choices)
+        {
+            Console.WriteLine(s);
+        }
+        Console.Write("\nYour choice: ");
+        char choice = Console.ReadKey().KeyChar;
+        Console.Clear();
 
-		return choice;
+        return choice;
 
-	}
-	/// <summary>
-	/// Reads yes or no input from console.
-	/// </summary>
-	/// <param name="question">The question being displayed in console.</param>
-	/// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
-	public static bool? YesOrNo(string question)
-	{
-		string input = "";
-		bool choiceFinalized = false;
-		while (!choiceFinalized)
-		{
-			Console.Write($"{question} [ y / n ] (Q to cancel): ");
-			try
-			{
-				input = Console.ReadLine()!.ToLower();
-				if (input == "q")
-					return null;
+    }
+    /// <summary>
+    /// Reads yes or no input from console.
+    /// </summary>
+    /// <param name="question">The question being displayed in console.</param>
+    /// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
+    public static bool? YesOrNo(string question)
+    {
+        string input = "";
+        bool choiceFinalized = false;
+        while (!choiceFinalized)
+        {
+            Console.Write($"{question} [ y / n ] (Q to cancel): ");
+            try
+            {
+                input = Console.ReadLine()!.ToLower();
+                if (input == "q")
+                    return null;
 
                 if (input[0] != 'y' && input[0] != 'n')
-					throw new ArgumentException($"Input was not 'y' or 'n'");
+                    throw new ArgumentException($"Input was not 'y' or 'n'");
 
-				choiceFinalized = true;
-			}
-			catch (ArgumentException aex)
-			{
-				Console.WriteLine(aex.Message);
-			}
-			catch (Exception)
-			{
-				Console.WriteLine("Input was not valid");
-			}
-		}
-		return input[0] == 'y';
-	}
+                choiceFinalized = true;
+            }
+            catch (ArgumentException aex)
+            {
+                Console.WriteLine(aex.Message);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Input was not valid");
+            }
+        }
+        return input[0] == 'y';
+    }
 
-	/// <summary>
-	/// Reads yes or no input from next key.
-	/// </summary>
-	/// <param name="question">The question being displayed in console.</param>
-	/// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
-	public static bool YesOrNoKey(string question)
-	{
-		char? input = null;
-		bool choiceFinalized = false;
-		while (!choiceFinalized)
-		{
-			Console.Clear();
-			Console.Write($"{question} [ y / n ]: ");
-			try
-			{
-				input = Console.ReadKey().KeyChar;
-				if (input != 'y' && input != 'n')
-					throw new ArgumentException($"Input was not 'y' or 'n'");
-				choiceFinalized = true;
-			}
-			catch (ArgumentException aex)
-			{
-				Console.Clear();
-				Console.WriteLine(aex.Message);
-				Console.ReadKey();
-			}
-			catch (Exception)
-			{
-				Console.Clear();
-				Console.WriteLine("Input was not valid");
-				Console.ReadKey();
-			}
-		}
-		return input == 'y';
-	}
-
-	/// <summary>
-	/// Prints a string representation of a list.
-	/// </summary>
-	/// <param name="givenTable">The list to print.</param>
-	public static void PrintEnumerable(IEnumerable givenTable)
+    /// <summary>
+    /// Reads yes or no input from next key.
+    /// </summary>
+    /// <param name="question">The question being displayed in console.</param>
+    /// <returns>True if input from console starts with Y/y, false if input from console starts with N/n.</returns>
+    public static bool YesOrNoKey(string question)
     {
-        Console.WriteLine("{" + string.Join(", ",givenTable.Cast<object>()) + "}");
+        char? input = null;
+        bool choiceFinalized = false;
+        while (!choiceFinalized)
+        {
+            Console.Clear();
+            Console.Write($"{question} [ y / n ]: ");
+            try
+            {
+                input = Console.ReadKey().KeyChar;
+                if (input != 'y' && input != 'n')
+                    throw new ArgumentException($"Input was not 'y' or 'n'");
+                choiceFinalized = true;
+            }
+            catch (ArgumentException aex)
+            {
+                Console.Clear();
+                Console.WriteLine(aex.Message);
+                Console.ReadKey();
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine("Input was not valid");
+                Console.ReadKey();
+            }
+        }
+        return input == 'y';
+    }
+
+    /// <summary>
+    /// Prints a string representation of a list.
+    /// </summary>
+    /// <param name="givenTable">The list to print.</param>
+    public static void PrintEnumerable(IEnumerable givenTable)
+    {
+        Console.WriteLine("{" + string.Join(", ", givenTable.Cast<object>()) + "}");
     }
 
 
@@ -183,42 +183,63 @@ public static class Helpers
             Console.Write($"{inputDescription}: ");
             try
             {
-				int? yearInput = IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
-				if (yearInput == null)
-					return null;
+                int year = 0;
 
-                int year = (min.Year == max.Year) ? min.Year : (int)yearInput;
+                if (min.Year == max.Year)
+                {
+                    year = min.Year;
+                }
+                else
+                {
+                    int? yearInput = IntFromReadLine($"Year ({min.Year} - {max.Year})", min.Year, max.Year);
+                    if (yearInput == null)
+                        return null;
+                    year = (int)yearInput;
+                }
 
                 int minMonth = (year == min.Year) ? min.Month : 1;
                 int maxMonth = (year == max.Year) ? max.Month : 12;
 
-				int? monthInput = IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, 12);
-				if (monthInput == null)
-					return null;
+                int month = 0;
 
-                int month = ((min.Year == max.Year)
-						  && (min.Month == max.Month)) ? min.Month : (int)monthInput;
+                if ((min.Year == max.Year) && (min.Month == max.Month))
+                {
+                    month = min.Month;
+                }
+                else
+                {
+                    int? monthInput = IntFromReadLine($"Month ({minMonth} - {maxMonth})", minMonth, maxMonth);
+                    if (monthInput == null)
+                        return null;
+                    month = (int)monthInput;
+                }
 
                 int minDay = (year == min.Year && month == min.Month) ? min.Day : 1;
                 int maxDay = (year == max.Year && month == max.Month) ? max.Day : DateTime.DaysInMonth(year, month);
 
-				int? dayInput = IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
-				if (dayInput == null)
-					return null;
+                int day = 0;
 
-                int day = ((min.Year == max.Year)
-						&& (min.Month == max.Month)
-						&& (min.Day == max.Day)) ? min.Day : (int)dayInput;
+                if ((min.Year == max.Year) && (min.Month == max.Month) && (min.Day == max.Day))
+                {
+                    day = min.Day;
+                }
+                else
+                {
+                    int? dayInput = IntFromReadLine($"Day ({minDay} - {maxDay})", minDay, maxDay);
+                    if (dayInput == null)
+                        return null;
+                    day = (int)dayInput;
+                }
 
                 if (timeIncluded)
                 {
                     int? hourInput = IntFromReadLine("Hour (0-23):", 0, 23);
-					if (hourInput == null)
-						return null;
+                    if (hourInput == null)
+                        return null;
 
                     int? minuteInput = IntFromReadLine("Minute (0-59):", 0, 59);
-					if (minuteInput == null)
-						return null;
+                    if (minuteInput == null)
+                        return null;
                     time = new DateTime(year, month, day, (int)hourInput, (int)minuteInput, 0);
                 }
                 else

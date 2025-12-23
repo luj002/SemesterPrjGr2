@@ -229,7 +229,7 @@ public class ShowBookingController
             "1. Show boat statistics for boat (Search by id)",
             "2. Show boat statistics for all boats",
             $"\nMost booked boat ({mostBookedCount} bookings) - {mostBookedBoat.Id} {mostBookedBoat.Nickname}",
-            $"Boat with longest booking time ({longestBookingTime.Hours} hours) - {longestBookingTimeBoat.Id} {longestBookingTimeBoat.Nickname}",
+            $"Boat with longest booking time ({longestBookingTime.TotalHours} hours) - {longestBookingTimeBoat.Id} {longestBookingTimeBoat.Nickname}",
             "\nQ. Back to previous menu"
         };
         string theChoice = Helpers.ReadChoice(choices);
@@ -284,7 +284,7 @@ public class ShowBookingController
             "1. Show member statistics for member (Search by id)",
             "2. Show member statistics for all members",
             $"\nMember with most bookings ({mostBookingsCount} bookings) - {memberMostBookings.Id} {memberMostBookings.Name}",
-            $"Member with longest booking time ({longestBookingTime.Hours} hours) - {memberLongestBookingTime.Id} {memberLongestBookingTime.Name}",
+            $"Member with longest booking time ({longestBookingTime.TotalHours} hours) - {memberLongestBookingTime.Id} {memberLongestBookingTime.Name}",
             "\nQ. Back to previous menu"
         };
         string theChoice = Helpers.ReadChoice(choices);
