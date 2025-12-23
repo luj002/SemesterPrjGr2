@@ -233,11 +233,11 @@ public static class Helpers
 
                 if (timeIncluded)
                 {
-                    int? hourInput = IntFromReadLine("Hour (0-23):", 0, 23);
+                    int? hourInput = IntFromReadLine("Hour (0 - 23):", 0, 23);
                     if (hourInput == null)
                         return null;
 
-                    int? minuteInput = IntFromReadLine("Minute (0-59):", 0, 59);
+                    int? minuteInput = IntFromReadLine("Minute (0 - 59):", 0, 59);
                     if (minuteInput == null)
                         return null;
                     time = new DateTime(year, month, day, (int)hourInput, (int)minuteInput, 0);
